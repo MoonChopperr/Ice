@@ -80,8 +80,8 @@ def seed_games():
 
 def undo_games():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.games RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.game RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute(text("DELETE FROM games"))
+        db.session.execute(text("DELETE FROM game"))
 
     db.session.commit()

@@ -10,8 +10,8 @@ class ShoppingCart(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, ForeignKey(add_prefix_for_prod('Users.id')), nullable=False)
-    game_id = Column(Integer, ForeignKey(add_prefix_for_prod('Game.id')), nullable=False)
+    user_id = Column(Integer, ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
+    game_id = Column(Integer, ForeignKey(add_prefix_for_prod('game.id')), nullable=False)
     createdAt = Column(DateTime, default=datetime.utcnow)
     updatedAt = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 

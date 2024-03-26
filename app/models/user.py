@@ -6,7 +6,7 @@ from sqlalchemy.orm import relationship
 
 
 class User(db.Model, UserMixin):
-    __tablename__ = 'Users'
+    __tablename__ = 'users'
 
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}

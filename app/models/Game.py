@@ -4,13 +4,13 @@ from sqlalchemy.orm import relationship
 from datetime import datetime
 
 class Game(db.Model):
-    __tablename__='Game'
+    __tablename__='game'
 
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
     id = Column(Integer, primary_key=True)
-    owner_id = Column(Integer, ForeignKey(add_prefix_for_prod('Users.id')), nullable=False)
+    owner_id = Column(Integer, ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     title= Column(String(100), nullable = False)
     about = Column(String(2000), nullable = False)
     price = Column(Numeric(10,2), nullable = False)
