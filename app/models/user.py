@@ -17,7 +17,7 @@ class User(db.Model, UserMixin):
     hashed_password = Column(String(255), nullable=False)
     wallet = Column(Numeric(12,2))
 
-    shopping_carts = relationship("ShoppingCart", back_populates="user", cascade="all, delete-orphan")
+    shopping_carts = relationship("ShoppingCart", back_populates="users", cascade="all, delete-orphan")
     games = relationship("Game", back_populates="owner", cascade="all, delete-orphan")
 
     @property

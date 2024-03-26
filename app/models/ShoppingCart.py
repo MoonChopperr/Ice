@@ -15,7 +15,7 @@ class ShoppingCart(db.Model):
     createdAt = Column(DateTime, default=datetime.utcnow)
     updatedAt = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
-    user = relationship("User", back_populates="shopping_carts")
+    users = relationship("User", back_populates="shopping_carts")
     game = relationship("Game", back_populates="shopping_carts")
 
 
