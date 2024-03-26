@@ -4,16 +4,39 @@ from sqlalchemy.sql import text
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
+    # 1
     demo = User(
-        username='Demo', email='demo@aa.io', password='password')
+        username='Demo', email='demo@aa.io', password='password', wallet= 400.00)
+    # 2
     marnie = User(
-        username='marnie', email='marnie@aa.io', password='password')
+        username='marnie', email='marnie@aa.io', password='password', wallet= 400.00)
+    # 3
     bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password')
+        username='bobbie', email='bobbie@aa.io', password='password', wallet= 400.00)
+    # 4
+    PapaCapcom = User(
+        username='Capcom', email='Capcom@cap.io', password='password', wallet= 99999.00)
+    # 5
+    GodFatherSony = User(
+        username='Sony', email='Sony@playstation.io', password='password', wallet= 99999.00)
+    # 6
+    Fromsoftware = User(
+        username='FromSoft', email='FromSoft@bandai.io', password='password', wallet= 99999.00)
+    # 7
+    Konami = User(
+        username='Konami', email='Konami@konami.io', password='password',  wallet= 99999.00)
+    # 8
+    ATLUS = User(
+        username='ATLUS', email='ATLUS@SEGA.io', password='password', wallet= 99999.00)
+    # 9
+    MONKEYCRAFT = User(
+        username='MKC', email='MKC@bandi.io', password='password', wallet= 99999.00)
 
-    db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
+
+
+    db.session.add_all([
+        demo, marnie, bobbie, PapaCapcom, GodFatherSony, Fromsoftware, Konami, ATLUS, MONKEYCRAFT
+    ])
     db.session.commit()
 
 
@@ -28,5 +51,5 @@ def undo_users():
         db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM users"))
-        
+
     db.session.commit()

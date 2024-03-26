@@ -1,18 +1,23 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from sqlalchemy import Column, String, Integer, Numeric, relationship
 
 
 class User(db.Model, UserMixin):
-    __tablename__ = 'users'
+    __tablename__ = 'Users'
 
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(40), nullable=False, unique=True)
-    email = db.Column(db.String(255), nullable=False, unique=True)
-    hashed_password = db.Column(db.String(255), nullable=False)
+    id = Column(Integer, primary_key=True)
+    email = Column(String(255), nullable=False, unique=True)
+    username = Column(String(32), nullable=False, unique=True)
+    hashed_password = Column(String(255), nullable=False)
+    wallet = Column(Numeric(12,2))
+
+    shopping_carts = relationship("ShoppingCart", back_populates="user", cascade="all, delete-orphan")
+    games = relationship("Game", back_populates="owner", cascade="all, delete-orphan")
 
     @property
     def password(self):
@@ -29,5 +34,6 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'wallet': float(self.wallet),
         }
