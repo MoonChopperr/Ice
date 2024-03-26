@@ -121,10 +121,12 @@ My capstone project for mod 7 during my time at a/A
 ## 7. Search
 - Users can search games and view them
 
+## 8. Order History
+- Users can see their recently purchased products
+
 
 
 # Schema
-
 ![SchemaMVP](https://github.com/MoonChopperr/a-A-capstone/assets/146145323/b95af886-b4af-4eed-a604-bfb2f23063d0)
 
 
