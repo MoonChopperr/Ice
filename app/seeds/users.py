@@ -31,7 +31,8 @@ def seed_users():
     # 9
     MONKEYCRAFT = User(
         username='MKC', email='MKC@bandi.io', password='password', wallet= 99999.00)
-
+    # 10
+    
 
 
     db.session.add_all([
