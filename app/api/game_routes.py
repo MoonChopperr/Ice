@@ -31,7 +31,8 @@ def post_game():
     form["csrf_token"].data = request.cookies["csrf_token"]
 
     if form.validate_on_submit():
-        image = form.data['game_image']
+        image = form.image.data
+        genres_str = ','.join(form.genre.data)
         url=None
 
         if image:
@@ -51,7 +52,7 @@ def post_game():
             publisher=form.publisher.data,
             franchise=form.franchise.data,
             ESRB_rating=form.ESRB_rating.data,
-            genre=form.genre.data,
+            genre=genres_str,
             images=url
         )
 
@@ -71,7 +72,7 @@ def update_game(id):
 
     if form.validate_on_submit():
         game = Game.query.get(id)
-        image = form.data['game_image']
+        image = form.image.data
         url = None
 
         if not game:
@@ -86,6 +87,7 @@ def update_game(id):
             if "url" not in upload:
                 return {"game_image": "Failed to upload image, try again later."}, 500
             url = upload["url"]
+        genres_str = ','.join(form.genre.data)
 
         game.title = form.title.data
         game.about = form.about.data
@@ -95,7 +97,7 @@ def update_game(id):
         game.publisher = form.publisher.data
         game.franchise = form.franchise.data
         game.ESRB_rating = form.ESRB_rating.data
-        game.genre = form.genre.data
+        game.genre = genres_str
         game.images = url
 
         db.session.commit()
