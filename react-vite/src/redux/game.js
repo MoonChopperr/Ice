@@ -83,7 +83,7 @@ export const thunkOneGame = (gameId) => async (dispatch) => {
     const data = await response.json()
 
     if (!response.ok) return { errors: data }
-    dispatch(getOneGame(data.games))
+    dispatch(getOneGame(data))
     return data
 
 }
