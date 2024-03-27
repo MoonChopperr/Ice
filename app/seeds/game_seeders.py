@@ -73,6 +73,75 @@ def seed_games():
         genre="RPG",
         images="p5.img",
     )
+
+    Persona4 = Game(
+        owner_id=8,
+        title="Persona 4 Golden",
+        about="A coming of age story that sets the protagonist and his friends on a journey kickstarted by a chain of serial murders.",
+        price=19.99,
+        release_date=datetime(2020, 6, 13),
+        developer="ATLUS",
+        publisher="SEGA",
+        franchise="Persona",
+        ESRB_rating="M",
+        genre="RPG",
+        images="p4.img",
+    )
+
+    Persona3 = Game(
+        owner_id=8,
+        title="Persona 3 Reload",
+        about="Dive into the Dark Hour and awaken the depths of your heart. Persona 3 Reload is a captivating reimagining of the genre-defining RPG, reborn for the modern era with cutting-edge graphics and gameplay.",
+        price=69.99,
+        release_date=datetime(2024, 2, 2),
+        developer="ATLUS",
+        publisher="SEGA",
+        franchise="Persona",
+        ESRB_rating="M",
+        genre="Adventure, RPG, Strategy",
+        images="p3.img",
+    )
+
+    HELLDIVERS2 = Game(
+        owner_id=5,
+        title="HELLDIVERS2",
+        about="The Galaxy’s Last Line of Offence. Enlist in the Helldivers and join the fight for freedom across a hostile galaxy in a fast, frantic, and ferocious third-person shooter.",
+        price=39.99,
+        release_date=datetime(2024, 2, 8),
+        developer="Arrowhead Game Studios",
+        publisher="PlayStation PC LLC",
+        franchise="PlayStation Studios, HELLDIVERS",
+        ESRB_rating="M",
+        genre="Action",
+        images="HD.img",
+    )
+
+    GhostofTsushimaa = Game(
+        owner_id=5,
+        title="Ghost Of Tsushima DIRECTOR'S CUT",
+        about="A storm is coming. Venture into the complete Ghost of Tsushima DIRECTOR’S CUT on PC; forge your own path through this open-world action adventure and uncover its hidden wonders. Brought to you by Sucker Punch Productions, Nixxes Software and PlayStation Studios.",
+        price=59.99,
+        release_date=datetime(2024, 5, 16),
+        developer="Sucker Punch Productions",
+        publisher="PlayStation PC LLC",
+        ESRB_rating="M",
+        genre="Action",
+        images="GoT.img",
+    )
+
+    GhostofTsushimaa = Game(
+        owner_id=5,
+        title="Ghost Of Tsushima DIRECTOR'S CUT",
+        about="A storm is coming. Venture into the complete Ghost of Tsushima DIRECTOR’S CUT on PC; forge your own path through this open-world action adventure and uncover its hidden wonders. Brought to you by Sucker Punch Productions, Nixxes Software and PlayStation Studios.",
+        price=59.99,
+        release_date=datetime(2024, 5, 16),
+        developer="Sucker Punch Productions",
+        publisher="PlayStation PC LLC",
+        ESRB_rating="M",
+        genre="Action",
+        images="GoT.img",
+    )
+
     db.session.add_all([MonterHunterWorld, ResidentEvil4, DragonsDogma2, DevilMayCry5, Persona5])
 
     db.session.commit()
