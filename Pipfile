@@ -28,6 +28,7 @@ wtforms = "*"
 importlib-metadata = "==6.9.0"
 zipp = "==3.17.0"
 pylint = "*"
+boto3 = "*"
 
 [dev-packages]
 

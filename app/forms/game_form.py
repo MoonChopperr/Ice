@@ -1,7 +1,12 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SelectMultipleField, widgets, DecimalField, DateField
-from wtforms.validators import DataRequired, Length
+from wtforms import StringField, SelectMultipleField, widgets, DecimalField, DateField, SubmitField
+from wtforms.validators import DataRequired, ValidationError
 from app.models import Game
+
+# AWS
+from flask_wtf.file import FileField, FileAllowed, FileRequired
+from app.api.aws_helper import ALLOWED_EXTENSIONS
+
 
 GENRES = [
     ('action', 'Action'),
@@ -48,4 +53,5 @@ class CreateGame(FlaskForm):
     franchise = StringField('Franchise')
     ESRB_rating = StringField('ESRB Rating', )
     genre = MultiCheckboxField('Genre', choices=GENRES)
-    images = StringField('Images')
+    image = FileField("Image File", validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
+    # submit = SubmitField("Create Post")
