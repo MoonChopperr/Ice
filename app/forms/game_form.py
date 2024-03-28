@@ -28,7 +28,6 @@ GENRES = [
     ('casual', 'Casual'),
     ('simulation','Simulation'),
     ('strategy','Strategy'),
-    ('simulation','Simulation'),
     ('free_to_play','Free To Play'),
     ('open_world', 'Open World'),
     ('metroidvania', 'Metroidvania'),
@@ -52,9 +51,9 @@ def check_genre(form, field):
         valid_genre_list = ', '.join(valid_genres)
         raise ValidationError(f"Invalid genre, here is a list of valid genres to pick from! {valid_genre_list}")
 
-def validate_genre(form, field):
-        field.data = ','.join(field.data)
-        
+# def validate_genre(form, field):
+#         field.data = ','.join(field.data)
+
 class CreateGame(FlaskForm):
     title = StringField('Title', validators =[DataRequired()])
     about = StringField('About', validators =[DataRequired()])
@@ -63,7 +62,7 @@ class CreateGame(FlaskForm):
     developer = StringField('Developer', validators=[DataRequired()])
     publisher = StringField('Publisher', validators=[DataRequired()])
     franchise = StringField('Franchise')
-    ESRB_rating = StringField('ESRB Rating', )
+    ESRB_rating = StringField('ESRB Rating')
     genre = MultiCheckboxField('Genre', choices=GENRES, validators=[check_genre, DataRequired()])
     image = FileField("Image File", validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
     # submit = SubmitField("Create Post")

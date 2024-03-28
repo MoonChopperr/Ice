@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkOneGame } from "../../redux/game";
 import { NavLink, useParams } from "react-router-dom";
-
+import CreateGame from "../CreateGameForm/CreateGameForm";
 
 import './GameDetails.css'
 

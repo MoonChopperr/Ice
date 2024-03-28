@@ -76,7 +76,7 @@ def update_game(id):
         url = None
 
         if not game:
-            return{"error": "Game could not be found"},404
+            return{"error": "Game could not be found"}, 404
 
         if game.owner_id != current_user.id:
             return {"error": "You are not authorized to edit this game"}, 403
