@@ -23,7 +23,7 @@ def game(id):
     return game.to_dict(),200
 
 
-@game_routes.route('/', methods=['POST'])
+@game_routes.route('/create', methods=['POST'])
 @login_required
 def post_game():
     """Create a new game"""

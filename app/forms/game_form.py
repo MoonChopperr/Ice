@@ -10,34 +10,34 @@ from app.api.aws_helper import ALLOWED_EXTENSIONS
 
 
 GENRES = [
-    ('action', 'Action'),
-    ('adventure', 'Adventure'),
-    ('rpg', 'RPG'),
-    ('strategy', 'Strategy'),
-    ('simulation', 'Simulation'),
-    ('sports', 'Sports'),
-    ('racing', 'Racing'),
-    ('puzzle', 'Puzzle'),
-    ('fighting', 'Fighting'),
-    ('platformer', 'Platformer'),
-    ('sandbox', 'Sandbox'),
-    ('survival', 'Survival'),
-    ('horror', 'Horror'),
-    ('stealth', 'Stealth'),
-    ('battle_royale', 'Battle Royale'),
-    ('casual', 'Casual'),
-    ('simulation','Simulation'),
-    ('strategy','Strategy'),
-    ('free_to_play','Free To Play'),
-    ('open_world', 'Open World'),
-    ('metroidvania', 'Metroidvania'),
-    ('roguelike_roguelite', 'Roguelike / Roguelite'),
-    ('mmorpg', 'MMORPG'),
-    ('moba', 'MOBA'),
-    ('rhythm_music', 'Rhythm / Music'),
-    ('party_mini_games', 'Party / Mini-Games'),
-    ('visual_novel', 'Visual Novel'),
-    ('virtual_reality', 'VR')
+    ('Action', 'Action'),
+    ('Adventure', 'Adventure'),
+    ('RPG', 'RPG'),
+    ('Strategy', 'Strategy'),
+    ('Simulation', 'Simulation'),
+    ('Sports', 'Sports'),
+    ('Racing', 'Racing'),
+    ('Puzzle', 'Puzzle'),
+    ('Fighting', 'Fighting'),
+    ('Platformer', 'Platformer'),
+    ('Sandbox', 'Sandbox'),
+    ('Survival', 'Survival'),
+    ('Horror', 'Horror'),
+    ('Stealth', 'Stealth'),
+    ('Battle Royale', 'Battle Royale'),
+    ('Casual', 'Casual'),
+    ('Simulation','Simulation'),
+    ('Strategy','Strategy'),
+    ('Free To Play','Free To Play'),
+    ('Open World', 'Open World'),
+    ('Metroidvania', 'Metroidvania'),
+    ('Roguelike / Roguelite', 'Roguelike / Roguelite'),
+    ('MMORPG', 'MMORPG'),
+    ('MOBA', 'MOBA'),
+    ('Rhythm / Music', 'Rhythm / Music'),
+    ('Party / Mini-Games', 'Party / Mini-Games'),
+    ('Visual Novel', 'Visual Novel'),
+    ('Virtual Reality', 'Virtual Reality')
 ]
 class MultiCheckboxField(SelectMultipleField):
     widget = widgets.ListWidget(prefix_label=False)
@@ -57,7 +57,7 @@ def check_genre(form, field):
 class CreateGame(FlaskForm):
     title = StringField('Title', validators =[DataRequired()])
     about = StringField('About', validators =[DataRequired()])
-    price = DecimalField('Price', validators =[DataRequired()])
+    price = DecimalField('Price')
     release_date = DateField('Release Date', validators=[DataRequired()])
     developer = StringField('Developer', validators=[DataRequired()])
     publisher = StringField('Publisher', validators=[DataRequired()])

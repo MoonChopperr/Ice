@@ -28,7 +28,7 @@ def seed_games():
         publisher="CAPCOM Co., Ltd.",
         franchise="Resident Evil",
         ESRB_rating="M",
-        genre="Action, Adventure",
+        genre="Action,Adventure",
         images="RE4.img",
     )
 
@@ -42,7 +42,7 @@ def seed_games():
         publisher="CAPCOM Co., Ltd.",
         franchise="Dragon's Dogma",
         ESRB_rating="M",
-        genre="Action, RPG",
+        genre="Action,RPG",
         images="DD2.img",
     )
 
@@ -98,7 +98,7 @@ def seed_games():
         publisher="SEGA",
         franchise="Persona",
         ESRB_rating="M",
-        genre="Adventure, RPG, Strategy",
+        genre="Adventure,RPG,Strategy",
         images="p3.img",
     )
 
@@ -139,7 +139,7 @@ def seed_games():
         publisher="PlayStation PC LLC",
         franchise='PlayStation Studios, Horizon',
         ESRB_rating="T",
-        genre="Action, RPG",
+        genre="Action,RPG",
         images="HBW.img",
     )
 
@@ -153,7 +153,7 @@ def seed_games():
         publisher="FromSoftware Inc.",
         franchise='FRANCHISE',
         ESRB_rating="M",
-        genre="Action, RPG",
+        genre="Action,RPG",
         images="DS.img",
     )
 
@@ -167,7 +167,7 @@ def seed_games():
         publisher="FromSoftware Inc.",
         franchise='FRANCHISE',
         ESRB_rating="M",
-        genre="Action, RPG",
+        genre="Action,RPG",
         images="DS2.img",
     )
 
@@ -181,7 +181,7 @@ def seed_games():
         publisher="FromSoftware Inc.",
         franchise='FRANCHISE',
         ESRB_rating="M",
-        genre="Action, RPG",
+        genre="Action,RPG",
         images="DS3.img",
     )
 
@@ -195,7 +195,7 @@ def seed_games():
         publisher="FromSoftware Inc.",
         franchise='Bandai Namco Entertainment',
         ESRB_rating="M",
-        genre="Action, RPG",
+        genre="Action,RPG",
         images="ER.img",
     )
 
@@ -222,7 +222,7 @@ def seed_games():
         developer="FromSoftware Inc.",
         publisher="Activision (Excluding Japan and Asia)",
         ESRB_rating="M",
-        genre="Action, Adventure",
+        genre="Action,Adventure",
         images="Sekiro.img",
     )
 
@@ -248,7 +248,7 @@ def seed_games():
         developer="KONAMI",
         publisher="KONAMI",
         ESRB_rating="T",
-        genre="Simulation, Strategy, Free to Play",
+        genre="Simulation,Strategy,Free To Play",
         images="YGMD.img",
     )
 
@@ -261,7 +261,7 @@ def seed_games():
         developer="KONAMI",
         publisher="KONAMI",
         ESRB_rating="M",
-        genre="Action, Adventure",
+        genre="Action,Adventure",
         images="MGSV.img",
     )
 
@@ -274,7 +274,7 @@ def seed_games():
         developer="MONKEYCRAFT Co. Ltd.",
         publisher="BANDAI NAMCO Entertainment",
         ESRB_rating="E",
-        genre="Action, Casual",
+        genre="Action,Casual",
         images="Katamari.img",
     )
 

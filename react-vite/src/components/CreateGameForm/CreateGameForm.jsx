@@ -30,19 +30,18 @@ const GENRES = [
     'Rhythm / Music',
     'Party / Mini-Games',
     'Visual Novel',
-    'VR'
+    'Virtual Reality'
 ]
 // console.log('@@genre',genres
 const CreateGame = () => {
     const dispatch = useDispatch()
     const navi = useNavigate()
     const user = useSelector((state) => state.session.user)
-    const games = useSelector((state) => state.game)
     const { gameId } = useParams()
 
     const [title, setTitle] = useState('')
     const [about, setAbout] = useState('')
-    const [price, setPrice] = useState(0)
+    const [price, setPrice] = useState('')
     const [releaseDate, setReleaseDate] = useState('')
     const [developer, setDeveloper] = useState('')
     const [publisher, setPublisher] = useState('')
@@ -74,6 +73,14 @@ const CreateGame = () => {
             if (about.length > 193) {
                 errors.about = "Description of your game is too long, it must be less than 193 characters"
             }
+            if (price < 0) {
+                errors.price = "Price cannot be less than $0.00"
+            }
+
+            if (!/^\d+\.\d{2}$/.test(price)) {
+                errors.price = "Price must be in the format xx.xx"
+            }
+
             if (!price) {
                 errors.price = "Price field cannot be empty"
             }
@@ -96,9 +103,9 @@ const CreateGame = () => {
             if (!publisher) {
                 errors.publisher = "Publisher field cannot be empty"
             }
-            // if (genre.length === 0) {
-            //     errors.genre = "Select at least one genre"
-            // }
+            if (!genre.length) {
+                errors.genre = "Select at least one genre"
+            }
             if (!image) {
                 errors.image = "Please upload an image of your game"
             }
@@ -111,31 +118,37 @@ const CreateGame = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const formData = new FormData()
         setSubmitted(true)
-        const newGame = {
-            title, about, price, releaseDate, developer, publisher, franchise, ESRB_Rating
+
+        if (Object.keys(validations).length > 0) {
+            return
         }
-        // const formData = new FormData()
-        // formData.append('title', title)
-        // formData.append('about', about)
-        // formData.append('price', price)
-        // formData.append('releaseDate', releaseDate)
-        // formData.append('developer', developer)
-        // formData.append('publisher', publisher)
-        // formData.append('franchise', franchise)
-        // formData.append('ESRB_Rating', ESRB_Rating)
-        // // genre.forEach((g) => formData.append('genre', g))
-        // formData.append('image', image)
-        await dispatch(thunkCreateGame(gameId, newGame))
-
-
-        // if(gameId){
-        //     dispatch(thunkUpdateGame(gameId, formData))
-        // }else{
-        //     dispatch(thunkCreateGame(formData))
+        // formdata for when handling aws images
+        // const newGame = {
+        //     title, about, price, 'release_date': releaseDate, developer, publisher, franchise, 'ESRB_rating': ESRB_Rating, genre, 'image': formData.image
         // }
-        console.log('formdata=>',formData)
+        const formData = new FormData()
+        formData.append('title', title)
+        formData.append('about', about)
+        formData.append('price', price)
+        formData.append('release_date', releaseDate)
+        formData.append('developer', developer)
+        formData.append('publisher', publisher)
+        formData.append('franchise', franchise)
+        formData.append('ESRB_rating', ESRB_Rating)
+        genre.forEach((g) => formData.append('genre', g))
+        formData.append('image', image)
+        // await dispatch(thunkCreateGame(formData))
+
+
+        if (gameId) {
+            dispatch(thunkUpdateGame(gameId, formData))
+            navi(`/game/${gameId}`)
+        } else {
+            dispatch(thunkCreateGame(formData))
+            navi(`/game/${gameId}`)
+        }
+        console.log('formdata=>', formData)
     }
 
     const handleGenreChange = (e, selectedGenre) => {
@@ -249,6 +262,7 @@ const CreateGame = () => {
                             <label htmlFor={genreOption}>{genreOption}</label>
                         </div>
                     ))}
+                    {validations.genre && <span>{validations.genre}</span>}
                 </div>
 
                 <div>

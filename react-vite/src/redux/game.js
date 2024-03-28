@@ -55,10 +55,10 @@ export const thunkOneGame = (gameId) => async (dispatch) => {
 }
 
 export const thunkCreateGame = newGame => async (dispatch) => {
-    const response = await fetch(`/api/games`, {
+    const response = await fetch(`/api/games/create`, {
         method: "POST",
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newGame)
+        // headers: { 'Content-Type': 'application/json' },
+        body: newGame
     })
 
     if (!response.ok) {
@@ -82,6 +82,8 @@ export const thunkUpdateGame = (gameId, game) => async (dispatch) => {
 
     if (!response.ok) {
         const data = await response.json()
+        const { resPost } = await response.json();
+        dispatch(addPost(resPost));
         return { errors: data }
     }
 
