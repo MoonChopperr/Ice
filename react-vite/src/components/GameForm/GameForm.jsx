@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams, useNavigate } from 'react-router-dom'
 import { thunkCreateGame, thunkUpdateGame } from '../../redux/game'
-import './CreateGameForm.css'
+import './GameForm.css'
 
 const GENRES = [
     'Action',
@@ -32,23 +32,23 @@ const GENRES = [
     'Visual Novel',
     'Virtual Reality'
 ]
-// console.log('@@genre',genres
-const CreateGame = () => {
+
+const GameForm = ({ buttonName, game }) => {
     const dispatch = useDispatch()
-    const navi = useNavigate()
+    const nav = useNavigate()
     const user = useSelector((state) => state.session.user)
     const { gameId } = useParams()
 
-    const [title, setTitle] = useState('')
-    const [about, setAbout] = useState('')
-    const [price, setPrice] = useState('')
-    const [releaseDate, setReleaseDate] = useState('')
-    const [developer, setDeveloper] = useState('')
-    const [publisher, setPublisher] = useState('')
-    const [franchise, setFranchise] = useState('')
-    const [ESRB_Rating, setESRB_Rating] = useState('')
-    const [genre, setGenre] = useState([])
-    const [image, setImage] = useState(null)
+    const [title, setTitle] = useState(game?.title || "")
+    const [about, setAbout] = useState(game?.about || "")
+    const [price, setPrice] = useState(game?.price || "")
+    const [releaseDate, setReleaseDate] = useState(game?.releaseDate || "")
+    const [developer, setDeveloper] = useState(game?.developer || "")
+    const [publisher, setPublisher] = useState(game?.publisher || "")
+    const [franchise, setFranchise] = useState(game?.franchise || "")
+    const [ESRB_Rating, setESRB_Rating] = useState(game?.ESRB_Rating || "")
+    const [genre, setGenre] = useState(game?.genre || [])
+    const [image, setImage] = useState(game?.image || null)
     const [validations, setValidations] = useState({})
     const [submitted, setSubmitted] = useState(false)
 
@@ -56,7 +56,7 @@ const CreateGame = () => {
 
     useEffect(() => {
         if (!user) {
-            navi('/')
+            nav('/')
         }
 
         const errors = {}
@@ -75,10 +75,6 @@ const CreateGame = () => {
             }
             if (price < 0) {
                 errors.price = "Price cannot be less than $0.00"
-            }
-
-            if (!/^\d+\.\d{2}$/.test(price)) {
-                errors.price = "Price must be in the format xx.xx"
             }
 
             if (!price) {
@@ -110,6 +106,7 @@ const CreateGame = () => {
                 errors.image = "Please upload an image of your game"
             }
         }
+
         setValidations(errors)
         if (Object.keys(validations).length) {
             isValidated = true
@@ -140,15 +137,20 @@ const CreateGame = () => {
         formData.append('image', image)
         // await dispatch(thunkCreateGame(formData))
 
-
-        if (gameId) {
-            dispatch(thunkUpdateGame(gameId, formData))
-            navi(`/game/${gameId}`)
+        if (!gameId) {
+            const newGame = await dispatch(thunkCreateGame(formData))
+            console.log('@@@@=>', newGame)
+            if (newGame && newGame.id) {
+                nav(`/game/${newGame.id}`)
+            }
         } else {
-            dispatch(thunkCreateGame(formData))
-            navi(`/game/${gameId}`)
+            const updatedGame = await dispatch(thunkUpdateGame(gameId, formData))
+            if (updatedGame && updatedGame.id) {
+                console.log('@@@@@@@@=>', updatedGame)
+                nav(`/game/${updatedGame.id}`)
+            }
         }
-        console.log('formdata=>', formData)
+
     }
 
     const handleGenreChange = (e, selectedGenre) => {
@@ -279,4 +281,4 @@ const CreateGame = () => {
     )
 }
 
-export default CreateGame
+export default GameForm

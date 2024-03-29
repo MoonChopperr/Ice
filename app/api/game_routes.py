@@ -59,7 +59,7 @@ def post_game():
         db.session.add(new_game)
         db.session.commit()
 
-        return jsonify({"game": new_game.to_dict()}), 201
+        return jsonify(new_game.to_dict()), 201
     return jsonify({'error': form.errors}),400
 
 
@@ -102,7 +102,7 @@ def update_game(id):
 
         db.session.commit()
 
-        return jsonify({"game": game.to_dict()}), 200
+        return jsonify(game.to_dict()), 200
     return jsonify({'error': form.errors}),400
 
 

@@ -15,7 +15,7 @@ def seed_games():
         franchise="Monster Hunter",
         ESRB_rating="T",
         genre="Action",
-        images="MHW.img",
+        images="https://ice-capstone-bucket.s3.amazonaws.com/mhwheader.jpg",
     )
 
     ResidentEvil4 = Game(
@@ -29,7 +29,7 @@ def seed_games():
         franchise="Resident Evil",
         ESRB_rating="M",
         genre="Action,Adventure",
-        images="RE4.img",
+        images="https://ice-capstone-bucket.s3.amazonaws.com/re4header.jpg",
     )
 
     DragonsDogma2 = Game(
@@ -43,7 +43,7 @@ def seed_games():
         franchise="Dragon's Dogma",
         ESRB_rating="M",
         genre="Action,RPG",
-        images="DD2.img",
+        images="https://ice-capstone-bucket.s3.amazonaws.com/dg2header.jpg",
     )
 
     DevilMayCry5 = Game(
@@ -57,7 +57,7 @@ def seed_games():
         franchise="Devil May Cry",
         ESRB_rating="M",
         genre="Action",
-        images="DMC5.img",
+        images="https://ice-capstone-bucket.s3.amazonaws.com/dmc5header.jpg",
     )
 
     Persona5 = Game(
@@ -71,7 +71,7 @@ def seed_games():
         franchise="Persona",
         ESRB_rating="M",
         genre="RPG",
-        images="p5.img",
+        images="https://ice-capstone-bucket.s3.amazonaws.com/p5rheader.jpg",
     )
 
     Persona4 = Game(
@@ -85,7 +85,7 @@ def seed_games():
         franchise="Persona",
         ESRB_rating="M",
         genre="RPG",
-        images="p4.img",
+        images="https://ice-capstone-bucket.s3.amazonaws.com/p4gheader.jpg",
     )
 
     Persona3 = Game(
@@ -99,7 +99,7 @@ def seed_games():
         franchise="Persona",
         ESRB_rating="M",
         genre="Adventure,RPG,Strategy",
-        images="p3.img",
+        images="https://ice-capstone-bucket.s3.amazonaws.com/p3rheader.jpg",
     )
 
     HELLDIVERS2 = Game(
@@ -113,7 +113,7 @@ def seed_games():
         franchise="PlayStation Studios, HELLDIVERS",
         ESRB_rating="M",
         genre="Action",
-        images="HD.img",
+        images="https://ice-capstone-bucket.s3.amazonaws.com/hd2header.jpg",
     )
 
     GhostofTsushimaa = Game(
@@ -126,7 +126,7 @@ def seed_games():
         publisher="PlayStation PC LLC",
         ESRB_rating="M",
         genre="Action",
-        images="GoT.img",
+        images="https://ice-capstone-bucket.s3.amazonaws.com/gotheader.jpg",
     )
 
     HorizonForbiddenWest = Game(
@@ -140,7 +140,7 @@ def seed_games():
         franchise='PlayStation Studios, Horizon',
         ESRB_rating="T",
         genre="Action,RPG",
-        images="HBW.img",
+        images="https://ice-capstone-bucket.s3.amazonaws.com/hfwheader.jpg",
     )
 
     DarkSouls = Game(
@@ -154,7 +154,7 @@ def seed_games():
         franchise='FRANCHISE',
         ESRB_rating="M",
         genre="Action,RPG",
-        images="DS.img",
+        images="https://ice-capstone-bucket.s3.amazonaws.com/ds1header.jpg",
     )
 
     DarkSouls2 = Game(
@@ -168,7 +168,7 @@ def seed_games():
         franchise='FRANCHISE',
         ESRB_rating="M",
         genre="Action,RPG",
-        images="DS2.img",
+        images="https://ice-capstone-bucket.s3.amazonaws.com/dks2header.jpg",
     )
 
     DarkSouls3 = Game(
@@ -182,7 +182,7 @@ def seed_games():
         franchise='FRANCHISE',
         ESRB_rating="M",
         genre="Action,RPG",
-        images="DS3.img",
+        images="https://ice-capstone-bucket.s3.amazonaws.com/ds3header.jpg",
     )
 
     EldenRing = Game(
@@ -196,7 +196,7 @@ def seed_games():
         franchise='Bandai Namco Entertainment',
         ESRB_rating="M",
         genre="Action,RPG",
-        images="ER.img",
+        images="https://ice-capstone-bucket.s3.amazonaws.com/erheader.jpg",
     )
 
     ARMOREDCORE = Game(
@@ -210,7 +210,7 @@ def seed_games():
         franchise='Bandai Namco Entertainment',
         ESRB_rating="T",
         genre="Action",
-        images="AC.img",
+        images="https://ice-capstone-bucket.s3.amazonaws.com/ac3header.jpg",
     )
 
     Sekiro = Game(
@@ -223,7 +223,7 @@ def seed_games():
         publisher="Activision (Excluding Japan and Asia)",
         ESRB_rating="M",
         genre="Action,Adventure",
-        images="Sekiro.img",
+        images="https://ice-capstone-bucket.s3.amazonaws.com/sekiroheader.jpg",
     )
 
     MGR = Game(
@@ -236,7 +236,7 @@ def seed_games():
         publisher="KONAMI",
         ESRB_rating="M",
         genre="Action",
-        images="MGR.img",
+        images="https://ice-capstone-bucket.s3.amazonaws.com/mgrheader.jpg",
     )
 
     YGMD = Game(
@@ -249,7 +249,7 @@ def seed_games():
         publisher="KONAMI",
         ESRB_rating="T",
         genre="Simulation,Strategy,Free To Play",
-        images="YGMD.img",
+        images="https://ice-capstone-bucket.s3.amazonaws.com/ygoheader.jpg",
     )
 
     MGSV = Game(
@@ -262,7 +262,7 @@ def seed_games():
         publisher="KONAMI",
         ESRB_rating="M",
         genre="Action,Adventure",
-        images="MGSV.img",
+        images="https://ice-capstone-bucket.s3.amazonaws.com/MGS5header.jpg",
     )
 
     Katamari = Game(
@@ -275,7 +275,7 @@ def seed_games():
         publisher="BANDAI NAMCO Entertainment",
         ESRB_rating="E",
         genre="Action,Casual",
-        images="Katamari.img",
+        images="https://ice-capstone-bucket.s3.amazonaws.com/kdrheader.jpg",
     )
 
 

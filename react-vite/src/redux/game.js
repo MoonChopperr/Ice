@@ -68,16 +68,17 @@ export const thunkCreateGame = newGame => async (dispatch) => {
     }
 
     const data = await response.json()
-    dispatch(createGame(data.game))
+    newGame = await dispatch(createGame(data))
+    console.log('ThunkNewGame=>', newGame)
     return data
 }
 
 
-export const thunkUpdateGame = (gameId, game) => async (dispatch) => {
+export const thunkUpdateGame = (gameId, updatedGame) => async (dispatch) => {
     const response = await fetch(`/api/games/${gameId}`, {
         method: "PUT",
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(game)
+        // headers: { 'Content-Type': 'application/json' },
+        body: updatedGame
     })
 
     if (!response.ok) {
@@ -88,7 +89,8 @@ export const thunkUpdateGame = (gameId, game) => async (dispatch) => {
     }
 
     const data = await response.json()
-    dispatch(updateGame(data.game))
+    updatedGame = await dispatch(updateGame(data))
+    console.log('ThunkUpdatedGame', updateGame)
     return data
 }
 

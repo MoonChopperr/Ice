@@ -3,7 +3,8 @@ import LoginFormPage from '../components/LoginFormPage';
 import SignupFormPage from '../components/SignupFormPage';
 import GameDetails from '../components/GameDetails/GameDetails';
 import Layout from './Layout';
-import CreateGame from '../components/CreateGameForm/CreateGameForm';
+import CreateGame from '../components/CreateGame/CreateGame';
+import UpdatedGame from '../components/UpdateGame/UpdateGame';
 
 export const router = createBrowserRouter([
   {
@@ -27,9 +28,12 @@ export const router = createBrowserRouter([
       },
       {
         path:"/game/create",
-        element: <CreateGame />,
+        element: <CreateGame/>,
       },
-
+      {
+        path:"/game/:gameId/update",
+        element: <UpdatedGame/>,
+      },
     ],
   },
 ]);

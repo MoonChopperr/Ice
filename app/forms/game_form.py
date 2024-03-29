@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SelectMultipleField, widgets, DecimalField, DateField, SubmitField
-from wtforms.validators import DataRequired, ValidationError
+from wtforms.validators import DataRequired, ValidationError, Regexp
 from app.models import Game
 from datetime import datetime
 
