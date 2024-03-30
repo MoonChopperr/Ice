@@ -5,6 +5,7 @@ import GameDetails from '../components/GameDetails/GameDetails';
 import Layout from './Layout';
 import CreateGame from '../components/CreateGame/CreateGame';
 import UpdatedGame from '../components/UpdateGame/UpdateGame';
+import DeleteGame from '../components/DeleteGame/DeleteGame';
 
 export const router = createBrowserRouter([
   {
@@ -34,6 +35,11 @@ export const router = createBrowserRouter([
         path:"/game/:gameId/update",
         element: <UpdatedGame/>,
       },
+      {
+        path:"/game/:gameId/delete",
+        element: <DeleteGame/>,
+      },
+      
     ],
   },
 ]);

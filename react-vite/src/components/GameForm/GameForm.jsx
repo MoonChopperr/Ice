@@ -241,12 +241,25 @@ const GameForm = ({ buttonName, game }) => {
                 </div>
 
                 <div>
-                    <input
+                    {/* <input
                         type="text"
                         placeholder="ESRB Rating"
                         value={ESRB_Rating}
                         onChange={(e) => setESRB_Rating(e.target.value)}
-                    />
+                    /> */}
+                    <select
+                        value={ESRB_Rating}
+                        onChange={(e) => setESRB_Rating(e.target.value)}
+                    >
+                        <option value="">Select ESRB Rating</option>
+                        <option value="EC">Early Childhood</option>
+                        <option value="E10+">Everyone 10+</option>
+                        <option value="M">Mature</option>
+                        <option value="E">Everyone</option>
+                        <option value="T">Teen</option>
+                        <option value="AO">Adults Only</option>
+                        <option value="RP">Rating Pending</option>
+                    </select>
                     {validations.ESRB_Rating && <span>{validations.ESRB_Rating}</span>}
 
                 </div>
@@ -262,6 +275,7 @@ const GameForm = ({ buttonName, game }) => {
                                 checked={genre.includes(genreOption)}
                             />
                             <label htmlFor={genreOption}>{genreOption}</label>
+                            {/* can click on label text */}
                         </div>
                     ))}
                     {validations.genre && <span>{validations.genre}</span>}

@@ -1,3 +1,17 @@
 .profile-dropdown {
   position: absolute;
 }
+
+.nav-logo{
+  width:15%;
+  height:15%;
+}
+
+.nav-background{
+  background-color: #171a21;
+  width:100%;
+}
+
+.nav-bar-links{
+  color: #c7d5e0;
+}
