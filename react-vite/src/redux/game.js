@@ -40,6 +40,7 @@ export const thunkAllGames = games => async (dispatch) => {
     const data = await response.json()
 
     if (!response.ok) return { errors: data }
+    console.log('thunk games=>', data)
     dispatch(getGames(data.games))
     return data
 }
@@ -111,11 +112,12 @@ export const thunkDeleteGame = (gameId) => async (dispatch) => {
 function gameReducer(state = {}, action) {
     switch (action.type) {
         case GET_GAMES: {
-            const gameState = {}
-            action.games.forEach((game) => {
-                gameState[game.id] = game
-            })
-            return gameState
+            // const gameState = {}
+            // action.games.forEach((game) => {
+            //     gameState[game.id] = game
+            // })
+            // return gameState
+            return { ...state, games: action.games }
         }
         case GET_ONE_GAME: {
             return { ...state, [action.game.id]: action.game }

@@ -1,0 +1,103 @@
+.sign-background {
+    background-image: radial-gradient(circle at center, #232c4b, transparent), linear-gradient(to right, #181A21, #181A21);
+    margin-left: -8px;
+    margin-right: -8px;
+    padding-top: 100px;
+    margin-top: -50px;
+}
+
+.sign-in-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.sign-in-box {
+    background-color: rgb(24, 26, 33);
+    padding: 20px 30px;
+    border-radius: 5px;
+}
+
+/* .S-form{
+    margin-right: 230px;
+} */
+
+.S-in {
+    color: white;
+    font-size: 30px;
+    font-weight: 600;
+    display: flex;
+}
+
+.S-email {
+    color: #1999E3;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.S-password {
+    color: #adafb1;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+
+.sign-in-box input {
+    padding: 5px 10px;
+    width: 400px;
+    margin-bottom: 30px;
+    /* color: #32353C; */
+}
+
+
+.sign-in-btn {
+    background-image: linear-gradient(to right, #06BFFF, #0157c9);
+    color: white;
+    border: none;
+    padding: 10px 70px;
+    border-radius: 3px;
+    cursor: pointer;
+
+}
+
+.sign-in-btn:hover{
+    filter: brightness(110%);
+}
+
+.create-acc {
+    background-image: linear-gradient(to right, #06BFFF, #0157c9);
+    color: white;
+    border: none;
+    padding: 10px 70px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.create-acc:hover{
+    filter: brightness(120%);
+}
+
+.new-to-steam {
+    color: white;
+    font-size: large;
+    font-weight: bold;
+}
+
+.btm-page {
+    margin-top: 200px;
+    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #181A21;
+    height: 200px;
+    margin-bottom: -50px;
+    padding-bottom: 4px;
+}

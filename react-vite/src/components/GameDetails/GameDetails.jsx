@@ -7,10 +7,12 @@ import DeleteGame from "../DeleteGame/DeleteGame";
 import { useModal } from "../../context/Modal";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import { thunkDeleteGame } from "../../redux/game";
+import NavBar2 from "../NavBar2/NavBar2";
+
 import './GameDetails.css'
 
 
-export default function GameDetails() {
+function GameDetails() {
     const { gameId } = useParams()
     const dispatch = useDispatch()
     const game = useSelector(state => state.game[gameId])
@@ -30,7 +32,7 @@ export default function GameDetails() {
 
     const isGameOwner = isOwner(currUser)
     // console.log('isGameOwner', isGameOwner)
-    console.log('currUserId', currUser?.user.id)
+    // console.log('currUserId', currUser?.user.id)
     console.log('gameId', game?.owner_id)
     console.log('owner?', isOwner(currUser))
 
@@ -46,6 +48,22 @@ export default function GameDetails() {
         return `${monthName} ${parseInt(day, 10)}, ${year}`
     }
 
+    //renderESRB
+    function renderESRB(rating) {
+        if (rating === 'E') {
+            return 'https://ice-capstone-bucket.s3.amazonaws.com/E.png'
+        } else if (rating === 'E10+') {
+            return 'https://ice-capstone-bucket.s3.amazonaws.com/E10plus.png'
+        } else if (rating === 'T') {
+            return 'https://ice-capstone-bucket.s3.amazonaws.com/T.png'
+        } else if (rating === 'M') {
+            return 'https://ice-capstone-bucket.s3.amazonaws.com/M.png'
+        } else if (rating === 'AO') {
+            return 'https://ice-capstone-bucket.s3.amazonaws.com/AO.png'
+        } else {
+            return 'https://ice-capstone-bucket.s3.amazonaws.com/RP.png'
+        }
+    }
 
     useEffect(() => {
         dispatch(thunkOneGame(gameId))
@@ -57,6 +75,8 @@ export default function GameDetails() {
 
     return (
         <>
+            <div> <NavBar2 /> </div>
+
             <div className='GD-title-container'>
                 <h1 className="GD-title">{game?.title}</h1>
                 <div>
@@ -122,16 +142,13 @@ export default function GameDetails() {
 
                     <div className="GD-side-bar">
                         <div className="ESRB">
-                            <div>
-                                {game?.ESRB_rating && (
-                                    <div>
-                                        esrb rating box
-                                        {game?.ESRB_rating}
-                                    </div>
-                                )}
-                            </div>
+                            {game?.ESRB_rating && (
+                                <div>
+                                    <img src={renderESRB(game?.ESRB_rating)} alt={`ESRB Rating: ${game?.ESRB_rating}`} />
+                                    {game?.ESRB_rating}
+                                </div>
+                            )}
                         </div>
-
 
                         <div className="stats-details">
                             <div>
@@ -179,3 +196,5 @@ export default function GameDetails() {
         </>
     )
 }
+
+export default GameDetails

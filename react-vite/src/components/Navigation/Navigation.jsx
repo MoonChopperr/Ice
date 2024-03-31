@@ -1,39 +1,50 @@
 import { NavLink } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
 import landinglogo from '../../images/logo_steam.png'
+import { useNavigate } from 'react-router-dom';
 import "./Navigation.css";
+import LoginFormPage from "../LoginFormPage";
+
 
 function Navigation() {
+  const nav = useNavigate()
+
   return (
     <>
       <div className="nav-background">
-
-
-        <div className="nav-center">
-          <NavLink to='/' >
+        <div className="container">
+          <NavLink className='nav-logo-container' to='/' >
             <img className='nav-logo' src={landinglogo} alt='Home'></img>
           </NavLink>
-          <div>
-            <span className="nav-bar-links">STORE</span>
-            <span className="nav-bar-links">COMMUNITY</span>
-            <span className="nav-bar-links">ABOUT</span>
-            <span className="nav-bar-links">SUPPORT</span>
+          <ul className="nav-links">
+            <li className="nl"><a className="nla-store" onClick={() => nav('/')}>STORE</a></li>
+            <li className="nl"><a className="nla" onClick={() => alert('Feature coming soon')}>COMMUNITY</a></li>
+            <li className="nl"><a className="nla" onClick={() => alert('Feature coming soon')}>ABOUT</a></li>
+            <li className="nl"><a className="nla" onClick={() => alert('Feature coming soon')}>SUPPORT</a></li>
+          </ul>
+
+          <div className="user-account">
+            <div className="user-div">
+
+              <NavLink className='user-details' to="/login">login</NavLink>
+              <span> | </span>
+              <a onClick={() => alert('Feature coming soon')}>language</a>
+            </div>
           </div>
         </div>
-
-        <div className="nav-bar-links"></div>
       </div>
 
-    </>
-    // <ul>
-    //   <li>
-    //     <NavLink to="/">Home</NavLink>
-    //   </li>
 
-    //   <li>
-    //     <ProfileButton />
-    //   </li>
-    // </ul>
+      <ul>
+        <li>
+          <NavLink to="/">Home</NavLink>
+        </li>
+
+        <li>
+          <ProfileButton />
+        </li>
+      </ul>
+    </>
   );
 }
 

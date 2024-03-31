@@ -252,13 +252,11 @@ const GameForm = ({ buttonName, game }) => {
                         onChange={(e) => setESRB_Rating(e.target.value)}
                     >
                         <option value="">Select ESRB Rating</option>
-                        <option value="EC">Early Childhood</option>
-                        <option value="E10+">Everyone 10+</option>
-                        <option value="M">Mature</option>
                         <option value="E">Everyone</option>
+                        <option value="E10+">Everyone 10+</option>
                         <option value="T">Teen</option>
+                        <option value="M">Mature</option>
                         <option value="AO">Adults Only</option>
-                        <option value="RP">Rating Pending</option>
                     </select>
                     {validations.ESRB_Rating && <span>{validations.ESRB_Rating}</span>}
 

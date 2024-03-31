@@ -1,0 +1,85 @@
+.Landing-container {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.N-Bar2{
+    padding-right: 5px;
+}
+
+.L-background {
+    background-color: #1A2B40;
+    animation: gradientAnimation 5s infinite;
+    margin-left: -30px;
+    margin-right: -8px;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-color: #1A2B40;
+    }
+
+    50% {
+        background-color: #003561;
+    }
+
+    100% {
+        background-color: #1A2B40;
+    }
+}
+
+.f-r {
+    margin-top: 50px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 38.5%;
+}
+
+.L-Carousel {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    margin-right: 18%;
+    z-index: 2;
+
+}
+
+.game-list {
+    padding-top: 100px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    /* padding-right: 50px; */
+    /* padding-left: %; */
+    padding-left: 180px;
+}
+
+
+/* LETS NOT RESIZE  */
+/* MY DESCRIPTION SIDE CAROUSEL PLACEHOLDER */
+.L-box{
+    position: absolute;
+    top:35.8%;
+    left:56%;
+    /* left:50%; */
+    padding:150px;
+    padding-right: 190px;
+    padding-bottom: 169px;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+
+.L-title{
+    color: white;
+    font-weight: 500;
+}
+
+.L-price{
+    color: white;
+    font-weight: 300;
+}

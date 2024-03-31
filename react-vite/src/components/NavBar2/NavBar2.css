@@ -1,0 +1,67 @@
+.NavBar2-container{
+    margin-top: 90px;
+}
+
+.rectangle-bar {
+    display: flex;
+    align-items: center;
+    background-image: linear-gradient(to right, #37628E, #0F226F);
+    /* padding: 1px 3px; */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    max-width: 930px;
+    margin: 0 auto;
+}
+
+.rectangle-bar a {
+    color: #333;
+    text-decoration: none;
+    margin-right: 10px;
+    padding: 12px 11px;
+    color: #c7d5e0;
+    font-size: 15px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.rectangle-bar a:hover {
+    background-image: linear-gradient(to right, #06BFFF, transparent);
+    cursor: pointer;
+}
+
+.search-bar {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    background-color: #316282;
+    border: 1px solid #316282;
+    border-radius: 2px;
+}
+
+.search-bar:hover{
+    border-color: #53a2d6;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    padding: 5px;
+    width: 150px;
+    background-color: #316282;
+    color: white;
+    font-size: 15px;
+}
+
+.search-bar input::placeholder {
+    color: rgb(41, 41, 41);
+}
+
+.search-bar button {
+    background-color: #64B6E8 ;
+    border: 1px solid #316282;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 6.5px;
+    color: rgb(41, 41, 41);
+}
