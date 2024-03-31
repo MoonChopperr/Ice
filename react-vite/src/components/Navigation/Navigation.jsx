@@ -11,7 +11,7 @@ function Navigation() {
 
   return (
     <>
-      <div className="nav-background">
+      {/* <div className="nav-background">
         <div className="container">
           <NavLink className='nav-logo-container' to='/' >
             <img className='nav-logo' src={landinglogo} alt='Home'></img>
@@ -32,7 +32,7 @@ function Navigation() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
 
       <ul>

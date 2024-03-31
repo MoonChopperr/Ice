@@ -1,0 +1,59 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+.GD-above-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.GF-BG {
+    background-color: #1A2A3D;
+    padding-top: 35px;
+}
+
+.GD-title {
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding-right: 41%;
+}
+
+
+.GF-filter {
+    color: #adafb1;
+    cursor: pointer;
+    font-size: 12px;
+    padding-top: 20px;
+    padding-right: 40%;
+}
+
+.GF-Hover:hover {
+    color: #FFFFFF;
+}
+
+.GD-ED-container{
+    justify-content: center;
+    display: flex;
+    gap:10px;
+
+}
+
+.GD-btn{
+    background-image: linear-gradient(to right, #06BFFF, #0157c9);
+    color: white;
+    border: none;
+    padding: 10px 70px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.GD-btn:hover{
+    filter: brightness(110%);
+}
+
+.modal-btn:hover {
+    filter: brightness(110%);
+}

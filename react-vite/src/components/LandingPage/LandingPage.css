@@ -12,8 +12,8 @@
 .L-background {
     background-color: #1A2B40;
     animation: gradientAnimation 5s infinite;
-    margin-left: -30px;
-    margin-right: -8px;
+    /* margin-left: -30px;
+    margin-right: -8px; */
 }
 
 @keyframes gradientAnimation {
