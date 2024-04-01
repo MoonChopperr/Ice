@@ -3,10 +3,17 @@ body {
     margin: 0;
     padding: 0;
 }
+
 .GD-above-title {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
+}
+
+.GF-main-container {
+    margin: 0 25.5%;
+    /* border-style: dotted;
+    border-color: black; */
 }
 
 .GF-BG {
@@ -18,30 +25,40 @@ body {
     color: white;
     display: flex;
     justify-content: center;
-    padding-right: 41%;
 }
 
+.title-container {
+    display: flex;
+    align-items: flex-start;
+    /* border-style: dotted;
+    border-color: black; */
+}
 
 .GF-filter {
     color: #adafb1;
     cursor: pointer;
     font-size: 12px;
     padding-top: 20px;
-    padding-right: 40%;
+    display: flex;
+    align-items: flex-start;
+    /* border-style: dotted;
+    border-color: black; */
 }
 
 .GF-Hover:hover {
     color: #FFFFFF;
 }
 
-.GD-ED-container{
-    justify-content: center;
+.GD-ED-container {
     display: flex;
-    gap:10px;
+    align-items: flex-start;
+    /* border-style: dotted;
+    border-color: black; */
+    gap: 10px;
 
 }
 
-.GD-btn{
+.GD-btn {
     background-image: linear-gradient(to right, #06BFFF, #0157c9);
     color: white;
     border: none;
@@ -50,10 +67,163 @@ body {
     cursor: pointer;
 }
 
-.GD-btn:hover{
+.GD-btn:hover {
     filter: brightness(110%);
 }
 
 .modal-btn:hover {
     filter: brightness(110%);
+}
+
+.GD-splash-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    background-image: linear-gradient(to left, #000f1abb, transparent);
+
+    /* background-color: rgba(0, 0, 0, 0.568); */
+    gap: 10px;
+}
+
+.splash-l {
+    background-color: rgba(0, 0, 0, 0.568);
+    width: 600px;
+    height: 400px;
+    color: white;
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+}
+
+.splash-r {
+    grid-column: 3 / 4;
+    grid-row: 1 / 3;
+    display: grid;
+}
+
+.game-about {
+    color: #c7d5e0;
+    font-size: 13px;
+    margin-top: -20px;
+
+}
+
+.GD-img {
+    width: 100%;
+    /* border-style: dotted;
+    border-color: black; */
+}
+
+.stats {
+    margin-top: -20px;
+
+}
+
+.GD-date {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.GD-label {
+    color: #adafb16b;
+    font-size: 11px;
+    font-weight: 400;
+    padding-right: 10px;
+}
+
+.release-date-text {
+    color: #8a8c8d;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.splash-text {
+    color: #1999E3;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.splash-label {
+    color: #adafb16b;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.GD-popular {
+    padding-top: 10px;
+}
+
+.ESRB-container {
+    background-color: #0E151D;
+    padding-bottom: 30px;
+}
+
+.ESRB-img {
+    width: 15%;
+    padding: 10px;
+}
+
+.below-splash {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 15px;
+    padding-top: 20px;
+}
+
+.ESRB-text {
+    color: #c7d5e0;
+    font-size: 11px;
+    padding-left: 10px;
+}
+
+.stats-details {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #0E151D;
+}
+
+.splash-text-title{
+    color: #8a8c8d;
+    font-size: 14px;
+}
+
+.splash-text:hover{
+    color: white;
+}
+
+.add-game-container{
+    background-image: linear-gradient(to right, #2B3B4A, #546372);
+    border-radius: 5px;
+    border-color: transparent;
+}
+
+.add-to-cart-container{
+    position: absolute;
+    background-color: black;
+    color: #adafb1;
+    padding: 6px 9px;
+    border-radius: 3px;
+    font-size: 15px;
+    right:0;
+    z-index: 1;
+    margin-right: 810px;
+    margin-top: -45px;
+}
+
+.add-to-cart-container button {
+    background-image: linear-gradient(to right, #75B022, #6AA621);
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.add-to-cart-container button:hover{
+    filter: brightness(110%);
+}
+
+.game-name{
+    color:#F4F4F5;
+    padding: 15px;
+    font-size: 22px;
 }
