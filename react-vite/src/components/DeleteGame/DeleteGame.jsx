@@ -2,6 +2,8 @@ import { thunkDeleteGame} from "../../redux/game"
 import { useDispatch} from "react-redux"
 import { useModal } from "../../context/Modal"
 import { useNavigate } from "react-router-dom"
+import './DeleteGame.css'
+
 
 function DeleteGame({ gameId }) {
     const nav = useNavigate()

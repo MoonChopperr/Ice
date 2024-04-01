@@ -163,132 +163,172 @@ const GameForm = ({ buttonName, game }) => {
 
     return (
         <>
-            <form
-                onSubmit={handleSubmit}
-                encType="multipart/form-data"
-            >
-                <div>
-                    <input
-                        type="text"
-                        placeholder="Title"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                    />
-                    {validations.title && <span>{validations.title}</span>}
-                </div>
+            <div className='form-bg'>
+                <form
+                    className='form-container'
+                    onSubmit={handleSubmit}
+                    encType="multipart/form-data"
+                >
+                    <div className='form-left'>
+                        <div className='form-title'>
+                            <label className='form-label'>Title*</label>
+                            <div></div>
+                            <input
+                                type="text"
+                                // placeholder="Title"
+                                value={title}
+                                onChange={(e) => setTitle(e.target.value)}
+                                className='form-input'
+                            />
+                            {validations.title && <span>{validations.title}</span>}
+                        </div>
 
-                <div>
-                    <textarea
-                        placeholder="About"
-                        value={about}
-                        onChange={(e) => setAbout(e.target.value)}
-                    />
-                    {validations.about && <span>{validations.about}</span>}
-                </div>
+                        <div>
+                            <label className='form-label'> About* </label>
+                            <div></div>
 
-                <div>
-                    <input
-                        type="text"
-                        placeholder="Price"
-                        value={price}
-                        onChange={(e) => setPrice(e.target.value)}
-                    />
-                    {validations.price && <span>{validations.price}</span>}
-                </div>
+                            <textarea
+                                // placeholder="About"
+                                value={about}
+                                onChange={(e) => setAbout(e.target.value)}
+                                className='form-input'
+                            />
+                            {validations.about && <span>{validations.about}</span>}
+                        </div>
 
-                <div>
-                    <input
-                        type="date"
-                        placeholder="Release Date"
-                        value={releaseDate}
-                        onChange={(e) => setReleaseDate(e.target.value)}
-                    />
-                    {validations.releaseDate && <span>{validations.releaseDate}</span>}
+                        <div>
+                            <label className='form-label'> Price* </label>
+                            <div></div>
 
-                </div>
+                            <input
+                                type="text"
+                                // placeholder="Price"
+                                value={price}
+                                onChange={(e) => setPrice(e.target.value)}
+                                className='form-input'
+                            />
+                            {validations.price && <span>{validations.price}</span>}
+                        </div>
 
-                <div>
-                    <input
-                        type="text"
-                        placeholder="Developer"
-                        value={developer}
-                        onChange={(e) => setDeveloper(e.target.value)}
-                    />
-                    {validations.developer && <span>{validations.developer}</span>}
+                        <div>
+                            <label className='form-label'> Release Date* </label>
+                            <div></div>
 
-                </div>
+                            <input
+                                type="date"
+                                // placeholder="Release Date"
+                                value={releaseDate}
+                                onChange={(e) => setReleaseDate(e.target.value)}
+                                className='form-input'
+                            />
+                            {validations.releaseDate && <span>{validations.releaseDate}</span>}
 
-                <div>
-                    <input
-                        type="text"
-                        placeholder="Publisher"
-                        value={publisher}
-                        onChange={(e) => setPublisher(e.target.value)}
-                    />
-                    {validations.publisher && <span>{validations.publisher}</span>}
+                        </div>
 
-                </div>
+                        <div>
+                            <label className='form-label'> Developer* </label>
+                            <div></div>
 
-                <div>
-                    <input
-                        type="text"
-                        placeholder="Franchise"
-                        value={franchise}
-                        onChange={(e) => setFranchise(e.target.value)}
-                    />
-                    {validations.franchise && <span>{validations.franchise}</span>}
+                            <input
+                                type="text"
+                                // placeholder="Developer"
+                                value={developer}
+                                onChange={(e) => setDeveloper(e.target.value)}
+                                className='form-input'
+                            />
+                            {validations.developer && <span>{validations.developer}</span>}
 
-                </div>
+                        </div>
 
-                <div>
-                    {/* <input
+                        <div>
+                            <label className='form-label'> Publisher* </label>
+                            <div></div>
+
+                            <input
+                                type="text"
+                                // placeholder="Publisher"
+                                value={publisher}
+                                onChange={(e) => setPublisher(e.target.value)}
+                                className='form-input'
+                            />
+                            {validations.publisher && <span>{validations.publisher}</span>}
+
+                        </div>
+
+                        <div>
+                            <label className='form-label'> Franchise</label>
+                            <div></div>
+
+                            <input
+                                type="text"
+                                // placeholder="Franchise"
+                                value={franchise}
+                                onChange={(e) => setFranchise(e.target.value)}
+                                className='form-input'
+                            />
+                            {validations.franchise && <span>{validations.franchise}</span>}
+
+                        </div>
+
+                    </div>
+
+
+                    {/* break */}
+
+                    <div className='form-right'>
+                        <div className='form-label'>
+                            ESRB Rating*
+                            {/* <input
                         type="text"
                         placeholder="ESRB Rating"
                         value={ESRB_Rating}
                         onChange={(e) => setESRB_Rating(e.target.value)}
                     /> */}
-                    <select
-                        value={ESRB_Rating}
-                        onChange={(e) => setESRB_Rating(e.target.value)}
-                    >
-                        <option value="">Select ESRB Rating</option>
-                        <option value="E">Everyone</option>
-                        <option value="E10+">Everyone 10+</option>
-                        <option value="T">Teen</option>
-                        <option value="M">Mature</option>
-                        <option value="AO">Adults Only</option>
-                    </select>
-                    {validations.ESRB_Rating && <span>{validations.ESRB_Rating}</span>}
+                            <select
+                                value={ESRB_Rating}
+                                onChange={(e) => setESRB_Rating(e.target.value)}
+                            >
+                                <option value="">Select ESRB Rating</option>
+                                <option value="E">Everyone</option>
+                                <option value="E10+">Everyone 10+</option>
+                                <option value="T">Teen</option>
+                                <option value="M">Mature</option>
+                                <option value="AO">Adults Only</option>
+                            </select>
+                            {validations.ESRB_Rating && <span>{validations.ESRB_Rating}</span>}
 
-                </div>
-
-                <div>
-                    {GENRES.map((genreOption) => (
-                        <div key={genreOption}>
-                            <input
-                                type="checkbox"
-                                id={genreOption}
-                                value={genreOption}
-                                onChange={(e) => handleGenreChange(e, genreOption)}
-                                checked={genre.includes(genreOption)}
-                            />
-                            <label htmlFor={genreOption}>{genreOption}</label>
-                            {/* can click on label text */}
                         </div>
-                    ))}
-                    {validations.genre && <span>{validations.genre}</span>}
-                </div>
 
-                <div>
-                    <input
-                        type='file'
-                        accept='image/*'
-                        onChange={(e) => setImage(e.target.files[0])}
-                    />
-                    <button type='submit'>Submit</button>
-                </div>
+                        <div>
+                            {GENRES.map((genreOption) => (
+                                <div key={genreOption}>
+                                    <input
+                                        type="checkbox"
+                                        id={genreOption}
+                                        value={genreOption}
+                                        onChange={(e) => handleGenreChange(e, genreOption)}
+                                        checked={genre.includes(genreOption)}
+                                    />
+                                    <label htmlFor={genreOption}>{genreOption}</label>
+                                    {/* can click on label text */}
+                                </div>
+                            ))}
+                            {validations.genre && <span>{validations.genre}</span>}
+                        </div>
 
-            </form>
+                        <div>
+                            <input
+                                type='file'
+                                accept='image/*'
+                                onChange={(e) => setImage(e.target.files[0])}
+                            />
+                            <button type='submit'>Submit</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
         </>
     )
 }

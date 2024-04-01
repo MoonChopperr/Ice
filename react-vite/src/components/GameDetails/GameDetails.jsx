@@ -65,15 +65,24 @@ function GameDetails() {
         }
     }
 
+    //add space+comma
     function addSpaceAfterComma(str) {
-        return str?.split(',').join(', ');
+        return str?.split(',').join(', ')
     }
 
     //single genre
     function singleGenre(genre) {
-        return genre?.split(',')[0].trim();
+        return genre?.split(',')[0].trim()
     }
 
+    //render .00
+    function formatPrice(price) {
+        if (price % 1 === 0) { //integer?
+            return `${price}.00`
+        } else {
+            return price?.toFixed(2) // Use toFixed to ensure two decimal places
+        }
+    }
     console.log('single genre', game?.genre)
 
     console.log('franchise', game?.franchise)
@@ -181,7 +190,7 @@ function GameDetails() {
                                         Buy {game?.title}
                                     </p>
                                     <span className="add-to-cart-container">
-                                        ${game?.price} <button> Add to Cart </button>
+                                        ${formatPrice(game?.price)} <button> Add to Cart </button>
                                     </span>
                                 </div>
                             </div>

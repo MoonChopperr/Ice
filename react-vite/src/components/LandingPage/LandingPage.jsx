@@ -15,6 +15,7 @@ function LandingPage() {
         dispatch(thunkAllGames())
     }, [dispatch])
 
+  
 
     return (
         <>
@@ -31,7 +32,7 @@ function LandingPage() {
                     </div>
 
                     <div className="L-box">
-                        
+
                     </div>
 
 

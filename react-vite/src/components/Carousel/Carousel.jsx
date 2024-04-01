@@ -18,6 +18,14 @@ function ImageCarousel() {
         dispatch(thunkAllGames())
     }, [dispatch])
 
+    function formatPrice(price) {
+        if (price % 1 === 0) { //integer?
+            return `${price}.00`
+        } else {
+            return price?.toFixed(2) // Use toFixed to ensure two decimal places
+        }
+    }
+
     // Shuffle the games array to 12 games
     const shuffle = games?.sort(() => Math.random() - 0.5).slice(0, 12)
     console.log('shuffle', shuffle)
@@ -39,7 +47,7 @@ function ImageCarousel() {
                         <div className="C-info">
                             <span className='C-TS'> Top Seller </span>
                             <span className='C-T'>{game?.title}</span>
-                            <span className='C-sp'>Price ${game?.price}</span>
+                            <span className='C-sp'>Price ${formatPrice(game?.price)}</span>
                         </div>
                     </div>
                 ))}

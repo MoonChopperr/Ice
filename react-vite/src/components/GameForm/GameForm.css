@@ -1,0 +1,33 @@
+.form-bg {
+    background-color: #1A2A3D;
+    padding-top: 35px;
+}
+
+.form-label {
+    color: #adafb1;
+}
+
+.form-input {
+    background-color: #32353C;
+    border: none;
+    width: 250px;
+}
+
+.form-container {
+    display: flex;
+    /* flex-direction: column; */
+    gap: 10px;
+    border-style: dashed;
+    border-color: red;
+    margin: 50px;
+}
+
+.form-left {
+    border-style: dashed;
+    border-color: white;
+}
+
+.form-right {
+    border-style: dashed;
+    border-color: white;
+}

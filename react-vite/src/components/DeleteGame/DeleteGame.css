@@ -1,0 +1,47 @@
+.DG-title {
+    color: white;
+    font-weight: 500;
+}
+
+.DG-description {
+    color: #adafb1;
+    font-weight: 300;
+}
+
+.DG-btn {
+    background-color: red;
+    color: white;
+    border-radius: 3px;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    margin-right: 30px;
+}
+
+/* .DG-btn-container{
+    border-style: dashed;
+    color: black;
+} */
+
+.DG-btn:hover {
+    cursor: pointer;
+    filter: brightness(180%);
+
+}
+
+.DG-btn-2 {
+    background-color: c7d5e0;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    font-weight: 500;
+    border-radius: 3px;
+    color: black;
+
+}
+
+.DG-btn-2:hover {
+    cursor: pointer;
+    filter: brightness(110%);
+}

@@ -20,5 +20,7 @@
 
 #modal-content {
   position: absolute;
-  background-color:white;
+  background-image: linear-gradient(to right, #2B3B4A, #1A2A3D);
+  border-radius: 5px;
+  padding: 30px;
 }
