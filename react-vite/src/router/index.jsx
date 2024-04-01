@@ -7,6 +7,7 @@ import CreateGame from '../components/CreateGame/CreateGame';
 import UpdatedGame from '../components/UpdateGame/UpdateGame';
 import DeleteGame from '../components/DeleteGame/DeleteGame';
 import LandingPage from '../components/LandingPage/LandingPage';
+import CartPage from '../components/CartPage/CartPage';
 
 export const router = createBrowserRouter([
   {
@@ -40,7 +41,10 @@ export const router = createBrowserRouter([
         path:"/game/:gameId/delete",
         element: <DeleteGame/>,
       },
-
+      {
+        path:"/game/cart",
+        element: <CartPage/>,
+      }
     ],
   },
 ]);

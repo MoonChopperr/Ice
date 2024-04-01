@@ -164,15 +164,16 @@ const GameForm = ({ buttonName, game }) => {
     return (
         <>
             <div className='form-bg'>
+                {/* <p className='Game-info-title'>Publish your Game</p> */}
                 <form
                     className='form-container'
                     onSubmit={handleSubmit}
                     encType="multipart/form-data"
                 >
                     <div className='form-left'>
-                        <div className='form-title'>
+                        <div className='form-label-container'>
                             <label className='form-label'>Title*</label>
-                            <div></div>
+                            <div className='form-spacer'></div>
                             <input
                                 type="text"
                                 // placeholder="Title"
@@ -180,25 +181,25 @@ const GameForm = ({ buttonName, game }) => {
                                 onChange={(e) => setTitle(e.target.value)}
                                 className='form-input'
                             />
-                            {validations.title && <span>{validations.title}</span>}
                         </div>
+                            {validations.title && <span>{validations.title}</span>}
 
-                        <div>
+                        <div className='form-label-container'>
                             <label className='form-label'> About* </label>
-                            <div></div>
+                            <div className='form-spacer'></div>
 
                             <textarea
                                 // placeholder="About"
                                 value={about}
                                 onChange={(e) => setAbout(e.target.value)}
-                                className='form-input'
+                                className='form-input-about'
                             />
-                            {validations.about && <span>{validations.about}</span>}
                         </div>
+                            {validations.about && <span>{validations.about}</span>}
 
-                        <div>
+                        <div className='form-label-container'>
                             <label className='form-label'> Price* </label>
-                            <div></div>
+                            <div className='form-spacer'></div>
 
                             <input
                                 type="text"
@@ -207,12 +208,12 @@ const GameForm = ({ buttonName, game }) => {
                                 onChange={(e) => setPrice(e.target.value)}
                                 className='form-input'
                             />
-                            {validations.price && <span>{validations.price}</span>}
                         </div>
+                            {validations.price && <span>{validations.price}</span>}
 
-                        <div>
+                        <div className='form-label-container'>
                             <label className='form-label'> Release Date* </label>
-                            <div></div>
+                            <div className='form-spacer'></div>
 
                             <input
                                 type="date"
@@ -221,13 +222,13 @@ const GameForm = ({ buttonName, game }) => {
                                 onChange={(e) => setReleaseDate(e.target.value)}
                                 className='form-input'
                             />
-                            {validations.releaseDate && <span>{validations.releaseDate}</span>}
 
                         </div>
+                            {validations.releaseDate && <span>{validations.releaseDate}</span>}
 
-                        <div>
+                        <div className='form-label-container'>
                             <label className='form-label'> Developer* </label>
-                            <div></div>
+                            <div className='form-spacer'></div>
 
                             <input
                                 type="text"
@@ -236,13 +237,13 @@ const GameForm = ({ buttonName, game }) => {
                                 onChange={(e) => setDeveloper(e.target.value)}
                                 className='form-input'
                             />
-                            {validations.developer && <span>{validations.developer}</span>}
 
                         </div>
+                            {validations.developer && <span>{validations.developer}</span>}
 
-                        <div>
+                        <div className='form-label-container'>
                             <label className='form-label'> Publisher* </label>
-                            <div></div>
+                            <div className='form-spacer'></div>
 
                             <input
                                 type="text"
@@ -251,13 +252,13 @@ const GameForm = ({ buttonName, game }) => {
                                 onChange={(e) => setPublisher(e.target.value)}
                                 className='form-input'
                             />
-                            {validations.publisher && <span>{validations.publisher}</span>}
 
                         </div>
+                            {validations.publisher && <span>{validations.publisher}</span>}
 
-                        <div>
+                        <div className='form-label-container'>
                             <label className='form-label'> Franchise</label>
-                            <div></div>
+                            <div className='form-spacer'></div>
 
                             <input
                                 type="text"
@@ -266,9 +267,9 @@ const GameForm = ({ buttonName, game }) => {
                                 onChange={(e) => setFranchise(e.target.value)}
                                 className='form-input'
                             />
-                            {validations.franchise && <span>{validations.franchise}</span>}
 
                         </div>
+                            {validations.franchise && <span>{validations.franchise}</span>}
 
                     </div>
 
@@ -276,8 +277,38 @@ const GameForm = ({ buttonName, game }) => {
                     {/* break */}
 
                     <div className='form-right'>
+
+                        <h1 className='genre-title'> Select a Genre(s)* </h1>
+                            {validations.genre && <span>{validations.genre}</span>}
+                        <div className='genre-container'>
+                            {GENRES?.sort().map((genreOption) => (
+                                <div key={genreOption} className='genre-option'>
+                                    <input
+                                        type="checkbox"
+                                        id={genreOption}
+                                        value={genreOption}
+                                        onChange={(e) => handleGenreChange(e, genreOption)}
+                                        checked={genre.includes(genreOption)}
+                                    />
+                                    <label className='genre-text' htmlFor={genreOption}>{genreOption}</label>
+                                </div>
+                            ))}
+                        </div>
+
+                        <h1 className='file-title'> Upload an Image* </h1>
+
+                        <div className='file-container'>
+                            <input
+                                type='file'
+                                accept='image/*'
+                                onChange={(e) => setImage(e.target.files[0])}
+                            />
+                        </div>
+
+
                         <div className='form-label'>
-                            ESRB Rating*
+                            ESRB Rating
+                            <div></div>
                             {/* <input
                         type="text"
                         placeholder="ESRB Rating"
@@ -285,7 +316,9 @@ const GameForm = ({ buttonName, game }) => {
                         onChange={(e) => setESRB_Rating(e.target.value)}
                     /> */}
                             <select
+                                className='esrb-select'
                                 value={ESRB_Rating}
+
                                 onChange={(e) => setESRB_Rating(e.target.value)}
                             >
                                 <option value="">Select ESRB Rating</option>
@@ -295,35 +328,11 @@ const GameForm = ({ buttonName, game }) => {
                                 <option value="M">Mature</option>
                                 <option value="AO">Adults Only</option>
                             </select>
+
                             {validations.ESRB_Rating && <span>{validations.ESRB_Rating}</span>}
-
                         </div>
 
-                        <div>
-                            {GENRES.map((genreOption) => (
-                                <div key={genreOption}>
-                                    <input
-                                        type="checkbox"
-                                        id={genreOption}
-                                        value={genreOption}
-                                        onChange={(e) => handleGenreChange(e, genreOption)}
-                                        checked={genre.includes(genreOption)}
-                                    />
-                                    <label htmlFor={genreOption}>{genreOption}</label>
-                                    {/* can click on label text */}
-                                </div>
-                            ))}
-                            {validations.genre && <span>{validations.genre}</span>}
-                        </div>
-
-                        <div>
-                            <input
-                                type='file'
-                                accept='image/*'
-                                onChange={(e) => setImage(e.target.files[0])}
-                            />
-                            <button type='submit'>Submit</button>
-                        </div>
+                            <button className='form-submit-btn' type='submit'>Submit</button>
                     </div>
 
                 </form>

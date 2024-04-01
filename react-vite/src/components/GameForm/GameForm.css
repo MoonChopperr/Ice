@@ -1,28 +1,49 @@
 .form-bg {
-    background-color: #1A2A3D;
+    background-image: linear-gradient(to right, #1a2a3d79, transparent);
+    border-radius: 10px;
     padding-top: 35px;
+    margin: 80px;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-image: radial-gradient(circle at center, #232c4b, transparent), linear-gradient(to right, #181A21, #181A21);
+
 }
 
 .form-label {
     color: #adafb1;
+
 }
 
 .form-input {
     background-color: #32353C;
     border: none;
     width: 250px;
+    color: white;
+
 }
 
 .form-container {
     display: flex;
+    gap: 45px;
     /* flex-direction: column; */
-    gap: 10px;
-    border-style: dashed;
-    border-color: red;
+    /* border-style: dashed;
+    border-color: red; */
     margin: 50px;
 }
 
-.form-left {
+.form-input-about {
+    background-color: #32353C;
+    border: none;
+    width: 250px;
+    color: white;
+    height: 150px;
+}
+
+/* .form-left {
     border-style: dashed;
     border-color: white;
 }
@@ -30,4 +51,78 @@
 .form-right {
     border-style: dashed;
     border-color: white;
+} */
+
+.genre-text {
+    color: #adafb1;
 }
+
+.genre-text:hover{
+    color: white;
+    cursor: pointer;
+}
+.form-label-container {
+    margin-bottom: 30px;
+}
+
+
+.form-submit-btn{
+    background-image: linear-gradient(to right, #06BFFF, #0157c9);
+    color: white;
+    border: none;
+    padding: 10px 70px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+
+.genre-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.genre-option {
+    flex: 0 0 30%;
+    display: flex;
+    align-items: center;
+}
+
+.genre-option input {
+    margin-right: 5px;
+}
+
+.genre-title{
+    color: white;
+    font-weight: 600;
+}
+
+.file-title{
+    color: white;
+    font-weight: 600;
+}
+
+.file-container{
+    background-color: rgba(0, 0, 0, 0.397);
+    padding:20px;
+    width:20%;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+.esrb-select{
+    background-color: #32353C;
+    border: none;
+    width: 250px;
+    color: white;
+}
+
+/* .Game-info-title{
+    color: white;
+    font-weight: 800;
+    font-size: 30px;
+    margin-left: 50px;
+    display: flex;
+    justify-content: center;
+} */
