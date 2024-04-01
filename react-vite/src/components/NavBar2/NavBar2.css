@@ -1,5 +1,7 @@
-.NavBar2-container{
+.NavBar2-container {
     margin-top: 90px;
+    /* border-style: dashed;
+    border-color: white; */
 }
 
 .rectangle-bar {
@@ -36,7 +38,7 @@
     border-radius: 2px;
 }
 
-.search-bar:hover{
+.search-bar:hover {
     border-color: #53a2d6;
 }
 
@@ -55,7 +57,7 @@
 }
 
 .search-bar button {
-    background-color: #64B6E8 ;
+    background-color: #64B6E8;
     border: 1px solid #316282;
     border-radius: 3px;
     display: flex;
@@ -64,4 +66,44 @@
     cursor: pointer;
     padding: 6.5px;
     color: rgb(41, 41, 41);
+}
+
+.above-bar{
+    gap: 20x;
+    margin-left: 65.8%;
+    padding-bottom: 8px;
+}
+
+.NB-wishlist {
+    color: white;
+    background-color: #7AA2AC;
+    border: none;
+    padding: 2px 20px;
+    font-size: 12px;
+    font-weight: 300;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-right: 2px;
+
+}
+
+.NB-wishlist:hover {
+    color: black;
+    background-image: linear-gradient(to right, #E9EAEC, #9CA4AC);
+    cursor: pointer;
+
+}
+
+.NB-user-cart {
+    color: white;
+    background-color: #7EA64B;
+    border: none;
+    padding: 2px 30px;
+
+    font-size: 12px;
+    font-weight: 300;
+}
+
+.NB-user-cart:hover {
+    filter: brightness(110%);
+    cursor: pointer;
 }

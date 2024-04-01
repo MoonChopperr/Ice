@@ -4,14 +4,17 @@ import landinglogo from '../../images/logo_steam.png'
 import { useNavigate } from 'react-router-dom';
 import "./Navigation.css";
 import LoginFormPage from "../LoginFormPage";
-
+import { useSelector } from 'react-redux';
+import DropDownProfile from "../DropDownProfile/DropDownProfile";
 
 function Navigation() {
   const nav = useNavigate()
+  const currUser = useSelector(state => state.session.user)
+  console.log('currUser!', currUser)
 
   return (
     <>
-      {/* <div className="nav-background">
+      <div className="nav-background">
         <div className="container">
           <NavLink className='nav-logo-container' to='/' >
             <img className='nav-logo' src={landinglogo} alt='Home'></img>
@@ -21,21 +24,32 @@ function Navigation() {
             <li className="nl"><a className="nla" onClick={() => alert('Feature coming soon')}>COMMUNITY</a></li>
             <li className="nl"><a className="nla" onClick={() => alert('Feature coming soon')}>ABOUT</a></li>
             <li className="nl"><a className="nla" onClick={() => alert('Feature coming soon')}>SUPPORT</a></li>
+            <li className="nl"><a>{currUser && (<NavLink to='/game/create' className="nlacreate">POST YOUR GAME</NavLink>)}</a></li>
+
           </ul>
 
           <div className="user-account">
             <div className="user-div">
 
-              <NavLink className='user-details' to="/login">login</NavLink>
-              <span> | </span>
-              <a onClick={() => alert('Feature coming soon')}>language</a>
+              {!currUser && (
+                <>
+                  <NavLink className='user-details' to="/login">login</NavLink>
+                  <span className="pipe"> | </span>
+                  <a className='user-details' onClick={() => alert('Feature coming soon')}>language</a>
+                </>
+              )}
+              {currUser && (
+                <>
+                  <DropDownProfile username={currUser.username} />
+                </>
+              )}
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
 
 
-      <ul>
+      {/* <ul>
         <li>
           <NavLink to="/">Home</NavLink>
         </li>
@@ -43,7 +57,7 @@ function Navigation() {
         <li>
           <ProfileButton />
         </li>
-      </ul>
+      </ul> */}
     </>
   );
 }

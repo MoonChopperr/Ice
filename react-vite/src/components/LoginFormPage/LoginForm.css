@@ -24,7 +24,13 @@
     margin-right: 230px;
 } */
 
+.sign-in-text{
+    color:white;
+}
+
+
 .S-in {
+    padding-top: 70px;
     color: white;
     font-size: 30px;
     font-weight: 600;
@@ -100,6 +106,6 @@
     width: 100%;
     background-color: #181A21;
     height: 200px;
-    margin-bottom: -50px;
-    padding-bottom: 4px;
+    /* margin-bottom: -50px; */
+    padding-bottom: 80px;
 }

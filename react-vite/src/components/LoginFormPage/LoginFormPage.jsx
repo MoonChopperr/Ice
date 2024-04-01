@@ -8,12 +8,14 @@ import "./LoginForm.css";
 function LoginFormPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const sessionUser = useSelector((state) => state.session.user);
+  const currUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
 
-  if (sessionUser) return <Navigate to="/" replace={true} />;
+  console.log('currUser@@@@', currUser)
+
+  if (currUser) return <Navigate to="/" replace={true} />;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -45,11 +47,12 @@ function LoginFormPage() {
             errors.map((message) => <p key={message}>{message}</p>)}
           <div className="sign-in-box">
             <div className='S-form'>
-              <form nSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit}>
                 <label className='S-email'>
                   SIGN IN WITH EMAIL
                   <div>
                     <input
+                      className="sign-in-text"
                       type="text"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
@@ -62,6 +65,7 @@ function LoginFormPage() {
                   PASSWORD
                   <div>
                     <input
+                      className="sign-in-text"
                       type="password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}

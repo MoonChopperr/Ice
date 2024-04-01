@@ -1,11 +1,22 @@
 import './NavBar2.css'
 import { IoMdSearch } from "react-icons/io";
+import { useDispatch, useSelector } from 'react-redux';
 
 
 function NavBar2() {
+
+    const currUser = useSelector(state => state.session.user)
+
+
     return (
         <>
             <div className='NavBar2-container'>
+                {currUser && (
+                    <div className='above-bar'>
+                        <button className="NB-wishlist" onClick={() => alert('Feature coming soon')}>Wishlist</button>
+                        <button className="NB-user-cart">Cart</button>
+                    </div>
+                )}
                 <div className="rectangle-bar">
                     <a onClick={() => alert('Feature coming soon')}>Your Store</a>
                     <a onClick={() => alert('Feature coming soon')}>New & Noteworthy</a>

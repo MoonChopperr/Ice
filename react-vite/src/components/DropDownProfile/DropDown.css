@@ -1,0 +1,41 @@
+.user-name {
+    color: #DCDEDF;
+    font-size: 10px;
+    position: absolute;
+    right: 0;top:5px;
+
+}
+
+.user-name:hover {
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.dropdown-item-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #3D4450;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.61);
+
+}
+
+
+.dropdown-items {
+    color: #DCDEDF;
+    padding: 12px 10px;
+    font-size: 13px;
+}
+
+.dropdown-items:hover {
+    color: #3D4450;
+    background-color: #DCDEDF;
+    cursor: pointer;
+}
+
+.dropdown-user {
+    color: #1999E3
+}
+
+.dropdown-main-container{
+    margin-top: 30px;
+}
