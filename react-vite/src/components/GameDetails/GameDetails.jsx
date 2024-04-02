@@ -1,12 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkOneGame } from "../../redux/game";
-import { NavLink, useParams } from "react-router-dom";
-import CreateGame from "../GameForm/GameForm";
+import { useParams } from "react-router-dom";
 import DeleteGame from "../DeleteGame/DeleteGame";
-import { useModal } from "../../context/Modal";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
-import { thunkDeleteGame } from "../../redux/game";
 import NavBar2 from "../NavBar2/NavBar2";
 
 import './GameDetails.css'
@@ -21,16 +18,14 @@ function GameDetails() {
     // const actualGame = Object.values(game)
     // console.log('actualgame', actualGame)
     const currUser = useSelector(state => state.session)
-    const { openModal, closeModal } = useModal();
-
     const userOrders = useSelector(state => state.cart)
     const userCart = userOrders?.cart?.currentCart
 
-    const [cartNum, setCartNum] = useState(false)
+    // const [cartNum, setCartNum] = useState(false)
 
-    const reRenderCart = () =>{
-        setCartNum(!cartNum)
-    }
+    // const reRenderCart = () =>{
+    //     setCartNum(!cartNum)
+    // }
 
     console.log('userOrders', userOrders)
 
@@ -118,8 +113,8 @@ function GameDetails() {
         dispatch(thunkOneGame(gameId))
         dispatch(thunkAddCart())
         dispatch(thunkGetCart())
-    }, [gameId, dispatch, cartNum])
-
+    }, [gameId, dispatchEvent])
+    // , cartNum
 
 
     const handleEdit = () => {
@@ -222,7 +217,8 @@ function GameDetails() {
                                         Buy {game?.title}
                                     </p>
                                     <span className="add-to-cart-container">
-                                        ${formatPrice(game?.price)} <button onClick={() => addToCart(game.id)} reRenderCart={reRenderCart}> Add to Cart </button>
+                                        ${formatPrice(game?.price)} <button onClick={() => addToCart(game.id)} > Add to Cart </button>
+                                        {/* reRenderCart={reRenderCart} */}
                                     </span>
                                 </div>
                             </div>

@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
+import {  useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { thunkGetCart } from '../../redux/cart'
 import { thunkAllGames } from '../../redux/game'
