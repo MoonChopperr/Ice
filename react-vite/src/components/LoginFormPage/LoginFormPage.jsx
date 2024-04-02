@@ -2,7 +2,10 @@ import { useState } from "react";
 import { thunkLogin } from "../../redux/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
-import SignupFormPage from "../SignupFormPage";
+// import SignupFormPage from "../SignupFormPage";
+import * as sessionActions from "../../redux/session";
+
+
 import "./LoginForm.css";
 
 function LoginFormPage() {
@@ -36,6 +39,24 @@ function LoginFormPage() {
 
   const signUp = () => {
     navigate("/signup");
+  }
+
+  //demo user
+  const demoUser = (e) => {
+    e.preventDefault()
+    setErrors({})
+    const demoUser = {
+      email:'demo@user.io',
+      password:'password'
+    }
+    return dispatch(sessionActions.thunkLogin(demoUser))
+      // .then(()=> navigate('/'))
+      .catch(async (res) => {
+        const data = await res.json()
+        if (data && data.errors) {
+          setErrors(data.errors)
+        }
+      })
   }
 
   return (
@@ -75,11 +96,12 @@ function LoginFormPage() {
                   {errors.password && <p>{errors.password}</p>}
                 </label>
                 <button className='sign-in-btn' type="submit">Sign in</button>
+                <button className='sign-in-demo' type='submit' onClick={demoUser}> Sign in as a Demo User</button>
               </form>
-
             </div>
           </div>
         </div>
+
 
 
         <div className="btm-page">

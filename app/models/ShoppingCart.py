@@ -12,6 +12,7 @@ class ShoppingCart(db.Model):
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     game_id = Column(Integer, ForeignKey(add_prefix_for_prod('game.id')), nullable=False)
+    quantity = Column(Integer)
     createdAt = Column(DateTime, default=datetime.utcnow)
     updatedAt = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
@@ -24,6 +25,7 @@ class ShoppingCart(db.Model):
             'id': self.id,
             'user_id': self.user_id,
             'game_id': self.game_id,
+            'quantity': self.quantity,
             'createdAt': self.createdAt.isoformat(),
             'updatedAt': self.updatedAt.isoformat(),
         }

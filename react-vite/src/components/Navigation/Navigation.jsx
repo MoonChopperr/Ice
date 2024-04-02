@@ -22,7 +22,11 @@ function Navigation() {
           <ul className="nav-links">
             <li className="nl"><a className="nla-store" onClick={() => nav('/')}>STORE</a></li>
             <li className="nl"><a className="nla" onClick={() => alert('Feature coming soon')}>COMMUNITY</a></li>
-            <li className="nl"><a className="nla" onClick={() => alert('Feature coming soon')}>ABOUT</a></li>
+            <li className="nl">
+              <a className="nla" onClick={() => alert('Feature coming soon')}>
+                {currUser ? currUser.username.toUpperCase() : "ABOUT"}
+              </a>
+            </li>
             <li className="nl"><a className="nla" onClick={() => alert('Feature coming soon')}>SUPPORT</a></li>
             <li className="nl"><a>{currUser && (<NavLink to='/game/create' className="nlacreate">POST YOUR GAME</NavLink>)}</a></li>
 
