@@ -72,7 +72,7 @@ function CartUpdate() {
     return (
         <>
             <div className='update-bg'>
-                <div className='update-u-sure'>Are you sure you want to update the quantity? It's a game</div>
+                <div className='update-u-sure'>Are you sure you want to update the quantity? It&apos;s a game</div>
                 <div>quantity</div>
                 <button onClick={handleDecrement}>-</button>
                 <span style={{ color: "white" }}>{quantity}</span>

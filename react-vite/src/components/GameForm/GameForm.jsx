@@ -39,6 +39,7 @@ const GameForm = ({ buttonName, game }) => {
     const user = useSelector((state) => state.session.user)
     const { gameId } = useParams()
 
+    console.log(buttonName)
     const [title, setTitle] = useState(game?.title || "")
     const [about, setAbout] = useState(game?.about || "")
     const [price, setPrice] = useState(game?.price || "")
@@ -53,7 +54,7 @@ const GameForm = ({ buttonName, game }) => {
     const [submitted, setSubmitted] = useState(false)
 
     let isValidated = false
-
+    console.log(isValidated)
     useEffect(() => {
         if (!user) {
             nav('/')

@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { thunkGetCart } from '../../redux/cart'
 import { thunkAllGames } from '../../redux/game'
 import { thunkDeleteItem } from '../../redux/cart'
 import { thunkClearCart } from '../../redux/cart'
-import { thunkUpdateCart } from '../../redux/cart'
+
 
 import NavBar2 from '../NavBar2/NavBar2'
 import './CartPage.css'
@@ -63,22 +63,23 @@ function CartPage() {
         setForceRerender(prev => !prev)
     }
 
-    const [reRenderDelete, setReRenderDelete] = useState(false)
-    const reRenderonDelete = () => {
-        setReRenderDelete(!reRenderDelete)
-    }
+    // uselater
+    // const [reRenderDelete, setReRenderDelete] = useState(false)
+    // const reRenderonDelete = () => {
+    //     setReRenderDelete(!reRenderDelete)
+    // }
 
-    const [reRenderUpdate, setReRenderUpdate] = useState(false)
-    const reRenderonUpdate = () => {
-        setReRenderUpdate(!reRenderUpdate)
-    }
+    // const [reRenderUpdate, setReRenderUpdate] = useState(false)
+    // const reRenderonUpdate = () => {
+    //     setReRenderUpdate(!reRenderUpdate)
+    // }
 
     useEffect(() => {
         dispatch(thunkGetCart())
         dispatch(thunkAllGames())
 
-    }, [dispatch, forceRerender, reRenderDelete, reRenderUpdate])
-
+    }, [dispatch, forceRerender])
+    // reRenderDelete,
     return (
         <>
             <div className='cart-outer-container'>
@@ -103,7 +104,8 @@ function CartPage() {
                                     {/* <span className='cart-crud' onClick={()=> handleAdd((userCart.find(order => order.quantity)))}>Add</span> */}
                                     <span className='cart-crud' onClick={() => handleUpdate((game?.id))}>Update</span>
                                     <span className='cart-pole'> | </span>
-                                    <span className='cart-crud' onClick={() => handleRemove((userCart.find(order => order.game_id === game.id)).id)} reRenderonDelete={reRenderonDelete}>Remove</span>
+                                    <span className='cart-crud' onClick={() => handleRemove((userCart.find(order => order.game_id === game.id)).id)} >Remove</span>
+                                    {/* reRenderonDelete={reRenderonDelete} */}
                                 </div>
                             </div>
                         ))}
