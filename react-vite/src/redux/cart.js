@@ -45,13 +45,13 @@ export const thunkAddCart = item => async (dispatch) =>{
     }
 
     const data = await response.json()
-    newOrder = await dispatch(addCart(data))
-    console.log('newOrder=>', newOrder)
+    await dispatch(addCart(data))
+    // console.log('newOrder=>', newOrder)
     return data
 }
 
 export const thunkUpdateCart = (cartId, updatedItem) => async (dispatch) =>{
-    const response = await fetch(`/api/cart/${cartId}`,{
+    const response = await fetch(`/api/cart/update/${cartId}`,{
         method: "PUT",
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedItem)

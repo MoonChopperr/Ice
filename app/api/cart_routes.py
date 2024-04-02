@@ -25,9 +25,9 @@ def add_to_cart():
     """Add game to cart"""
     # convert to python dict
     data = request.json
-    quantity = data.get("quantity")
+    # quantity = data.get("quantity")
     game_id = data.get("game_id")
-    add_cart = ShoppingCart(user_id=current_user.id, game_id=game_id, quantity=quantity)
+    add_cart = ShoppingCart(user_id=current_user.id, game_id=game_id, quantity=1)
 
     if not add_cart:
         return {"message": "Can't add to cart"}, 400
@@ -46,6 +46,7 @@ def update_cart(id):
     updateQuantity = data.get("quantity")
     cart_item = ShoppingCart.query.get(id)
 
+    print('cartitem=>',cart_item)
     if not cart_item:
         return {"message": "Cart item not found"}, 404
 

@@ -10,6 +10,7 @@ import { thunkDeleteGame } from "../../redux/game";
 import NavBar2 from "../NavBar2/NavBar2";
 
 import './GameDetails.css'
+import { thunkAddCart, thunkGetCart } from "../../redux/cart";
 
 
 function GameDetails() {
@@ -22,13 +23,33 @@ function GameDetails() {
     const currUser = useSelector(state => state.session)
     const { openModal, closeModal } = useModal();
 
+    const userOrders = useSelector(state => state.cart)
+    const userCart = userOrders?.cart?.currentCart
 
-    // const addToCart = () =>{
-    //     const item = {
-    //         game_id:
-    //         quantity:
-    //     }
-    // }
+    const [cartNum, setCartNum] = useState(false)
+
+    const reRenderCart = () =>{
+        setCartNum(!cartNum)
+    }
+
+    console.log('userOrders', userOrders)
+
+    const addToCart = (gameId) => {
+
+        const currCart = userCart?.map(item => item.game_id)
+
+        if (currCart?.includes(gameId)) {
+            alert("This item is in your cart already, please change the quantity in your cart page")
+        } else {
+            const newOrder = {
+                game_id: gameId
+            }
+
+            dispatch(thunkAddCart(newOrder))
+            alert('Game added to cart')
+        }
+
+    }
 
     //check user if owner
     function isOwner(currUser) {
@@ -95,7 +116,11 @@ function GameDetails() {
     console.log('franchise', game?.franchise)
     useEffect(() => {
         dispatch(thunkOneGame(gameId))
-    }, [gameId, dispatch])
+        dispatch(thunkAddCart())
+        dispatch(thunkGetCart())
+    }, [gameId, dispatch, cartNum])
+
+
 
     const handleEdit = () => {
         window.location.href = `/game/${gameId}/update`
@@ -197,7 +222,7 @@ function GameDetails() {
                                         Buy {game?.title}
                                     </p>
                                     <span className="add-to-cart-container">
-                                        ${formatPrice(game?.price)} <button> Add to Cart </button>
+                                        ${formatPrice(game?.price)} <button onClick={() => addToCart(game.id)} reRenderCart={reRenderCart}> Add to Cart </button>
                                     </span>
                                 </div>
                             </div>
@@ -206,7 +231,7 @@ function GameDetails() {
                         <div className='right-below'>
 
                             <div className="GD-side-bar">
-                                {game?.ESRB_RATING && (
+                                {/* {game?.ESRB_RATING && ( */}
                                     <div className="ESRB-container">
                                         {game?.ESRB_rating && (
                                             <>
@@ -218,7 +243,7 @@ function GameDetails() {
                                         )}
 
                                     </div>
-                                )}
+                                {/* )} */}
 
                                 <div className="stats-details">
                                     <div>
