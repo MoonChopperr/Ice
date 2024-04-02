@@ -35,7 +35,7 @@ const deleteGame = game => ({
 //thunks
 
 
-export const thunkAllGames = games => async (dispatch) => {
+export const thunkAllGames = () => async (dispatch) => {
     const response = await fetch(`/api/games`)
     const data = await response.json()
 

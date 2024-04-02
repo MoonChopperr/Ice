@@ -23,6 +23,13 @@ function GameDetails() {
     const { openModal, closeModal } = useModal();
 
 
+    // const addToCart = () =>{
+    //     const item = {
+    //         game_id:
+    //         quantity:
+    //     }
+    // }
+
     //check user if owner
     function isOwner(currUser) {
         if (currUser && game && game?.owner_id != null) {
