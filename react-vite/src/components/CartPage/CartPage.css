@@ -3,9 +3,10 @@
     /* margin: 0px 25.4%; */
 }
 
+/* CONTAINER */
 .cart-outer-container {
     margin: 0px 25.5%;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 .cart-home-text:hover {
@@ -102,15 +103,15 @@
 }
 
 /* TODO */
-.cart-game-container {
+/* .cart-game-container {
     border: 1px solid red;
-    /* display: grid;
+    display: grid;
     grid-template-areas:
     "a a b"
     "a a b"
     "a a b"
-    ; */
-}
+    ;
+} */
 
 .cart-est-container {
     display: flex;
@@ -150,7 +151,7 @@
 }
 
 .below-cart-game-container {
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     padding: 20px 0px;
     display: flex;
     justify-content: space-between;
