@@ -53,7 +53,7 @@ const GameForm = ({ game }) => {
     const [submitted, setSubmitted] = useState(false)
 
     let isValidated = false
-
+    console.log(isValidated)
     useEffect(() => {
         if (!user) {
             nav('/')

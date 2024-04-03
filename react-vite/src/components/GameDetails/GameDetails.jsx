@@ -1,12 +1,9 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkOneGame } from "../../redux/game";
-import { NavLink, useParams } from "react-router-dom";
-import CreateGame from "../GameForm/GameForm";
+import { useParams } from "react-router-dom";
 import DeleteGame from "../DeleteGame/DeleteGame";
-import { useModal } from "../../context/Modal";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
-import { thunkDeleteGame } from "../../redux/game";
 import NavBar2 from "../NavBar2/NavBar2";
 
 import './GameDetails.css'
@@ -21,16 +18,15 @@ function GameDetails() {
     // const actualGame = Object.values(game)
     // console.log('actualgame', actualGame)
     const currUser = useSelector(state => state.session)
-    const { openModal, closeModal } = useModal();
 
     const userOrders = useSelector(state => state.cart)
     const userCart = userOrders?.cart?.currentCart
 
     const [cartNum, setCartNum] = useState(false)
 
-    const reRenderCart = () =>{
-        setCartNum(!cartNum)
-    }
+    // const reRenderCart = () => {
+    //     setCartNum(!cartNum)
+    // }
 
     console.log('userOrders', userOrders)
 
@@ -48,7 +44,7 @@ function GameDetails() {
             dispatch(thunkAddCart(newOrder))
             alert('Game added to cart')
 
-            setCartNum(prevState=>!prevState)
+            setCartNum(prevState => !prevState)
         }
 
     }
@@ -224,7 +220,7 @@ function GameDetails() {
                                         Buy {game?.title}
                                     </p>
                                     <span className="add-to-cart-container">
-                                        ${formatPrice(game?.price)} <button onClick={() => addToCart(game.id)} reRenderCart={reRenderCart}> Add to Cart </button>
+                                        ${formatPrice(game?.price)} <button onClick={() => addToCart(game.id)} > Add to Cart </button>
                                     </span>
                                 </div>
                             </div>
@@ -234,17 +230,17 @@ function GameDetails() {
 
                             <div className="GD-side-bar">
                                 {/* {game?.ESRB_RATING && ( */}
-                                    <div className="ESRB-container">
-                                        {game?.ESRB_rating && (
-                                            <>
-                                                <div>
-                                                    <img className="ESRB-img" src={renderESRB(game?.ESRB_rating)} alt={`ESRB Rating: ${game?.ESRB_rating}`} />
-                                                </div>
-                                                <div className="ESRB-text">Rating for: ESRB</div>
-                                            </>
-                                        )}
+                                <div className="ESRB-container">
+                                    {game?.ESRB_rating && (
+                                        <>
+                                            <div>
+                                                <img className="ESRB-img" src={renderESRB(game?.ESRB_rating)} alt={`ESRB Rating: ${game?.ESRB_rating}`} />
+                                            </div>
+                                            <div className="ESRB-text">Rating for: ESRB</div>
+                                        </>
+                                    )}
 
-                                    </div>
+                                </div>
                                 {/* )} */}
 
                                 <div className="stats-details">

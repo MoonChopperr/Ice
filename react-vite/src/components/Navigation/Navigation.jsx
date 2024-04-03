@@ -1,9 +1,7 @@
 import { NavLink } from "react-router-dom";
-import ProfileButton from "./ProfileButton";
 import landinglogo from '../../images/logo_steam.png'
 import { useNavigate } from 'react-router-dom';
 import "./Navigation.css";
-import LoginFormPage from "../LoginFormPage";
 import { useSelector } from 'react-redux';
 import DropDownProfile from "../DropDownProfile/DropDownProfile";
 

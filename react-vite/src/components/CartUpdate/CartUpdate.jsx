@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
+import {  useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { thunkGetCart } from '../../redux/cart'
 import { thunkAllGames } from '../../redux/game'
@@ -75,7 +75,7 @@ function CartUpdate() {
                 {/* <div className='update-u-sure'>
                     <iframe width="600" height="400" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" title="Rick Astley - Never Gonna Give You Up (Official Music Video)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div> */}
-                <h1 className='CU-big'>Update the Quantity of your game <span className='CU-small'>not sure why you'd do this...</span></h1>
+                <h1 className='CU-big'>Update the Quantity of your game <span className='CU-small'>not sure why you`&apos;d do this...</span></h1>
 
                 <div className='CU-btn-container'>
                     <button className='CU-btn-plus' onClick={handleDecrement}>-</button>
