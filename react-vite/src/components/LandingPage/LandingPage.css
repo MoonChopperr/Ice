@@ -1,12 +1,15 @@
 .Landing-container {
-    margin-top: 50px;
-    display: flex;
-    flex-direction: column;
-
+    margin-top: 90px;
+    /* display: flex; */
+    margin: 0px 25.5%;
+    /* flex-direction: column; */
 }
 
 .N-Bar2{
-    padding-right: 5px;
+    /* padding-right: px; */
+    padding-top: 35px;
+    /* border: 1px solid red; */
+
 }
 
 .L-background {
@@ -34,17 +37,17 @@
     margin-top: 50px;
     color: white;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    margin-right: 38.5%;
 }
 
 .L-Carousel {
     display: flex;
     justify-content: center;
     padding-top: 20px;
-    margin-right: 18%;
+    /* margin-right: 35%; */
     z-index: 2;
+    /* border: 1px solid red; */
 
 }
 
@@ -52,10 +55,8 @@
     padding-top: 100px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 5px;
-    /* padding-right: 50px; */
-    /* padding-left: %; */
-    padding-left: 180px;
+    gap: 10px;
+    padding: 50px 300px;
 }
 
 
@@ -63,16 +64,13 @@
 /* MY DESCRIPTION SIDE CAROUSEL PLACEHOLDER */
 /* PUT IN CONTAINER WITH CAROUSEL LATER */
 
-/* .L-box{
-    position: absolute;
-    top:29.5%;
-    left:56.7%;
+.L-box{
     padding:150px;
     padding-right: 190px;
-    padding-bottom: 169px;
+    padding-bottom: 168.1px;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1;
-} */
+}
 
 
 .L-title{
@@ -83,4 +81,9 @@
 .L-price{
     color: white;
     font-weight: 300;
+}
+
+.game-img-card{
+    height: 230px;
+    width: 460px;
 }

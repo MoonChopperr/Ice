@@ -1,7 +1,6 @@
 .NavBar2-container {
     margin-top: 90px;
-    /* border-style: dashed;
-    border-color: white; */
+    /* border: 1px solid red; */
 }
 
 .rectangle-bar {
@@ -70,8 +69,11 @@
 
 .above-bar{
     gap: 20x;
-    margin-left: 65.8%;
+    display: flex;
+    justify-content: flex-end;
     padding-bottom: 8px;
+    /* border: 1px solid red; */
+
 }
 
 .NB-wishlist {

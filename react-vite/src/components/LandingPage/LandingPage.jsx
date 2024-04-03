@@ -29,24 +29,23 @@ function LandingPage() {
                     </div>
                     <div className="L-Carousel">
                         <ImageCarousel />
-                    </div>
-
-                    <div className="L-box">
-
+                        <span className="L-box"> </span>
                     </div>
 
 
-                    <div className="game-list">
-                        {games?.map((game) => (
-                            <div className="game-card" key={game?.id}>
-                                <h2 className="L-title">{game?.title}</h2>
-                                <NavLink to={`/game/${game?.id}`}>
-                                    <img src={game?.images} alt={game?.title} />
-                                </NavLink>
-                            </div>
-                        ))}
-                    </div>
                 </div>
+
+                <div className="game-list">
+                    {games?.map((game) => (
+                        <div className="game-card" key={game?.id}>
+                            <h2 className="L-title">{game?.title}</h2>
+                            <NavLink to={`/game/${game?.id}`}>
+                                <img className="game-img-card" src={game?.images} alt={game?.title} />
+                            </NavLink>
+                        </div>
+                    ))}
+                </div>
+
             </div>
         </>
     )

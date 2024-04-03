@@ -42,6 +42,8 @@ function GameDetails() {
 
             dispatch(thunkAddCart(newOrder))
             alert('Game added to cart')
+
+            setCartNum(prevState=>!prevState)
         }
 
     }

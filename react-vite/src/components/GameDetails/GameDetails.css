@@ -103,12 +103,13 @@ body {
 .game-about {
     color: #c7d5e0;
     font-size: 13px;
-    margin-top: -20px;
+    /* margin-top: -px; */
 
 }
 
 .GD-img {
-    width: 100%;
+    width: 323px;
+    height: 150px;
     /* border-style: dotted;
     border-color: black; */
 }
