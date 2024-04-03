@@ -42,7 +42,7 @@ function ImageCarousel() {
                 {shuffle?.map((game) => (
                     <div className="C-border" key={game?.id}>
                         <a href={`/game/${game?.id}`}>
-                            <img src={game?.images} alt={game?.title} />
+                            <img className='C-image' src={game?.images} alt={game?.title} />
                         </a>
                         <div className="C-info">
                             <span className='C-TS'> Top Seller </span>

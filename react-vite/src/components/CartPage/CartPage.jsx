@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { thunkGetCart } from '../../redux/cart'
 import { thunkAllGames } from '../../redux/game'
 import { thunkDeleteItem } from '../../redux/cart'
 import { thunkClearCart } from '../../redux/cart'
-import { thunkUpdateCart } from '../../redux/cart'
 
 import NavBar2 from '../NavBar2/NavBar2'
 import './CartPage.css'
@@ -21,6 +20,7 @@ function CartPage() {
     // console.log('cart=>', cart)
     const userCart = userOrders?.cart?.currentCart
     const [forceRerender, setForceRerender] = useState(false)
+    const [rmAllRerender, setRmALLRerender] = useState(false)
     // console.log(userCart.length)
     //LOGOUT REDIRECT NAV
 
@@ -36,8 +36,8 @@ function CartPage() {
         return inCart?.filter(game => game)
     }
 
-    function getQuant(userCart, gameId){
-        const cartItem = userCart.find(item=>item.game_id === gameId)
+    function getQuant(userCart, gameId) {
+        const cartItem = userCart.find(item => item.game_id === gameId)
         return cartItem
     }
 
@@ -47,37 +47,28 @@ function CartPage() {
         return total.toFixed(2)
     }
 
-    const handleRemove = (userCartId) => {
-        dispatch(thunkDeleteItem(userCartId))
+    const handleUpdate = (cartId) => {
+        nav(`/cart/update/${cartId}`)
     }
 
-    // const handleAdd = (id) => {
-    //     dispatch(thunkUpdateCart(id, { quantity: 2 }))
-    // }
-    const handleUpdate = (cartId)=>{
-        nav(`/cart/update/${cartId}`)
+    const handleRemove = (userCartId) => {
+        dispatch(thunkDeleteItem(userCartId))
+        setForceRerender(prev => !prev)
     }
 
     const handleClearCart = (id) => {
         dispatch(thunkClearCart(id))
-        setForceRerender(prev => !prev)
+        setRmALLRerender(prev => !prev)
     }
 
-    const [reRenderDelete, setReRenderDelete] = useState(false)
-    const reRenderonDelete = () => {
-        setReRenderDelete(!reRenderDelete)
-    }
 
-    const [reRenderUpdate, setReRenderUpdate] = useState(false)
-    const reRenderonUpdate = () => {
-        setReRenderUpdate(!reRenderUpdate)
-    }
+
 
     useEffect(() => {
         dispatch(thunkGetCart())
         dispatch(thunkAllGames())
 
-    }, [dispatch, forceRerender, reRenderDelete, reRenderUpdate])
+    }, [dispatch, forceRerender, rmAllRerender])
 
     return (
         <>
@@ -99,11 +90,11 @@ function CartPage() {
                                 <div className='cart-title'>{game?.title}</div>
                                 <div className='cart-price'>${game?.price}</div>
                                 <div className='cart-crud-container'>
-                                    <span className='cart-quan'> <span className='Quantity'>Quantity:</span> {getQuant(userCart,game.id).quantity} </span>
+                                    <span className='cart-quan'> <span className='Quantity'>Quantity:</span> {getQuant(userCart, game.id).quantity} </span>
                                     {/* <span className='cart-crud' onClick={()=> handleAdd((userCart.find(order => order.quantity)))}>Add</span> */}
                                     <span className='cart-crud' onClick={() => handleUpdate((game?.id))}>Update</span>
                                     <span className='cart-pole'> | </span>
-                                    <span className='cart-crud' onClick={() => handleRemove((userCart.find(order => order.game_id === game.id)).id)} reRenderonDelete={reRenderonDelete}>Remove</span>
+                                    <span className='cart-crud' onClick={() => handleRemove((userCart.find(order => order.game_id === game.id)).id)}>Remove</span>
                                 </div>
                             </div>
                         ))}
@@ -117,7 +108,7 @@ function CartPage() {
                                 <button onClick={() => nav('/login')}>Sign in to purchase</button>
                             )}
                             {currUser && (
-                                <button className='cart-checkout-btn'>Continue to payment</button>
+                                <button className='cart-checkout-btn' onClick={() => alert('Feature coming soon')}>Continue to payment</button>
                             )}
                         </div>
 

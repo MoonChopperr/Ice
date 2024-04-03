@@ -84,8 +84,6 @@ export const thunkUpdateGame = (gameId, updatedGame) => async (dispatch) => {
 
     if (!response.ok) {
         const data = await response.json()
-        const { resPost } = await response.json();
-        dispatch(addPost(resPost));
         return { errors: data }
     }
 

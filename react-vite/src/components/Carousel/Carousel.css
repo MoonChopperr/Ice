@@ -4,10 +4,8 @@
 
 }
 
-.C-border{
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Horizontal offset, vertical offset, blur radius, color */
-    transition: transform 0.3s ease;
-}
+/* .C-border{
+} */
 
 .C-info {
     background-color: rgba(0, 0, 0, 0.5);
@@ -37,4 +35,8 @@
     font-size: 15px;
     font-weight: 300;
     color: white;
+}
+
+.C-image {
+    height: 280px;
 }

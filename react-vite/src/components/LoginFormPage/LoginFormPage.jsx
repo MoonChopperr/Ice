@@ -46,7 +46,7 @@ function LoginFormPage() {
     e.preventDefault()
     setErrors({})
     const demoUser = {
-      email:'demo@user.io',
+      email:'demo@aa.io',
       password:'password'
     }
     return dispatch(sessionActions.thunkLogin(demoUser))
@@ -80,7 +80,7 @@ function LoginFormPage() {
                       required
                     />
                   </div>
-                  {errors.email && <p>{errors.email}</p>}
+                  {errors.email && <p className="error-message">{errors.email}</p>}
                 </label>
                 <label className='S-password'>
                   PASSWORD
@@ -93,7 +93,7 @@ function LoginFormPage() {
                       required
                     />
                   </div>
-                  {errors.password && <p>{errors.password}</p>}
+                  {errors.password && <p className="error-message">{errors.password}</p>}
                 </label>
                 <button className='sign-in-btn' type="submit">Sign in</button>
                 <button className='sign-in-demo' type='submit' onClick={demoUser}> Sign in as a Demo User</button>

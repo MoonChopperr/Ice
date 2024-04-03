@@ -5,11 +5,12 @@ import { thunkOneGame } from "../../redux/game"
 import { useParams } from "react-router-dom"
 
 const UpdatedGame = () => {
-    const buttonName = 'Update Game'
+    // const buttonName = 'Update Game'
     const dispatch = useDispatch()
     const {gameId} = useParams()
-    const game = useSelector(state => state.game)
+    const game = useSelector(state => state.game[gameId])
 
+    console.log('game=>', game)
     useEffect(()=>{
         dispatch(thunkOneGame(gameId))
     }, [dispatch, gameId])
@@ -18,10 +19,14 @@ const UpdatedGame = () => {
         return <h2>Loading</h2>
     }
 
+    if(game){
+        return <GameForm game={game}/>
+    }
+
     return (
         <>
             <div>
-                <GameForm buttonName={buttonName} />
+                <GameForm game={game} />
             </div>
         </>
     )

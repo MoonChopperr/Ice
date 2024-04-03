@@ -50,7 +50,7 @@ function CartUpdate() {
     }
 
     const handleDecrement = () => {
-        if (quantity > 0) {
+        if (quantity > 1) {
             setQuantity(prevQuantity => prevQuantity - 1)
             const updatedOrder = { quantity: quantity - 1 }
             dispatch(thunkUpdateCart(order.id, updatedOrder))
@@ -72,12 +72,20 @@ function CartUpdate() {
     return (
         <>
             <div className='update-bg'>
-                <div className='update-u-sure'>Are you sure you want to update the quantity? It's a game</div>
-                <div>quantity</div>
-                <button onClick={handleDecrement}>-</button>
-                <span style={{ color: "white" }}>{quantity}</span>
-                <button onClick={handleIncrement}>+</button>
-                <button onClick={handleUpdateQuantity}>Update Quantity</button>
+                {/* <div className='update-u-sure'>
+                    <iframe width="600" height="400" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" title="Rick Astley - Never Gonna Give You Up (Official Music Video)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div> */}
+                <h1 className='CU-big'>Update the Quantity of your game <span className='CU-small'>not sure why you'd do this...</span></h1>
+
+                <div className='CU-btn-container'>
+                    <button className='CU-btn-plus' onClick={handleDecrement}>-</button>
+                    <span className='CU-quant' style={{ color: "white" }}>{quantity}</span>
+                    <button className='CU-btn-minus' onClick={handleIncrement}>+</button>
+                </div>
+
+                <div className='CU-submit-container'>
+                    <button className='CU-submit' onClick={handleUpdateQuantity}>Update Quantity</button>
+                </div>
             </div>
         </>
     )

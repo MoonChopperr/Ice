@@ -33,7 +33,7 @@ const GENRES = [
     'Virtual Reality'
 ]
 
-const GameForm = ({ buttonName, game }) => {
+const GameForm = ({ game }) => {
     const dispatch = useDispatch()
     const nav = useNavigate()
     const user = useSelector((state) => state.session.user)
@@ -42,12 +42,12 @@ const GameForm = ({ buttonName, game }) => {
     const [title, setTitle] = useState(game?.title || "")
     const [about, setAbout] = useState(game?.about || "")
     const [price, setPrice] = useState(game?.price || "")
-    const [releaseDate, setReleaseDate] = useState(game?.releaseDate || "")
+    const [releaseDate, setReleaseDate] = useState(game?.release_date || "")
     const [developer, setDeveloper] = useState(game?.developer || "")
     const [publisher, setPublisher] = useState(game?.publisher || "")
     const [franchise, setFranchise] = useState(game?.franchise || "")
     const [ESRB_Rating, setESRB_Rating] = useState(game?.ESRB_Rating || "")
-    const [genre, setGenre] = useState(game?.genre || [])
+    const [genre, setGenre] = useState('')
     const [image, setImage] = useState(game?.image || null)
     const [validations, setValidations] = useState({})
     const [submitted, setSubmitted] = useState(false)
@@ -117,13 +117,16 @@ const GameForm = ({ buttonName, game }) => {
         e.preventDefault()
         setSubmitted(true)
 
+        let isValidated = true
+
         if (Object.keys(validations).length > 0) {
+            isValidated = false
+        }
+
+        if(!isValidated){
             return
         }
-        // formdata for when handling aws images
-        // const newGame = {
-        //     title, about, price, 'release_date': releaseDate, developer, publisher, franchise, 'ESRB_rating': ESRB_Rating, genre, 'image': formData.image
-        // }
+
         const formData = new FormData()
         formData.append('title', title)
         formData.append('about', about)
@@ -135,7 +138,6 @@ const GameForm = ({ buttonName, game }) => {
         formData.append('ESRB_rating', ESRB_Rating)
         genre.forEach((g) => formData.append('genre', g))
         formData.append('image', image)
-        // await dispatch(thunkCreateGame(formData))
 
         if (!gameId) {
             const newGame = await dispatch(thunkCreateGame(formData))
@@ -145,7 +147,7 @@ const GameForm = ({ buttonName, game }) => {
             }
         } else {
             const updatedGame = await dispatch(thunkUpdateGame(gameId, formData))
-            if (updatedGame && updatedGame.id) {
+            if (updatedGame) {
                 console.log('@@@@@@@@=>', updatedGame)
                 nav(`/game/${updatedGame.id}`)
             }
@@ -157,7 +159,7 @@ const GameForm = ({ buttonName, game }) => {
         if (e.target.checked) {
             setGenre([...genre, selectedGenre])
         } else {
-            setGenre(genre.filter((genre) => genre !== selectedGenre))
+            setGenre(genre?.filter((genre) => genre !== selectedGenre))
         }
     }
 
@@ -182,7 +184,7 @@ const GameForm = ({ buttonName, game }) => {
                                 className='form-input'
                             />
                         </div>
-                            {validations.title && <span>{validations.title}</span>}
+                            {validations.title && <span className="error-message">{validations.title}</span>}
 
                         <div className='form-label-container'>
                             <label className='form-label'> About* </label>
@@ -195,7 +197,7 @@ const GameForm = ({ buttonName, game }) => {
                                 className='form-input-about'
                             />
                         </div>
-                            {validations.about && <span>{validations.about}</span>}
+                            {validations.about && <span className="error-message">{validations.about}</span>}
 
                         <div className='form-label-container'>
                             <label className='form-label'> Price* </label>
@@ -209,7 +211,7 @@ const GameForm = ({ buttonName, game }) => {
                                 className='form-input'
                             />
                         </div>
-                            {validations.price && <span>{validations.price}</span>}
+                            {validations.price && <span className="error-message">{validations.price}</span>}
 
                         <div className='form-label-container'>
                             <label className='form-label'> Release Date* </label>
@@ -224,7 +226,7 @@ const GameForm = ({ buttonName, game }) => {
                             />
 
                         </div>
-                            {validations.releaseDate && <span>{validations.releaseDate}</span>}
+                            {validations.releaseDate && <span className="error-message">{validations.releaseDate}</span>}
 
                         <div className='form-label-container'>
                             <label className='form-label'> Developer* </label>
@@ -239,7 +241,7 @@ const GameForm = ({ buttonName, game }) => {
                             />
 
                         </div>
-                            {validations.developer && <span>{validations.developer}</span>}
+                            {validations.developer && <span className="error-message">{validations.developer}</span>}
 
                         <div className='form-label-container'>
                             <label className='form-label'> Publisher* </label>
@@ -254,7 +256,7 @@ const GameForm = ({ buttonName, game }) => {
                             />
 
                         </div>
-                            {validations.publisher && <span>{validations.publisher}</span>}
+                            {validations.publisher && <span className="error-message">{validations.publisher}</span>}
 
                         <div className='form-label-container'>
                             <label className='form-label'> Franchise</label>
@@ -269,7 +271,7 @@ const GameForm = ({ buttonName, game }) => {
                             />
 
                         </div>
-                            {validations.franchise && <span>{validations.franchise}</span>}
+                            {validations.franchise && <span className="error-message">{validations.franchise}</span>}
 
                     </div>
 
@@ -278,8 +280,8 @@ const GameForm = ({ buttonName, game }) => {
 
                     <div className='form-right'>
 
-                        <h1 className='genre-title'> Select a Genre(s)* </h1>
-                            {validations.genre && <span>{validations.genre}</span>}
+                        <span className='genre-title'> Select a Genre(s)* </span>
+                            {validations.genre && <span className="error-message">{validations.genre}</span>}
                         <div className='genre-container'>
                             {GENRES?.sort().map((genreOption) => (
                                 <div key={genreOption} className='genre-option'>
@@ -289,7 +291,7 @@ const GameForm = ({ buttonName, game }) => {
                                         value={genreOption}
                                         onChange={(e) => handleGenreChange(e, genreOption)}
                                         checked={genre.includes(genreOption)}
-                                    />
+                                        />
                                     <label className='genre-text' htmlFor={genreOption}>{genreOption}</label>
                                 </div>
                             ))}
@@ -304,6 +306,7 @@ const GameForm = ({ buttonName, game }) => {
                                 onChange={(e) => setImage(e.target.files[0])}
                             />
                         </div>
+                        {validations.image && <span className="error-message">{validations.image}</span>}
 
 
                         <div className='form-label'>

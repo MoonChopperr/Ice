@@ -1,11 +1,82 @@
-.update-bg{
-    padding-top: 300px;
+.update-bg {
+    padding-top: 150px;
     margin: 0px 20%;
-    border: 1px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* border: 1px solid red; */
 }
 
-.update-u-sure{
+.update-u-sure {
     color: white;
 }
 
+.CU-big {
+    font-weight: 500;
+    color: white;
+}
 
+.CU-small {
+    font-size: 6px;
+    color: white;
+}
+
+.CU-btn-plus {
+    padding: 4px 25px;
+    background-image: linear-gradient(to right, #06BFFF, #0157c9);
+    border: none;
+    border-radius: 3px;
+    color: white;
+    font-weight: 700;
+}
+
+.CU-btn-plus:hover {
+    background-image: linear-gradient(to right, #75B022, #6AA621);
+    border: none;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.CU-btn-minus {
+    padding: 4px 25px;
+    background-image: linear-gradient(to right, #06BFFF, #0157c9);
+    border: none;
+    border-radius: 3px;
+    color: white;
+    font-weight: 700;
+}
+
+.CU-btn-minus:hover {
+    background-image: linear-gradient(to right, #75B022, #6AA621);
+    border: none;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.CU-quant {
+    font-size: 15px;
+    font-weight: 800;
+    margin: 15px;
+}
+
+.CU-submit {
+    padding: 4px 25px;
+    background-image: linear-gradient(to right, #06BFFF, #0157c9);
+    border: none;
+    border-radius: 3px;
+    color: white;
+    font-weight: 700;
+}
+
+.CU-submit:hover{
+    cursor: pointer;
+    filter: brightness(110%);
+}
+
+
+.CU-submit-container{
+    margin-top: 30px;
+}
