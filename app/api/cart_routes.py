@@ -15,7 +15,8 @@ def currOrders():
     #     return {"message": "Cart is empty"}
 
     if not cart:
-        return {"message": "Cart couldn't be found or is empty"}, 404
+        # return {"message": "Cart couldn't be found or is empty"}, 404
+        return {}
     return {"currentCart": [items.to_dict() for items in cart]}, 200
 
 

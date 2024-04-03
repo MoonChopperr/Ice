@@ -111,14 +111,25 @@ function cartReducer(state={}, action){
             return {...state, [action.order.id]: action.order}
         }
         case DELETE_CART_ITEM:{
-            const deleteState = {...state}
-            delete deleteState[action.order]
-            return  deleteState
+            const deleteState = {...state};
+            console.log('state', deleteState)
+            console.log('actionOrder', action.order)
+
+            delete deleteState.cart.currentCart.find(item => item.id === action.order);
+            return deleteState;
         }
+        // case DELETE_CART_ITEM:{
+        //     const deleteState = {...state}
+        //     console.log('state', deleteState)
+        //     console.log('actionOrder', action.order)
+
+        //     delete deleteState[action.order]
+        //     return  deleteState
+        // }
         case CLEAR_CART:{
             const deleteState = {...state}
             delete deleteState[action.cart]
-            return deleteState
+            return {}
         }
         case GET_USER_CART:{
             return {...state, cart: action.cart}
