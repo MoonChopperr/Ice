@@ -10,7 +10,7 @@ function DeleteGame({ gameId }) {
     const { closeModal } = useModal()
     const dispatch = useDispatch()
 
-    console.log('game@@@', gameId)
+    // console.log('game@@@', gameId)
 
     const onDelete = (e) => {
         e.preventDefault()

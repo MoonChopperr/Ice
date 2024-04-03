@@ -17,11 +17,11 @@ function CartPage() {
     const userOrders = useSelector(state => state.cart)
     // console.log('shoppingcart', userOrders)
     const allGames = useSelector(state => state.game.games)
-    console.log('allgames', allGames)
+    // console.log('allgames', allGames)
     // console.log('cart=>', cart)
     const userCart = userOrders?.cart?.currentCart
     const [forceRerender, setForceRerender] = useState(false)
-    const [rmAllRerender, setRmALLRerender] = useState(false)
+    // const [rmAllRerender, setRmALLRerender] = useState(false)
     // console.log(userCart.length)
     //LOGOUT REDIRECT NAV
 
@@ -54,19 +54,20 @@ function CartPage() {
 
     const handleRemove = (userCartId) => {
         dispatch(thunkDeleteItem(userCartId))
-        setForceRerender(prev => !prev)
-        handleonDelete()
+        // dispatch(thunkGetCart())
+        getGames()
+        setForceRerender(!forceRerender)
     }
 
-    const handleClearCart = (id) => {
-        dispatch(thunkClearCart(id))
-        setRmALLRerender(prev => !prev)
-    }
+    // const handleClearCart = (id) => {
+    //     dispatch(thunkClearCart(id))
+    //     setRmALLRerender(prev => !prev)
+    // }
 
     useEffect(() => {
         dispatch(thunkGetCart())
         dispatch(thunkAllGames())
-    }, [dispatch, forceRerender, rmAllRerender])
+    }, [dispatch, forceRerender])
 
     return (
         <>
@@ -92,6 +93,7 @@ function CartPage() {
                                     {/* <span className='cart-crud' onClick={()=> handleAdd((userCart.find(order => order.quantity)))}>Add</span> */}
                                     <span className='cart-crud' onClick={() => handleUpdate((game?.id))}>Update</span>
                                     <span className='cart-pole'> | </span>
+                                    { forceRerender ? <p>YES</p> : <p>NO</p>}
                                     <span className='cart-crud' onClick={() => handleRemove((userCart.find(order => order.game_id === game.id)).id)}>Remove</span>
                                 </div>
                             </div>
@@ -99,7 +101,7 @@ function CartPage() {
 
                         <div className='cart-sidebar'>
                             <div className='cart-est-container'>
-                                <span className='cart-est'>Estimated total</span> <span className='cart-total-price'>{totalPrice(getGames())}</span>
+                                <span className='cart-est'>Estimated total</span> <span className='cart-total-price'>${totalPrice(getGames())}</span>
                             </div>
                             <div className='cart-blurb'> Sales tax will be calculated during checkout where applicable</div>
                             {!currUser && (
@@ -117,7 +119,7 @@ function CartPage() {
 
                 <div className='below-cart-game-container'>
                     <button className='cart-continue-shopping' onClick={() => nav('/')}>Continue Shopping</button>
-                    <div className='cart-rm-all' onClick={handleClearCart}>Remove all items</div>
+                    <div className='cart-rm-all' onClick={()=>dispatch(thunkClearCart())}>Remove all items</div>
                 </div>
 
 

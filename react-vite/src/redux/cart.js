@@ -64,7 +64,7 @@ export const thunkUpdateCart = (cartId, updatedItem) => async (dispatch) =>{
 
     const data = await response.json()
     updatedItem = await dispatch(updateCart(data))
-    console.log("THUNK UPDATE ITEM", updatedItem)
+    // console.log("THUNK UPDATE ITEM", updatedItem)
     return data
 }
 
@@ -95,7 +95,7 @@ export const thunkGetCart = () => async (dispatch)=>{
     const data = await response.json()
 
     if (!response.ok) return { errors: data }
-    console.log('thunk currCart', data)
+    // console.log('thunk currCart', data)
     dispatch(getCart(data))
     return data
 }

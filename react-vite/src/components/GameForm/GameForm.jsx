@@ -141,14 +141,14 @@ const GameForm = ({ game }) => {
 
         if (!gameId) {
             const newGame = await dispatch(thunkCreateGame(formData))
-            console.log('@@@@=>', newGame)
+            // console.log('@@@@=>', newGame)
             if (newGame && newGame.id) {
                 nav(`/game/${newGame.id}`)
             }
         } else {
             const updatedGame = await dispatch(thunkUpdateGame(gameId, formData))
             if (updatedGame) {
-                console.log('@@@@@@@@=>', updatedGame)
+                // console.log('@@@@@@@@=>', updatedGame)
                 nav(`/game/${updatedGame.id}`)
             }
         }

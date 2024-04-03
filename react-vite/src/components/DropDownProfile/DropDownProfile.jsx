@@ -24,6 +24,7 @@ function DropDownProfile({ username }) {
         dispatch(thunkLogout())
     };
 
+    //event listener mousedown = click on mouse 
     useEffect(() => {
         document.addEventListener('mousedown', handleClickOutside)
         return () => {

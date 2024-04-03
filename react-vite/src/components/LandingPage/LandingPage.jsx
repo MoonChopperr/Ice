@@ -9,7 +9,7 @@ function LandingPage() {
     const dispatch = useDispatch()
     const games = useSelector((state) => state?.game?.games)
 
-    console.log("ALL_games===>", games)
+    // console.log("ALL_games===>", games)
 
     useEffect(() => {
         dispatch(thunkAllGames())

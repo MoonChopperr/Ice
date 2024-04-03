@@ -59,8 +59,8 @@ function GameDetails() {
     const isGameOwner = isOwner(currUser)
     // console.log('isGameOwner', isGameOwner)
     // console.log('currUserId', currUser?.user.id)
-    console.log('gameId', game?.owner_id)
-    console.log('owner?', isOwner(currUser))
+    // console.log('gameId', game?.owner_id)
+    // console.log('owner?', isOwner(currUser))
 
     //FormatDateHelper
     function formatDate(date) {

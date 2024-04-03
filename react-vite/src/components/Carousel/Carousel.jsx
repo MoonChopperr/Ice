@@ -12,7 +12,7 @@ function ImageCarousel() {
     const dispatch = useDispatch()
     const games = useSelector((state) => state.game.games)
 
-    console.log("ALL_games===>", games)
+    // console.log("ALL_games===>", games)
 
     useEffect(() => {
         dispatch(thunkAllGames())
@@ -28,7 +28,7 @@ function ImageCarousel() {
 
     // Shuffle the games array to 12 games
     const shuffle = games?.sort(() => Math.random() - 0.5).slice(0, 12)
-    console.log('shuffle', shuffle)
+    // console.log('shuffle', shuffle)
     return (
         <>
             <Carousel className='main-slide'

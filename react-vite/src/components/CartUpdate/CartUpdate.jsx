@@ -24,13 +24,13 @@ function CartUpdate() {
 
     // console.log('gameId', gameId)
 
-    console.log('userCart!!!', userCart)
+    // console.log('userCart!!!', userCart)
     const order = userCart?.find(order => order.game_id === parseInt(gameId))
 
     // console.log('test', userCart[0].game_id)
 
-    console.log('order', order)
-    console.log('orderquan', order?.quantity)
+    // console.log('order', order)
+    // console.log('orderquan', order?.quantity)
     // function getGames() {
     //     const inCart = userCart?.map(item => {
     //         const game = allGames?.find(game => game.id === item.game_id)
@@ -58,8 +58,8 @@ function CartUpdate() {
     }
 
     const handleUpdateQuantity = () => {
-        console.log('orderId', order.id)
-        console.log('new quan', quantity)
+        // console.log('orderId', order.id)
+        // console.log('new quan', quantity)
         dispatch(thunkUpdateCart(order.id, { quantity }))
         nav('/game/cart')
     }
