@@ -40,7 +40,7 @@ export const thunkAllGames = () => async (dispatch) => {
     const data = await response.json()
 
     if (!response.ok) return { errors: data }
-    console.log('thunk games=>', data)
+    // console.log('thunk games=>', data)
     dispatch(getGames(data.games))
     return data
 }
@@ -64,13 +64,13 @@ export const thunkCreateGame = newGame => async (dispatch) => {
 
     if (!response.ok) {
         const data = await response.json()
-        console.log(data)
+        // console.log(data)
         return { errors: data }
     }
 
     const data = await response.json()
     newGame = await dispatch(createGame(data))
-    console.log('ThunkNewGame=>', newGame)
+    // console.log('ThunkNewGame=>', newGame)
     return data
 }
 
@@ -89,7 +89,7 @@ export const thunkUpdateGame = (gameId, updatedGame) => async (dispatch) => {
 
     const data = await response.json()
     updatedGame = await dispatch(updateGame(data))
-    console.log('ThunkUpdatedGame', updateGame)
+    // console.log('ThunkUpdatedGame', updateGame)
     return data
 }
 

@@ -8,7 +8,7 @@ import DropDownProfile from "../DropDownProfile/DropDownProfile";
 function Navigation() {
   const nav = useNavigate()
   const currUser = useSelector(state => state.session.user)
-  console.log('currUser!', currUser)
+  // console.log('currUser!', currUser)
 
   return (
     <>

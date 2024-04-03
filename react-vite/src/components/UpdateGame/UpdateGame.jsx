@@ -10,7 +10,7 @@ const UpdatedGame = () => {
     const {gameId} = useParams()
     const game = useSelector(state => state.game[gameId])
 
-    console.log('game=>', game)
+    // console.log('game=>', game)
     useEffect(()=>{
         dispatch(thunkOneGame(gameId))
     }, [dispatch, gameId])

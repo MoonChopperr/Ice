@@ -16,7 +16,7 @@ function LoginFormPage() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
 
-  console.log('currUser@@@@', currUser)
+  // console.log('currUser@@@@', currUser)
 
   if (currUser) return <Navigate to="/" replace={true} />;
 

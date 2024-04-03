@@ -14,7 +14,7 @@ function GameDetails() {
     const { gameId } = useParams()
     const dispatch = useDispatch()
     const game = useSelector(state => state.game[gameId])
-    console.log('game==>', game)
+    // console.log('game==>', game)
     // const actualGame = Object.values(game)
     // console.log('actualgame', actualGame)
     const currUser = useSelector(state => state.session)
@@ -28,7 +28,7 @@ function GameDetails() {
     //     setCartNum(!cartNum)
     // }
 
-    console.log('userOrders', userOrders)
+    // console.log('userOrders', userOrders)
 
     const addToCart = (gameId) => {
 
@@ -109,9 +109,9 @@ function GameDetails() {
             return price?.toFixed(2) // Use toFixed to ensure two decimal places
         }
     }
-    console.log('single genre', game?.genre)
+    // console.log('single genre', game?.genre)
 
-    console.log('franchise', game?.franchise)
+    // console.log('franchise', game?.franchise)
     useEffect(() => {
         dispatch(thunkOneGame(gameId))
         dispatch(thunkAddCart())

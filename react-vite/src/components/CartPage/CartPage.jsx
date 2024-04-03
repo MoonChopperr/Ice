@@ -25,8 +25,8 @@ function CartPage() {
     // console.log(userCart.length)
     //LOGOUT REDIRECT NAV
 
-    console.log('userOrdersBEFORE', userOrders)
-    console.log('userCartAFTER', userCart)
+    // console.log('userOrdersBEFORE', userOrders)
+    // console.log('userCartAFTER', userCart)
 
     //render if exists(?)
     function getGames() {

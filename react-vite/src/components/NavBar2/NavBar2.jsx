@@ -10,14 +10,14 @@ function NavBar2() {
     const nav = useNavigate()
     const currUser = useSelector(state => state.session.user)
     const userOrders = useSelector(state => state.cart)
-    console.log('userOrders', userOrders)
+    // console.log('userOrders', userOrders)
 
     // function cartSize(cart) {
     //     return cart?.length()
     // }
 
     const userCart = userOrders?.cart?.currentCart
-    console.log('@CART@', userCart)
+    // console.log('@CART@', userCart)
 
     useEffect(() => {
         dispatch(thunkGetCart())

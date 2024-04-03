@@ -112,8 +112,8 @@ function cartReducer(state={}, action){
         }
         case DELETE_CART_ITEM:{
             const deleteState = {...state};
-            console.log('state', deleteState)
-            console.log('actionOrder', action.order)
+            // console.log('state', deleteState)
+            // console.log('actionOrder', action.order)
 
             delete deleteState.cart.currentCart.find(item => item.id === action.order);
             return deleteState;
