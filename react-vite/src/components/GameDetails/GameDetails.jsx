@@ -1,4 +1,4 @@
-import { useEffect} from "react";
+import { useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkOneGame } from "../../redux/game";
 import { useParams } from "react-router-dom";
@@ -21,11 +21,11 @@ function GameDetails() {
     const userOrders = useSelector(state => state.cart)
     const userCart = userOrders?.cart?.currentCart
 
-    // const [cartNum, setCartNum] = useState(false)
+    const [cartNum, setCartNum] = useState(false)
 
-    // const reRenderCart = () =>{
-    //     setCartNum(!cartNum)
-    // }
+    const reRenderCart = () =>{
+        setCartNum(!cartNum)
+    }
 
     console.log('userOrders', userOrders)
 
