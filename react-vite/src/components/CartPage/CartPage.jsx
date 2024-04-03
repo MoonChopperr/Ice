@@ -93,7 +93,7 @@ function CartPage() {
                                     {/* <span className='cart-crud' onClick={()=> handleAdd((userCart.find(order => order.quantity)))}>Add</span> */}
                                     <span className='cart-crud' onClick={() => handleUpdate((game?.id))}>Update</span>
                                     <span className='cart-pole'> | </span>
-                                    { forceRerender ? <p>YES</p> : <p>NO</p>}
+                                    {/* { forceRerender ? <p>YES</p> : <p>NO</p>} */}
                                     <span className='cart-crud' onClick={() => handleRemove((userCart.find(order => order.game_id === game.id)).id)}>Remove</span>
                                 </div>
                             </div>
