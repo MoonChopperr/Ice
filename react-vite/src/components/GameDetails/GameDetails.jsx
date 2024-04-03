@@ -1,4 +1,4 @@
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkOneGame } from "../../redux/game";
 import { useParams } from "react-router-dom";
@@ -18,14 +18,15 @@ function GameDetails() {
     // const actualGame = Object.values(game)
     // console.log('actualgame', actualGame)
     const currUser = useSelector(state => state.session)
+
     const userOrders = useSelector(state => state.cart)
     const userCart = userOrders?.cart?.currentCart
 
     const [cartNum, setCartNum] = useState(false)
 
-    const reRenderCart = () =>{
-        setCartNum(!cartNum)
-    }
+    // const reRenderCart = () => {
+    //     setCartNum(!cartNum)
+    // }
 
     console.log('userOrders', userOrders)
 
@@ -43,7 +44,7 @@ function GameDetails() {
             dispatch(thunkAddCart(newOrder))
             alert('Game added to cart')
 
-            setCartNum(prevState=>!prevState)
+            setCartNum(prevState => !prevState)
         }
 
     }
@@ -115,8 +116,8 @@ function GameDetails() {
         dispatch(thunkOneGame(gameId))
         dispatch(thunkAddCart())
         dispatch(thunkGetCart())
-    }, [gameId, dispatchEvent])
-    // , cartNum
+    }, [gameId, dispatch, cartNum])
+
 
 
     const handleEdit = () => {
@@ -220,7 +221,6 @@ function GameDetails() {
                                     </p>
                                     <span className="add-to-cart-container">
                                         ${formatPrice(game?.price)} <button onClick={() => addToCart(game.id)} > Add to Cart </button>
-                                        {/* reRenderCart={reRenderCart} */}
                                     </span>
                                 </div>
                             </div>
@@ -230,17 +230,17 @@ function GameDetails() {
 
                             <div className="GD-side-bar">
                                 {/* {game?.ESRB_RATING && ( */}
-                                    <div className="ESRB-container">
-                                        {game?.ESRB_rating && (
-                                            <>
-                                                <div>
-                                                    <img className="ESRB-img" src={renderESRB(game?.ESRB_rating)} alt={`ESRB Rating: ${game?.ESRB_rating}`} />
-                                                </div>
-                                                <div className="ESRB-text">Rating for: ESRB</div>
-                                            </>
-                                        )}
+                                <div className="ESRB-container">
+                                    {game?.ESRB_rating && (
+                                        <>
+                                            <div>
+                                                <img className="ESRB-img" src={renderESRB(game?.ESRB_rating)} alt={`ESRB Rating: ${game?.ESRB_rating}`} />
+                                            </div>
+                                            <div className="ESRB-text">Rating for: ESRB</div>
+                                        </>
+                                    )}
 
-                                    </div>
+                                </div>
                                 {/* )} */}
 
                                 <div className="stats-details">
