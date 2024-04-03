@@ -13,6 +13,7 @@ function CartPage() {
     const dispatch = useDispatch()
     const nav = useNavigate()
     const currUser = useSelector(state => state.session.user)
+    // console.log('USER',currUser)
     const userOrders = useSelector(state => state.cart)
     // console.log('shoppingcart', userOrders)
     const allGames = useSelector(state => state.game.games)
@@ -43,7 +44,7 @@ function CartPage() {
 
     //total price
     function totalPrice() {
-        const total = getGames().reduce((acc, game) => acc + game.price, 0)
+        const total = getGames().reduce((acc, game) => acc + (game.price * getQuant(userCart, game.id).quantity), 0)
         return total.toFixed(2)
     }
 
@@ -54,6 +55,7 @@ function CartPage() {
     const handleRemove = (userCartId) => {
         dispatch(thunkDeleteItem(userCartId))
         setForceRerender(prev => !prev)
+        handleonDelete()
     }
 
     const handleClearCart = (id) => {
@@ -61,13 +63,9 @@ function CartPage() {
         setRmALLRerender(prev => !prev)
     }
 
-
-
-
     useEffect(() => {
         dispatch(thunkGetCart())
         dispatch(thunkAllGames())
-
     }, [dispatch, forceRerender, rmAllRerender])
 
     return (
@@ -88,7 +86,7 @@ function CartPage() {
                             <div key={game.id} className='cart-game'>
                                 <img className='cart-img' src={game?.images}></img>
                                 <div className='cart-title'>{game?.title}</div>
-                                <div className='cart-price'>${game?.price}</div>
+                                <div className='cart-price'>${game?.price * getQuant(userCart, game.id).quantity}</div>
                                 <div className='cart-crud-container'>
                                     <span className='cart-quan'> <span className='Quantity'>Quantity:</span> {getQuant(userCart, game.id).quantity} </span>
                                     {/* <span className='cart-crud' onClick={()=> handleAdd((userCart.find(order => order.quantity)))}>Add</span> */}
