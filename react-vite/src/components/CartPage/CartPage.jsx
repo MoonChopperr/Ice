@@ -108,7 +108,7 @@ function CartPage() {
                                 <button onClick={() => nav('/login')}>Sign in to purchase</button>
                             )}
                             {currUser && (
-                                <button className='cart-checkout-btn' onClick={() => alert('Feature coming soon')}>Continue to payment</button>
+                                <button className='cart-checkout-btn' onClick={()=>dispatch(thunkClearCart())}>Continue to payment</button>
                             )}
                         </div>
 

@@ -61,3 +61,8 @@
 .SU-btn:hover{
     filter: brightness(110%);
 }
+
+.SU-error-message{
+    color: red;
+    font-size: 12px;
+}

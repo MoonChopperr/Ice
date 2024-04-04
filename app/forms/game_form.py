@@ -54,11 +54,15 @@ def check_genre(form, field):
 # def validate_genre(form, field):
 #         field.data = ','.join(field.data)
 
+def validate_release_date(form, field):
+    if field.data < datetime.today().date():
+        raise ValidationError("Release date cannot be in the past")
+
 class CreateGame(FlaskForm):
     title = StringField('Title', validators =[DataRequired()])
     about = StringField('About', validators =[DataRequired()])
     price = DecimalField('Price')
-    release_date = DateField('Release Date', validators=[DataRequired()])
+    release_date = DateField('Release Date', validators=[DataRequired(), validate_release_date])
     developer = StringField('Developer', validators=[DataRequired()])
     publisher = StringField('Publisher', validators=[DataRequired()])
     franchise = StringField('Franchise')

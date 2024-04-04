@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
 import { thunkSignup } from "../../redux/session";
+
 import './SignupForm.css'
 
 
@@ -20,11 +21,26 @@ function SignupFormPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+
     if (password !== confirmPassword) {
       return setErrors({
         confirmPassword:
           "Confirm Password field must be the same as the Password field",
       });
+    }
+
+    if (password.length < 7){
+      return setErrors({
+        confirmPassword:
+          "Password must be a minimum of 7 characters"
+      })
+    }
+
+    if (password.length > 20){
+      return setErrors({
+        confirmPassword:
+          "Password must be a shroter than 20 characters"
+      })
     }
 
     const serverResponse = await dispatch(
@@ -46,7 +62,7 @@ function SignupFormPage() {
     <>
       <div className="SU-background">
         <div className="sign-up-container">
-          {errors.server && <p>{errors.server}</p>}
+
           <div className="SU-title">CREATE YOUR ACCOUNT</div>
 
           <form className="SU-form" onSubmit={handleSubmit}>
@@ -62,7 +78,7 @@ function SignupFormPage() {
                 />
               </div>
             </label>
-            {errors.email && <p>{errors.email}</p>}
+            {errors.email && <p className="SU-error-message">{errors.email}</p>}
 
 
             <label className='SU-text'>
@@ -76,7 +92,7 @@ function SignupFormPage() {
                 />
               </div>
             </label>
-            {errors.username && <p>{errors.username}</p>}
+            {errors.username && <p className="SU-error-message">{errors.username}</p>}
 
 
             <label className='SU-text'>
@@ -90,7 +106,7 @@ function SignupFormPage() {
                 />
               </div>
             </label>
-            {errors.password && <p>{errors.password}</p>}
+            {errors.password && <p className="SU-error-message">{errors.password}</p>}
 
 
             <label className='SU-text'>
@@ -104,8 +120,8 @@ function SignupFormPage() {
                 />
               </div>
             </label>
-            {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
-
+            {errors.confirmPassword && <p className="SU-error-message">{errors.confirmPassword}</p>}
+            {errors.server && <p className="SU-error-message">{errors.server}</p>}
 
             <button className="SU-btn" type="submit">Sign Up</button>
           </form>
