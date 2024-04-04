@@ -3,8 +3,8 @@ from sqlalchemy import Column, Integer, ForeignKey, DateTime
 from sqlalchemy.orm import relationship
 from datetime import datetime
 
-class ShoppingCart(db.Model):
-    __tablename__='shopping_cart'
+class Wishlist(db.Model):
+    __tablename__='wishlist'
 
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
@@ -12,19 +12,9 @@ class ShoppingCart(db.Model):
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     game_id = Column(Integer, ForeignKey(add_prefix_for_prod('game.id')), nullable=False)
-    quantity = Column(Integer)
+    rank = Column(Integer)
     createdAt = Column(DateTime, default=datetime.utcnow)
     updatedAt = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
-    users = relationship("User", back_populates="shopping_carts")
-    game = relationship("Game", back_populates="shopping_carts")
-
-    def to_dict(self):
-        return {
-            'id': self.id,
-            'user_id': self.user_id,
-            'game_id': self.game_id,
-            'quantity': self.quantity,
-            'createdAt': self.createdAt.isoformat(),
-            'updatedAt': self.updatedAt.isoformat(),
-        }
+    users = relationship("User", back_populates='wishlist')
+    game = relationship("Game", back_populates='wishlist')

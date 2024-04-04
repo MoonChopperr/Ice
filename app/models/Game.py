@@ -26,6 +26,7 @@ class Game(db.Model):
 
     owner = relationship("User", back_populates="games")
     shopping_carts = relationship("ShoppingCart", back_populates="game")
+    wishlist = relationship("Wishlist", back_populates='game')
 
     def to_dict(self):
         return {
