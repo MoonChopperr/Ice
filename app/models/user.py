@@ -19,7 +19,7 @@ class User(db.Model, UserMixin):
 
     shopping_carts = relationship("ShoppingCart", back_populates="users", cascade="all, delete-orphan")
     games = relationship("Game", back_populates="owner", cascade="all, delete-orphan")
-    wishlist = relationship("Wishlist", back_populates="wishlist", cascade="all, delete-orphan")
+    wishlist = relationship("Wishlist", back_populates="users", cascade="all, delete-orphan")
 
 
     @property
