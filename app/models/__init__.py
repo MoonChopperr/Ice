@@ -4,3 +4,4 @@ from .db import environment, SCHEMA
 from .Game import Game
 from .ShoppingCart import ShoppingCart
 from .Wishlist import Wishlist
+from .Review import Review

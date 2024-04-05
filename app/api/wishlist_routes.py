@@ -1,6 +1,6 @@
 from flask import Blueprint, request, redirect, jsonify
 from flask_login import login_required, current_user
-from app.models import Wishlist, db
+from app.models import Wishlist, db, Game
 
 wishlist_routes = Blueprint("wishlist", __name__)
 
@@ -25,6 +25,9 @@ def add_to_wishlist():
     if alr_exist_item:
         return {"message": "Game already in wishlist"},400
 
+    game = Game.query.get(game_id)
+    if not game:
+        return {"message": "Game doesn't exist"}, 404
 
     if not new_wishlist_item:
         return {"message": "Can't add to wishlist"}, 400

@@ -17,7 +17,7 @@ class Wishlist(db.Model):
     game_id = Column(
         Integer, ForeignKey(add_prefix_for_prod("game.id")), nullable=False
     )
-    rank = Column(Integer, unique=True)
+    rank = Column(Integer)
     createdAt = Column(DateTime, default=datetime.utcnow)
     updatedAt = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
@@ -25,13 +25,13 @@ class Wishlist(db.Model):
     game = relationship("Game", back_populates="wishlist")
 
     # decorator for rank attribute
-    @validates('rank')
-    def rank_icrement(self, key, rank):
-        if rank is not None:
-            items_to_update = Wishlist.query.filter_by(user_id=self.user_id).filter(Wishlist.rank >=rank).all()
-            for item in items_to_update:
-               item.rank+=1
-        return rank
+    # @validates('rank')
+    # def rank_icrement(self, key, rank):
+    #     if rank is not None:
+    #         items_to_update = Wishlist.query.filter_by(user_id=self.user_id).filter(Wishlist.rank >=rank).all()
+    #         for item in items_to_update:
+    #            item.rank+=1
+    #     return rank
 
     def to_dict(self):
         return {
@@ -44,5 +44,5 @@ class Wishlist(db.Model):
         }
 
         # event listener when rank changes
-    def update_ranks(target, value, oldvalue, initiator):
-        target.validate_rank('rank', value)
+    # def update_ranks(target, value, oldvalue, initiator):
+    #     target.validate_rank('rank', value)
