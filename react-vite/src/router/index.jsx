@@ -9,6 +9,7 @@ import DeleteGame from '../components/DeleteGame/DeleteGame';
 import LandingPage from '../components/LandingPage/LandingPage';
 import CartPage from '../components/CartPage/CartPage';
 import CartUpdate from '../components/CartUpdate/CartUpdate';
+import WishlistPage from '../components/WishlistPage/Wishlist';
 
 export const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ export const router = createBrowserRouter([
       {
         path:'/cart/update/:gameId',
         element: <CartUpdate/>,
+      },
+      {
+        path:'/wishlist/',
+        element: <WishlistPage/>
       }
     ],
   },

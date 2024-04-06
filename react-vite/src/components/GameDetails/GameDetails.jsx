@@ -8,7 +8,7 @@ import NavBar2 from "../NavBar2/NavBar2";
 
 import './GameDetails.css'
 import { thunkAddCart, thunkGetCart } from "../../redux/cart";
-
+import { thunkAddWishlist, thunkDeleteWishlistItem } from "../../redux/wishlist";
 
 function GameDetails() {
     const { gameId } = useParams()
@@ -23,6 +23,10 @@ function GameDetails() {
     const userCart = userOrders?.cart?.currentCart
 
     const [cartNum, setCartNum] = useState(false)
+    const [wishlistNum, setWishlistNum] = useState(false)
+
+    const userWishlist = useSelector(state => state.wishlist.currentWishlist)
+    const wishlist = userWishlist?.currentWishlist
 
     // const reRenderCart = () => {
     //     setCartNum(!cartNum)
@@ -48,6 +52,37 @@ function GameDetails() {
         }
 
     }
+
+    const addToWishlist = (gameId) => {
+
+        const currWishlist = wishlist?.map(item => item.game_id)
+
+        if (!currWishlist?.includes(gameId)) {
+            const newWishlistItem = {
+                game_id: gameId
+            }
+
+            dispatch(thunkAddWishlist(newWishlistItem))
+            alert('Game added to wishlist')
+
+            setWishlistNum(prevState => !prevState)
+        }
+    }
+
+    //check if in wishlist
+    // function handleAddWishlist(gameId){
+    //     const isInWishlist = wishlist.some(item=>item.game_id === gameId)
+    //     if(isInWishlist){
+    //         dispatch(thunkDeleteWishlistItem(gameId))
+    //     }else{
+    //         const newWishlistItem = {
+    //             game_id: gameId
+    //         }
+    //         dispatch(thunkAddWishlist(newWishlistItem))
+    //         alert('Game added to wishlist')
+    //     }
+    //     setWishlistNum(prevState => !prevState)
+    // }
 
     //check user if owner
     function isOwner(currUser) {
@@ -116,7 +151,7 @@ function GameDetails() {
         dispatch(thunkOneGame(gameId))
         dispatch(thunkAddCart())
         dispatch(thunkGetCart())
-    }, [gameId, dispatch, cartNum])
+    }, [gameId, dispatch, cartNum, wishlistNum])
 
 
 
@@ -210,6 +245,10 @@ function GameDetails() {
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <div className="gd-wishlist-container">
+                        <button className="gd-wishlist-btn" onClick={() => addToWishlist(game.id)}>Add to your wishlist</button>
                     </div>
 
                     <div className="below-splash">

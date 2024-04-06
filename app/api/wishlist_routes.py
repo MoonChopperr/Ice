@@ -5,11 +5,11 @@ from app.models import Wishlist, db, Game
 wishlist_routes = Blueprint("wishlist", __name__)
 
 
-@wishlist_routes.route("/<int:user_id>")
+@wishlist_routes.route("/current")
 @login_required
-def get_user_wishlist(user_id):
+def get_user_wishlist():
     """View user's wishlist"""
-    wishlist_items = Wishlist.query.filter_by(user_id=user_id).all()
+    wishlist_items = Wishlist.query.filter_by(user_id=current_user.id).all()
     return {"currentWishlist": [item.to_dict() for item in wishlist_items]}, 200
 
 

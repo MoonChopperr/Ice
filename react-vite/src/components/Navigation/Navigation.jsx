@@ -26,8 +26,11 @@ function Navigation() {
               </a>
             </li>
             <li className="nl"><a className="nla" onClick={() => alert('Feature coming soon')}>SUPPORT</a></li>
-            <li className="nl"><a>{currUser && (<NavLink to='/game/create' className="nlacreate">POST YOUR GAME</NavLink>)}</a></li>
-
+            <li className="nl">
+              {currUser && (
+                <NavLink to='/game/create' className="nla nlacreate">POST YOUR GAME</NavLink>
+              )}
+            </li>
           </ul>
 
           <div className="user-account">

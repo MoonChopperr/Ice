@@ -1,0 +1,114 @@
+.Wishlist-container{
+    padding-top: 30px;
+    /* border: 1px solid red; */
+    margin: 0px 25.5%;
+
+}
+
+.WL-username{
+    color:white;
+    font-size: 25px;
+    font-weight: 400;
+}
+
+.WL-hr{
+    height: 1px;
+    border: 0;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin-bottom: 10px;
+}
+
+.WL-remove{
+    color: #adafb1;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    font-size: 12px;
+}
+
+.WL-remove:hover{
+    cursor:pointer;
+    filter: brightness(150%);
+}
+
+.WL-text{
+    font-size: 12px;
+    color: #adafb1;
+
+}
+
+.WL-game-img{
+    height: 140px;
+    width: 300px;
+}
+
+.WL-game-card{
+    padding: 14px 30px;
+    background-color:#3B4D5E;
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+}
+
+.WL-right{
+    margin-left:1em;
+}
+
+.WL-title{
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+
+}
+
+.WL-mid{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    /* gap: 120px; */
+    /* border: 1px solid red; */
+
+}
+
+.WL-addto-container{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #2F3D4B;
+    margin-left: 55%;
+
+}
+
+.WL-price{
+    color:white;
+    font-size: 15px;
+    margin-right: 10px;
+}
+
+.WL-cart-btn{
+    background-image: linear-gradient(to right, #75B022, #558817);
+    border: none;
+    color: white;
+    padding: 8px 10px;
+    border-radius: 3px;
+    margin-right: 3px;
+    cursor: pointer;
+}
+
+.WL-mid-container{
+    margin-top: 13px;
+}
+
+.WL-subtitle{
+color:#adafb1;
+font-size: 11px;
+font-weight: 300;
+margin-bottom: 3px;
+}
+
+.WL-btm{
+    margin-top: 7%;
+    display: flex;
+    justify-content: flex-end;
+
+}
