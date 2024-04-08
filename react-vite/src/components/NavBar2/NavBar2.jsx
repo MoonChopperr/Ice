@@ -19,6 +19,8 @@ function NavBar2() {
     //     return cart?.length()
     // }
 
+
+
     const userCart = userOrders?.cart?.currentCart
     // console.log('@CART@', userCart)
 
