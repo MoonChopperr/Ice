@@ -81,6 +81,7 @@ def delete_cart(id):
 @cart_routes.route("/clear", methods=["DELETE"])
 @login_required
 def clear_cart():
+    """Clears entire cart"""
     all_items = ShoppingCart.query.filter_by(user_id=current_user.id).all()
 
     if not all_items:
