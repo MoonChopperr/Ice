@@ -21,8 +21,22 @@ function WishlistPage() {
     const [forceRerender, setForceRerender] = useState(false)
 
 
+    // function getGames() {
+    //     const inWishlist = wishlist?.map(item => {
+    //         const game = allGames?.find(game => game.id === item.game_id)
+    //         return {
+    //             ...game,
+    //             WLcreatedAt: item.createdAt,
+    //             rank: item.rank
+    //         }
+    //     })
+    //     console.log('goal', inWishlist)
+    //     return inWishlist?.filter(game => game)
+    // }
+
     function getGames() {
-        const inWishlist = wishlist?.map(item => {
+        const sortedGames = userWishlist?.currentWishlist?.sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+        const updatedRanks = sortedGames?.map((item, index) => {
             const game = allGames?.find(game => game.id === item.game_id)
             return {
                 ...game,
@@ -30,10 +44,8 @@ function WishlistPage() {
                 rank: item.rank
             }
         })
-        console.log('goal', inWishlist)
-        return inWishlist?.filter(game => game)
+        return updatedRanks?.filter(game => game)
     }
-
 
 
     function formatDate(date) {
@@ -61,9 +73,21 @@ function WishlistPage() {
         setForceRerender(!forceRerender)
     }
 
-    function handleEdit(wishlist_item_id){
-        dispatch(thunkUpdateWishlist(wishlist_item_id))
-        
+    // function handleEdit(wishlist_item_id){
+    //     dispatch(thunkUpdateWishlist(wishlist_item_id))
+
+    // }
+
+    const handleEdit = async (wishlistItemId, newRankValue) => {
+        const rank = parseInt(newRankValue)
+        if (isNaN(rank)) {
+            return
+        }
+        const updatedItem = {
+            rank: rank.toString(),
+        };
+        await dispatch(thunkUpdateWishlist(wishlistItemId, updatedItem))
+        setForceRerender(!forceRerender)
     }
 
     useEffect(() => {
@@ -108,7 +132,10 @@ function WishlistPage() {
                                 </div>
                             </div>
 
-                            <div className="WL-text">Rank: {game.rank}</div>
+                            {/* <div className="WL-text">Rank: {game.rank}</div> */}
+                            <div className="WL-text">
+                                Rank: <input type="text" value={game.rank} onChange={(e) => handleEdit(game.id, e.target.value)} />
+                            </div>
 
                             <div className="WL-btm">
                                 <span className="WL-text"> Added on {formatDateAddedOn(game.WLcreatedAt)}</span>
