@@ -35,7 +35,18 @@ function WishlistPage() {
     // }
 
     function getGames() {
-        const sortedGames = userWishlist?.currentWishlist?.sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+        // const sortedGames = userWishlist?.currentWishlist?.sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+        const sortedGames = userWishlist?.currentWishlist?.sort((a, b) => {
+            if (a.rank && b.rank) {
+                return a.rank - b.rank
+            } else if (a.rank) {
+                return -1
+            } else if (b.rank) {
+                return 1
+            } else {
+                return 0
+            }
+        })
         const updatedRanks = sortedGames?.map((item, index) => {
             const game = allGames?.find(game => game.id === item.game_id)
             return {
@@ -47,6 +58,8 @@ function WishlistPage() {
         return updatedRanks?.filter(game => game)
     }
 
+    const games = getGames()
+    console.log('games', games)
 
     function formatDate(date) {
         if (!date) {
@@ -79,13 +92,22 @@ function WishlistPage() {
     // }
 
     const handleEdit = async (wishlistItemId, newRankValue) => {
-        const rank = parseInt(newRankValue)
-        if (isNaN(rank)) {
-            return
-        }
+        // const rank = parseInt(newRankValue)
+        let rank = newRankValue === '' ? null : parseInt(newRankValue)
+
         const updatedItem = {
-            rank: rank.toString(),
-        };
+            rank: rank > userWishlist.currentWishlist.length ? userWishlist.currentWishlist.length : rank
+        }
+
+        const currItem = wishlist.find(item => item.id === wishlistItemId)
+        const sameRank = wishlist.find(item=>item.rank === rank && item.id !== wishlistItemId)
+        if(sameRank){
+            const updateDuplicateRank={
+                rank: currItem.rank
+            }
+            await dispatch(thunkUpdateWishlist(sameRank.id, updateDuplicateRank))
+        }
+
         await dispatch(thunkUpdateWishlist(wishlistItemId, updatedItem))
         setForceRerender(!forceRerender)
     }
@@ -134,7 +156,8 @@ function WishlistPage() {
 
                             {/* <div className="WL-text">Rank: {game.rank}</div> */}
                             <div className="WL-text">
-                                Rank: <input type="text" value={game.rank} onChange={(e) => handleEdit(game.id, e.target.value)} />
+                                Rank: <input type="number" value={game.rank} onChange={(e) => handleEdit((wishlist.find(item => item.game_id === game.id)).id, e.target.value)} />
+                                {/* //need to do a find here as well probably because its gameid 11 where wishlist should be 1,2,3 */}
                             </div>
 
                             <div className="WL-btm">

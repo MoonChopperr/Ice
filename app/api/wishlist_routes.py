@@ -19,7 +19,7 @@ def add_to_wishlist():
     """Add game to wishlist"""
     data = request.json
     game_id = data.get("game_id")
-    new_wishlist_item = Wishlist(user_id=current_user.id, game_id=game_id, rank=0)
+    new_wishlist_item = Wishlist(user_id=current_user.id, game_id=game_id, rank='')
 
     alr_exist_item = Wishlist.query.filter_by(user_id=current_user.id, game_id=game_id).first()
     if alr_exist_item:
@@ -43,6 +43,7 @@ def add_to_wishlist():
 def update_wishlist_item(wishlist_item_id):
     """Update rank to wishlist item"""
     data = request.json
+
     wishlist_item = Wishlist.query.get(wishlist_item_id)
 
     if wishlist_item.user_id != current_user.id:
