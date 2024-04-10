@@ -10,7 +10,8 @@ import LandingPage from '../components/LandingPage/LandingPage';
 import CartPage from '../components/CartPage/CartPage';
 import CartUpdate from '../components/CartUpdate/CartUpdate';
 import WishlistPage from '../components/WishlistPage/Wishlist';
-
+import News from '../components/News/News';
+import Support from '../components/Support/Support';
 export const router = createBrowserRouter([
   {
     element: <Layout />,
@@ -54,6 +55,14 @@ export const router = createBrowserRouter([
       {
         path:'/wishlist/',
         element: <WishlistPage/>
+      },
+      {
+        path:'/news',
+        element: <News/>
+      },
+      {
+        path:'/support',
+        element: <Support/>
       }
     ],
   },

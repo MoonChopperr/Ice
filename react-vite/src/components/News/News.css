@@ -1,0 +1,12 @@
+.News-container {
+    padding-top: 10%;
+    margin: 0 5%;
+}
+
+.News-Card {
+    color: white;
+    background-image: linear-gradient(to right, #3A404A, #32353E);
+}
+
+.News-Card:hover {
+    background-image: linear-gradient(to right, #4B515E, #4B515E);}
