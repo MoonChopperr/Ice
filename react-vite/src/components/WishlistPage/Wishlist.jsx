@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { thunkDeleteWishlistItem } from "../../redux/wishlist";
 import { thunkGetWishlist, thunkUpdateWishlist } from "../../redux/wishlist";
 import { thunkAllGames } from "../../redux/game";
-import { thunkAddCart } from "../../redux/cart";
+import { thunkAddCart, thunkGetCart } from "../../redux/cart";
 import './Wishlist.css'
 
 function WishlistPage() {
@@ -58,7 +58,8 @@ function WishlistPage() {
             return {
                 ...game,
                 WLcreatedAt: item.createdAt,
-                rank: item.rank
+                rank: item.rank,
+                inCart: userCart?.some(cartItem => cartItem.game_id === item.game_id)
             }
         })
         return updatedRanks?.filter(game => game)
@@ -148,7 +149,7 @@ function WishlistPage() {
         const currCart = userCart?.map(item => item.game_id)
 
         if (currCart?.includes(gameId)) {
-            alert("This item is in your cart already, please change the quantity in your cart page")
+            alert("This item is in your cart already")
         } else {
             const newOrder = {
                 game_id: gameId
@@ -167,6 +168,7 @@ function WishlistPage() {
     useEffect(() => {
         dispatch(thunkGetWishlist())
         dispatch(thunkAllGames())
+        dispatch(thunkGetCart())
         setForceRerender(false)
     }, [dispatch, cartNum, forceRerender])
 
@@ -202,7 +204,11 @@ function WishlistPage() {
 
                                 <div className="WL-addto-container">
                                     <span className="WL-price">${game?.price}</span>
-                                    <button className="WL-cart-btn" onClick={() => addToCart(game.id)}>In Cart/Add to Cart</button>
+                                    {game.inCart ? (
+                                        <button className="WL-cart-btn"onClick={() => addToCart(game.id)}>In Cart</button>
+                                    ) : (
+                                        <button className="WL-cart-btn" onClick={() => addToCart(game.id)}>Add to Cart</button>
+                                    )}
                                 </div>
                             </div>
 

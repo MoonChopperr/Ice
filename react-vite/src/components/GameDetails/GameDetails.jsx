@@ -8,7 +8,7 @@ import NavBar2 from "../NavBar2/NavBar2";
 
 import './GameDetails.css'
 import { thunkAddCart, thunkGetCart } from "../../redux/cart";
-import { thunkAddWishlist, thunkDeleteWishlistItem } from "../../redux/wishlist";
+import { thunkAddWishlist, thunkDeleteWishlistItem, thunkGetWishlist } from "../../redux/wishlist";
 
 function GameDetails() {
     const { gameId } = useParams()
@@ -54,35 +54,24 @@ function GameDetails() {
     }
 
     const addToWishlist = (gameId) => {
-
         const currWishlist = wishlist?.map(item => item.game_id)
 
-        if (!currWishlist?.includes(gameId)) {
+        if (currWishlist?.includes(gameId)) {
+            const wishlistItem = wishlist.find(item => item.game_id === gameId)
+            dispatch(thunkDeleteWishlistItem(wishlistItem.id))
+            alert('Game removed from wishlist')
+        } else {
             const newWishlistItem = {
                 game_id: gameId,
             }
 
             dispatch(thunkAddWishlist(newWishlistItem))
             alert('Game added to wishlist')
-
-            setWishlistNum(prevState => !prevState)
         }
+
+        setWishlistNum(prevState => !prevState)
     }
 
-    //check if in wishlist
-    // function handleAddWishlist(gameId){
-    //     const isInWishlist = wishlist.some(item=>item.game_id === gameId)
-    //     if(isInWishlist){
-    //         dispatch(thunkDeleteWishlistItem(gameId))
-    //     }else{
-    //         const newWishlistItem = {
-    //             game_id: gameId
-    //         }
-    //         dispatch(thunkAddWishlist(newWishlistItem))
-    //         alert('Game added to wishlist')
-    //     }
-    //     setWishlistNum(prevState => !prevState)
-    // }
 
     //check user if owner
     function isOwner(currUser) {
@@ -92,10 +81,6 @@ function GameDetails() {
     }
 
     const isGameOwner = isOwner(currUser)
-    // console.log('isGameOwner', isGameOwner)
-    // console.log('currUserId', currUser?.user.id)
-    // console.log('gameId', game?.owner_id)
-    // console.log('owner?', isOwner(currUser))
 
     //FormatDateHelper
     function formatDate(date) {
@@ -149,7 +134,7 @@ function GameDetails() {
     // console.log('franchise', game?.franchise)
     useEffect(() => {
         dispatch(thunkOneGame(gameId))
-        
+        dispatch(thunkGetWishlist())
         dispatch(thunkGetCart())
     }, [gameId, dispatch, cartNum, wishlistNum])
 
@@ -248,7 +233,11 @@ function GameDetails() {
                     </div>
 
                     <div className="gd-wishlist-container">
-                        <button className="gd-wishlist-btn" onClick={() => addToWishlist(game.id)}>Add to your wishlist</button>
+                        {wishlist?.some(item => item.game_id === game.id) ? (
+                            <button className="gd-wishlist-btn" onClick={() => addToWishlist(game.id)}>Remove from wishlist</button>
+                        ) : (
+                            <button className="gd-wishlist-btn" onClick={() => addToWishlist(game.id)}>Add to wishlist</button>
+                        )}
                     </div>
 
                     <div className="below-splash">

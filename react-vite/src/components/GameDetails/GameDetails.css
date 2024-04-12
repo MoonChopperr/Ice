@@ -228,3 +228,19 @@ body {
     padding: 15px;
     font-size: 22px;
 }
+
+.gd-wishlist-btn{
+    /* margin-top: 1rem; */
+    padding: 1% 2%;
+    color: #67c1f5;
+    background-color: #264257;
+    border:none;
+    border-radius: 3px;
+    cursor: pointer
+
+}
+
+.gd-wishlist-container{
+    padding:  1.5% 2%;
+    background-color:#182230;
+}
