@@ -17,7 +17,7 @@ function Support() {
                     <div className='SUP-early-container'>
                         <div className='SUP-early-title'>HAVING TROUBLE ACCESSING AN ICE COMMUNITY FEATURE?</div>
                         <div className='SUP-early-description'>
-                            New accounts are limited from using all of Steam's community features. You'll have access to all of Steam's features once you've spent $5.00 USD in the Steam store or added $5.00 USD to your Steam Wallet. Some of the features that you won't be able to access are:
+                            New accounts are limited from using all of Steam&apos;s community features. You&apos;ll have access to all of Steam&apos;s features once you&apos;ve spent $5.00 USD in the Steam store or added $5.00 USD to your Steam Wallet. Some of the features that you won&apos;t be able to access are:
                             <li>Adding friends on Steam</li>
                             <li>Buying or Selling items on the Steam Community Market</li>
                             <li>Creating a Group on Steam Community</li>

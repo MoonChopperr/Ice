@@ -53,7 +53,7 @@ function WishlistPage() {
                 return 0
             }
         })
-        const updatedRanks = sortedGames?.map((item, index) => {
+        const updatedRanks = sortedGames?.map((item) => {
             const game = allGames?.find(game => game.id === item.game_id)
             return {
                 ...game,
@@ -185,7 +185,7 @@ function WishlistPage() {
                     )}
                 </div>
 
-                <div className="WL-username">{currUser.username.toUpperCase()}'s WISHLIST</div>
+                <div className="WL-username">{currUser.username.toUpperCase()}&apos;s WISHLIST</div>
                 <hr className="WL-hr" />
                 {getGames()?.map(game => (
                     <div key={game.id} className="WL-game-card">
