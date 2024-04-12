@@ -59,7 +59,7 @@ function GameDetails() {
 
         if (!currWishlist?.includes(gameId)) {
             const newWishlistItem = {
-                game_id: gameId
+                game_id: gameId,
             }
 
             dispatch(thunkAddWishlist(newWishlistItem))
