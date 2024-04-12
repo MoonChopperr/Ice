@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { thunkDeleteWishlistItem } from "../../redux/wishlist";
 import { thunkGetWishlist, thunkUpdateWishlist } from "../../redux/wishlist";
 import { thunkAllGames } from "../../redux/game";
+import { thunkAddCart } from "../../redux/cart";
 import './Wishlist.css'
 
 function WishlistPage() {
@@ -18,7 +19,7 @@ function WishlistPage() {
     const wishlist = userWishlist?.currentWishlist
     console.log('wishlist', wishlist)
     const [forceRerender, setForceRerender] = useState(false)
-
+    const [cartNum, setCartNum] = useState(false)
 
     // function getGames() {
     //     const inWishlist = wishlist?.map(item => {
@@ -32,6 +33,12 @@ function WishlistPage() {
     //     console.log('goal', inWishlist)
     //     return inWishlist?.filter(game => game)
     // }
+
+    useEffect(() => {
+        dispatch(thunkGetWishlist())
+        dispatch(thunkAllGames())
+        setForceRerender(false)
+    }, [dispatch, forceRerender])
 
     function getGames() {
         // const sortedGames = userWishlist?.currentWishlist?.sort((a, b) => a.createdAt.localeCompare(b.createdAt))
@@ -115,24 +122,53 @@ function WishlistPage() {
         await dispatch(thunkUpdateWishlist(wishlistItemId, updatedItem))
         setForceRerender(!forceRerender)
 
+        // filter any 0 rank items
         const zeroRankItems = wishlist.filter(item => item.rank === 0)
         console.log('zeroRankItems:', zeroRankItems)
 
-        for (let i = 0; i < zeroRankItems.length; i++) {
-            const zeroRankItem = zeroRankItems[i];
-            const updatedZeroRankItem = {
-                rank: userWishlist.currentWishlist.length + 1
-            }
-            console.log('Updated rank:', updatedZeroRankItem.rank)
+        if (zeroRankItems.length > 0) {
+            const highestRank = Math.max(...wishlist.map((item) => item.rank))
+            // when an update is dispatched, a check in the wishlist arr for 0 ranks is sent and updates any at 0 to length
+            for (let i = 0; i < zeroRankItems.length; i++) {
+                const zeroRankItem = zeroRankItems[i];
+                const updatedZeroRankItem = {
+                    rank: highestRank + i + 1,
+                }
+                console.log('Updated rank:', updatedZeroRankItem.rank)
 
-            await dispatch(thunkUpdateWishlist(zeroRankItem.id, updatedZeroRankItem))
+                await dispatch(thunkUpdateWishlist(zeroRankItem.id, updatedZeroRankItem))
+            }
         }
     }
+
+    //cart handling
+
+    const addToCart = (gameId) => {
+
+        const currCart = userCart?.map(item => item.game_id)
+
+        if (currCart?.includes(gameId)) {
+            alert("This item is in your cart already, please change the quantity in your cart page")
+        } else {
+            const newOrder = {
+                game_id: gameId
+            }
+
+            dispatch(thunkAddCart(newOrder))
+            alert('Game added to cart')
+
+            setCartNum(prevState => !prevState)
+        }
+
+    }
+
+
 
     useEffect(() => {
         dispatch(thunkGetWishlist())
         dispatch(thunkAllGames())
-    }, [dispatch, forceRerender])
+        setForceRerender(false)
+    }, [dispatch, cartNum, forceRerender])
 
     return (
         <>
@@ -166,12 +202,12 @@ function WishlistPage() {
 
                                 <div className="WL-addto-container">
                                     <span className="WL-price">${game?.price}</span>
-                                    <button className="WL-cart-btn">In Cart/Add to Cart</button>
+                                    <button className="WL-cart-btn" onClick={() => addToCart(game.id)}>In Cart/Add to Cart</button>
                                 </div>
                             </div>
 
                             <div className="WL-text">
-                                Rank: <input type="number" value={game.rank !== null && game.rank !== '' ? game.rank : 0} onClick={handleInputClick} onChange={(e) => handleEdit((wishlist.find(item => item.game_id === game.id)).id, e.target.value)} />
+                                Rank: <input type="text" pattern="\d*" inputMode="numeric" value={game.rank !== null && game.rank !== '' ? game.rank : 0} onClick={handleInputClick} onChange={(e) => handleEdit((wishlist.find(item => item.game_id === game.id)).id, e.target.value)} />
                             </div>
 
                             <div className="WL-btm">

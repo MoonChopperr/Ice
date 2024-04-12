@@ -149,7 +149,7 @@ function GameDetails() {
     // console.log('franchise', game?.franchise)
     useEffect(() => {
         dispatch(thunkOneGame(gameId))
-        dispatch(thunkAddCart())
+        
         dispatch(thunkGetCart())
     }, [gameId, dispatch, cartNum, wishlistNum])
 
