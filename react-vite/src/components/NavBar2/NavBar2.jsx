@@ -42,7 +42,7 @@ function NavBar2() {
                     <a onClick={() => alert('Feature coming soon')}>New & Noteworthy</a>
                     <a onClick={() => alert('Feature coming soon')}>Categories</a>
                     <a onClick={() => alert('Feature coming soon')}>Points Shop</a>
-                    <a onClick={() => alert('Feature coming soon')}>News</a>
+                    <a onClick={() => nav('/news')}>News</a>
                     <a onClick={() => alert('Feature coming soon')}>Labs</a>
                     <div className="search-bar">
                         <input type="text" placeholder="search" />
