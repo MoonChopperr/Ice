@@ -112,3 +112,11 @@ margin-bottom: 3px;
     justify-content: flex-end;
 
 }
+
+.WL-rank{
+    width:1.5rem;
+    background-color: #313C48;
+    color: #adafb1;
+    border: #313C48;
+    text-align: center;
+}

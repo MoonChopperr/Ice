@@ -21,24 +21,15 @@ function WishlistPage() {
     const [forceRerender, setForceRerender] = useState(false)
     const [cartNum, setCartNum] = useState(false)
 
-    // function getGames() {
-    //     const inWishlist = wishlist?.map(item => {
-    //         const game = allGames?.find(game => game.id === item.game_id)
-    //         return {
-    //             ...game,
-    //             WLcreatedAt: item.createdAt,
-    //             rank: item.rank
-    //         }
-    //     })
-    //     console.log('goal', inWishlist)
-    //     return inWishlist?.filter(game => game)
-    // }
-
     useEffect(() => {
         dispatch(thunkGetWishlist())
         dispatch(thunkAllGames())
         setForceRerender(false)
     }, [dispatch, forceRerender])
+
+    if (!currUser){
+        nav('/')
+    }
 
     function getGames() {
         // const sortedGames = userWishlist?.currentWishlist?.sort((a, b) => a.createdAt.localeCompare(b.createdAt))
@@ -185,7 +176,7 @@ function WishlistPage() {
                     )}
                 </div>
 
-                <div className="WL-username">{currUser.username.toUpperCase()}&apos;s WISHLIST</div>
+                <div className="WL-username">{currUser?.username.toUpperCase()}&apos;s WISHLIST</div>
                 <hr className="WL-hr" />
                 {getGames()?.map(game => (
                     <div key={game.id} className="WL-game-card">
@@ -213,7 +204,7 @@ function WishlistPage() {
                             </div>
 
                             <div className="WL-text">
-                                Rank: <input type="text" pattern="\d*" inputMode="numeric" value={game.rank !== null && game.rank !== '' ? game.rank : 0} onClick={handleInputClick} onChange={(e) => handleEdit((wishlist.find(item => item.game_id === game.id)).id, e.target.value)} />
+                                Rank: <input className="WL-rank" type="text" pattern="\d*" inputMode="numeric" value={game.rank !== null && game.rank !== '' ? game.rank : 0} onClick={handleInputClick} onChange={(e) => handleEdit((wishlist.find(item => item.game_id === game.id)).id, e.target.value)} />
                             </div>
 
                             <div className="WL-btm">

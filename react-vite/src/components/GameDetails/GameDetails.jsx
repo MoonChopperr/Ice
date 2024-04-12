@@ -233,7 +233,7 @@ function GameDetails() {
                     </div>
 
                     <div className="gd-wishlist-container">
-                        {wishlist?.some(item => item.game_id === game.id) ? (
+                        {wishlist?.some(item => item?.game_id === game?.id) ? (
                             <button className="gd-wishlist-btn" onClick={() => addToWishlist(game.id)}>Remove from wishlist</button>
                         ) : (
                             <button className="gd-wishlist-btn" onClick={() => addToWishlist(game.id)}>Add to wishlist</button>

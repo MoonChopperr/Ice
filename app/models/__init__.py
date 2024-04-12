@@ -5,3 +5,4 @@ from .Game import Game
 from .ShoppingCart import ShoppingCart
 from .Wishlist import Wishlist
 from .Review import Review
+from .Library import Library

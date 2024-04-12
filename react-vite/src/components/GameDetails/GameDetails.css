@@ -239,6 +239,11 @@ body {
 
 }
 
+.gd-wishlist-btn:hover{
+    color:white;
+    background-image: linear-gradient(to right, #66BEF1, transparent);
+}
+
 .gd-wishlist-container{
     padding:  1.5% 2%;
     background-color:#182230;
