@@ -93,6 +93,10 @@ function WishlistPage() {
 
     const handleEdit = async (wishlistItemId, newRankValue) => {
         // const rank = parseInt(newRankValue)
+        if(newRankValue === null){
+            return
+        }
+
         let rank = newRankValue === '' ? null : parseInt(newRankValue)
 
         const updatedItem = {
@@ -154,10 +158,8 @@ function WishlistPage() {
                                 </div>
                             </div>
 
-                            {/* <div className="WL-text">Rank: {game.rank}</div> */}
                             <div className="WL-text">
                                 Rank: <input type="number" value={game.rank} onChange={(e) => handleEdit((wishlist.find(item => item.game_id === game.id)).id, e.target.value)} />
-                                {/* //need to do a find here as well probably because its gameid 11 where wishlist should be 1,2,3 */}
                             </div>
 
                             <div className="WL-btm">

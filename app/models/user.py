@@ -14,7 +14,7 @@ class User(db.Model, UserMixin):
     id = Column(Integer, primary_key=True)
     email = Column(String(255), nullable=False, unique=True)
     username = Column(String(32), nullable=False, unique=True)
-    hashed_password = Column(String(255), nullable=False)
+    hashed_password = Column(String(255), nullable=True, default=None)
     wallet = Column(Numeric(12,2))
 
     shopping_carts = relationship("ShoppingCart", back_populates="users", cascade="all, delete-orphan")
@@ -38,5 +38,5 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email,
-            'wallet': float(self.wallet),
+            'wallet': self.wallet,
         }

@@ -98,6 +98,7 @@ function LoginFormPage() {
                 <button className='sign-in-btn' type="submit">Sign in</button>
                 <button className='sign-in-demo' type='submit' onClick={demoUser}> Sign in as a Demo User</button>
               </form>
+              <a href={`${window.origin}/api/auth/oauth_login`}><button>OAUTH</button></a>
             </div>
           </div>
         </div>
