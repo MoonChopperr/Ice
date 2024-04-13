@@ -10,13 +10,15 @@ import gameReducer from "./game";
 import cartReducer from "./cart";
 import wishlistReducer from "./wishlist";
 import libraryReducer from "./library";
+import reviewReducer from "./review";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   game: gameReducer,
   cart: cartReducer,
   wishlist: wishlistReducer,
-  library: libraryReducer
+  library: libraryReducer,
+  review: reviewReducer
 });
 
 let enhancer;
