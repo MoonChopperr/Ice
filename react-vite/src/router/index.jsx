@@ -12,6 +12,7 @@ import CartUpdate from '../components/CartUpdate/CartUpdate';
 import WishlistPage from '../components/WishlistPage/Wishlist';
 import News from '../components/News/News';
 import Support from '../components/Support/Support';
+import Library from '../components/Library/Library';
 export const router = createBrowserRouter([
   {
     element: <Layout />,
@@ -63,6 +64,10 @@ export const router = createBrowserRouter([
       {
         path:'/support',
         element: <Support/>
+      },
+      {
+        path:'/library',
+        element: <Library/>
       }
     ],
   },

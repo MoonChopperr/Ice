@@ -19,7 +19,7 @@ function Navigation() {
           </NavLink>
           <ul className="nav-links">
             <li className="nl"><a className="nla-store" onClick={() => nav('/')}>STORE</a></li>
-            <li className="nl"><a className="nla" onClick={() => alert('Feature coming soon')}>LIBRARY</a></li>
+            <li className="nl"><a className="nla" onClick={() => nav('/library')}>LIBRARY</a></li>
             <li className="nl">
               <a className="nla" onClick={() => alert('Feature coming soon')}>
                 {currUser ? currUser.username.toUpperCase() : "ABOUT"}

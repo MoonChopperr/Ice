@@ -9,12 +9,14 @@ import sessionReducer from "./session";
 import gameReducer from "./game";
 import cartReducer from "./cart";
 import wishlistReducer from "./wishlist";
+import libraryReducer from "./library";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   game: gameReducer,
   cart: cartReducer,
-  wishlist: wishlistReducer
+  wishlist: wishlistReducer,
+  library: libraryReducer
 });
 
 let enhancer;

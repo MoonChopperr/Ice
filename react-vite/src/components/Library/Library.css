@@ -1,0 +1,53 @@
+.LB-container{
+    margin: 0 10%;
+    margin-top: 10%;
+    /* border: 1px solid red; */
+}
+
+.LB-title{
+    color: white;
+    font-weight: 600;
+}
+
+.LB-items-container{
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.LB-item{
+    /* border: 1px solid red;*/
+    padding: .5% 1%;
+    background-color: #3b4d5e57;
+}
+
+.LB-item-title{
+    color: #c7d5e0;
+    font-weight: 500;
+    margin-bottom: 2%;
+}
+
+.LB-item-img{
+    height: 140px;
+    width: 300px;
+}
+
+.LB-playtime{
+    color: #adafb1;
+    font-size: 12px;
+}
+
+.LB-playtime-value{
+    color: #adafb1;
+    font-size: 12px;
+}
+
+.LB-purchased-value{
+    color: #adafb1;
+    font-size: 12px;
+}
+
+.LB-purchased{
+    color: #adafb1;
+    font-size: 12px;
+}

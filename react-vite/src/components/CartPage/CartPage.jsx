@@ -5,6 +5,7 @@ import { thunkGetCart } from '../../redux/cart'
 import { thunkAllGames } from '../../redux/game'
 import { thunkDeleteItem } from '../../redux/cart'
 import { thunkClearCart } from '../../redux/cart'
+import { thunkAddLibrary } from '../../redux/library'
 
 import NavBar2 from '../NavBar2/NavBar2'
 import './CartPage.css'
@@ -23,8 +24,11 @@ function CartPage() {
     const [forceRerender, setForceRerender] = useState(false)
     // const [rmAllRerender, setRmALLRerender] = useState(false)
     // console.log(userCart.length)
-    //LOGOUT REDIRECT NAV
 
+    //LOGOUT REDIRECT NAV
+    if (!currUser){
+        nav('/')
+    }
     // console.log('userOrdersBEFORE', userOrders)
     // console.log('userCartAFTER', userCart)
 
@@ -59,10 +63,13 @@ function CartPage() {
         setForceRerender(!forceRerender)
     }
 
-    // const handleClearCart = (id) => {
-    //     dispatch(thunkClearCart(id))
-    //     setRmALLRerender(prev => !prev)
-    // }
+    const handleCheckout = async () =>{
+        const result = await dispatch(thunkAddLibrary(userCart))
+        console.log("checkout", result)
+        if (!result.errors) {
+            dispatch(thunkClearCart());
+        }
+    }
 
     useEffect(() => {
         dispatch(thunkGetCart())
@@ -108,7 +115,7 @@ function CartPage() {
                                 <button onClick={() => nav('/login')}>Sign in to purchase</button>
                             )}
                             {currUser && (
-                                <button className='cart-checkout-btn' onClick={()=>dispatch(thunkClearCart())}>Continue to payment</button>
+                                <button className='cart-checkout-btn' onClick={handleCheckout}>Continue to payment</button>
                             )}
                         </div>
 
