@@ -14,8 +14,8 @@ class Review(db.Model):
     game_id = Column(Integer, ForeignKey(add_prefix_for_prod('game.id')), nullable=False)
     review = Column(String(2000), nullable=False)
     rating = Column(Integer, nullable=False)
-    helpful = Column(Integer)
-    funny = Column(Integer)
+    helpful = Column(Integer, default=0)
+    funny = Column(Integer, default=0)
     createdAt = db.Column(db.DateTime, default=datetime.utcnow)
     updatedAt = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 

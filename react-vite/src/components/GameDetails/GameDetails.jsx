@@ -20,6 +20,9 @@ function GameDetails() {
     // const actualGame = Object.values(game)
     // console.log('actualgame', actualGame)
     const currUser = useSelector(state => state.session)
+    const library = useSelector(state => state.library)
+    const currLibrary = library.currentLibrary.library
+    console.log('currlIbra', currLibrary)
 
     const userOrders = useSelector(state => state.cart)
     const userCart = userOrders?.cart?.currentCart
