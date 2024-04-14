@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import DeleteGame from "../DeleteGame/DeleteGame";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import NavBar2 from "../NavBar2/NavBar2";
+import ReviewModule from "../ReviewModule/ReviewModule";
+
 
 import './GameDetails.css'
 import { thunkAddCart, thunkGetCart } from "../../redux/cart";
@@ -239,6 +241,12 @@ function GameDetails() {
                             <button className="gd-wishlist-btn" onClick={() => addToWishlist(game.id)}>Add to wishlist</button>
                         )}
                     </div>
+
+                        <div className="Rev-Module-container">
+                            <ReviewModule game={game} />
+                        </div>
+
+
 
                     <div className="below-splash">
                         <div className="left-below">
