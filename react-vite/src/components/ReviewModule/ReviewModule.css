@@ -162,3 +162,9 @@
     border-radius: 5px;
     font-weight: 300;
 }
+
+.RM-btn-submit:hover{
+    background-color: #55AFE3;
+    background: linear-gradient(to bottom,  #76b6db 5%,#55AFE3 95%);
+    color:white;
+}

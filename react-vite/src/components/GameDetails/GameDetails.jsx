@@ -6,7 +6,7 @@ import DeleteGame from "../DeleteGame/DeleteGame";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import NavBar2 from "../NavBar2/NavBar2";
 import ReviewModule from "../ReviewModule/ReviewModule";
-
+import AllReviewsModule from "../ReviewAll/ReviewAll";
 
 import './GameDetails.css'
 import { thunkAddCart, thunkGetCart } from "../../redux/cart";
@@ -21,7 +21,7 @@ function GameDetails() {
     // console.log('actualgame', actualGame)
     const currUser = useSelector(state => state.session)
     const library = useSelector(state => state.library)
-    const currLibrary = library.currentLibrary.library
+    const currLibrary = library?.currentLibrary?.library
     console.log('currlIbra', currLibrary)
 
     const userOrders = useSelector(state => state.cart)
@@ -245,9 +245,9 @@ function GameDetails() {
                         )}
                     </div>
 
-                        <div className="Rev-Module-container">
-                            <ReviewModule game={game} />
-                        </div>
+                    <div className="Rev-Module-container">
+                        <ReviewModule game={game} />
+                    </div>
 
 
 
@@ -321,10 +321,14 @@ function GameDetails() {
                             </div>
                         </div>
 
+
+                        <div>
+                            <div><AllReviewsModule /></div>
+                        </div>
+
                     </div>
 
                 </div>
-
 
             </div>
 

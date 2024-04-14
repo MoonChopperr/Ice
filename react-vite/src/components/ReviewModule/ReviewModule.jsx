@@ -5,32 +5,41 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { FaThumbsUp } from "react-icons/fa";
 import { FaThumbsDown } from "react-icons/fa";
 import { ImCheckmark } from "react-icons/im";
+// import { thunkAllUserReviews } from "../../redux/review";
 
 import './ReviewModule.css'
 
-const ReviewModule = ({ game, gameId }) => {
+const ReviewModule = ({ game}) => {
     const dispatch = useDispatch()
     const [review, setReview] = useState("")
     const [rating, setRating] = useState(null)
     const [isLiked, setIsLiked] = useState(false);
     const [isDisliked, setIsDisliked] = useState(false);
+    // const userReviews = useSelector(state => state.userReviews);
+    // console.log('userRevs', userReviews)
 
-    const currUser = useSelector(state => state.session)
+    // useEffect(() => {
+    //     dispatch(thunkAllUserReviews())
+    // }, [dispatch])
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        let newRating = null;
+        let newRating = null
         if (isLiked) {
-            newRating = 1;
+            newRating = 1
         } else if (isDisliked) {
-            newRating = -1;
+            newRating = -1
         }
-        console.log('here',)
-        dispatch(thunkCreateReview({ game_id: gameId, review, rating: newRating }))
-        setReview("")
-        setRating(null)
-        setIsLiked(false)
-        setIsDisliked(false)
+
+        try {
+            await dispatch(thunkCreateReview({ game_id: game.id, review, rating: newRating }))
+            setReview("")
+            setRating(null)
+            setIsLiked(false)
+            setIsDisliked(false)
+        } catch (error) {
+            console.error('')
+        }
     }
 
     return (
