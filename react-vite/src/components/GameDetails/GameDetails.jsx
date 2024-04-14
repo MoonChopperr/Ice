@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
+import { useNavigate } from 'react-router-dom';
 import { thunkOneGame } from "../../redux/game";
 import { useParams } from "react-router-dom";
 import DeleteGame from "../DeleteGame/DeleteGame";
@@ -11,18 +12,21 @@ import AllReviewsModule from "../ReviewAll/ReviewAll";
 import './GameDetails.css'
 import { thunkAddCart, thunkGetCart } from "../../redux/cart";
 import { thunkAddWishlist, thunkDeleteWishlistItem, thunkGetWishlist } from "../../redux/wishlist";
+import { thunkGetLibrary } from "../../redux/library";
 
 function GameDetails() {
     const { gameId } = useParams()
     const dispatch = useDispatch()
     const game = useSelector(state => state.game[gameId])
+    const nav = useNavigate()
+
     // console.log('game==>', game)
     // const actualGame = Object.values(game)
     // console.log('actualgame', actualGame)
     const currUser = useSelector(state => state.session)
     const library = useSelector(state => state.library)
     const currLibrary = library?.currentLibrary?.library
-    console.log('currlIbra', currLibrary)
+    const isGameInLibrary = currLibrary?.some(item => item.id === parseInt(gameId));
 
     const userOrders = useSelector(state => state.cart)
     const userCart = userOrders?.cart?.currentCart
@@ -32,12 +36,6 @@ function GameDetails() {
 
     const userWishlist = useSelector(state => state.wishlist.currentWishlist)
     const wishlist = userWishlist?.currentWishlist
-
-    // const reRenderCart = () => {
-    //     setCartNum(!cartNum)
-    // }
-
-    // console.log('userOrders', userOrders)
 
     const addToCart = (gameId) => {
 
@@ -141,6 +139,7 @@ function GameDetails() {
         dispatch(thunkOneGame(gameId))
         dispatch(thunkGetWishlist())
         dispatch(thunkGetCart())
+        dispatch(thunkGetLibrary())
     }, [gameId, dispatch, cartNum, wishlistNum])
 
 
@@ -238,15 +237,21 @@ function GameDetails() {
                     </div>
 
                     <div className="gd-wishlist-container">
-                        {wishlist?.some(item => item?.game_id === game?.id) ? (
-                            <button className="gd-wishlist-btn" onClick={() => addToWishlist(game.id)}>Remove from wishlist</button>
+                        {isGameInLibrary ? (
+                            <button className="gd-wishlist-btn" onClick={() => nav('/news')}>Follow</button>
                         ) : (
-                            <button className="gd-wishlist-btn" onClick={() => addToWishlist(game.id)}>Add to wishlist</button>
+                            <>
+                                {wishlist?.some(item => item?.game_id === game?.id) ? (
+                                    <button className="gd-wishlist-btn" onClick={() => addToWishlist(game.id)}>Remove from wishlist</button>
+                                ) : (
+                                    <button className="gd-wishlist-btn" onClick={() => addToWishlist(game.id)}>Add to wishlist</button>
+                                )}
+                            </>
                         )}
                     </div>
 
                     <div className="Rev-Module-container">
-                        <ReviewModule game={game} />
+                        {isGameInLibrary && <ReviewModule game={game} />}
                     </div>
 
 
