@@ -168,3 +168,36 @@
     background: linear-gradient(to bottom,  #76b6db 5%,#55AFE3 95%);
     color:white;
 }
+
+
+/* has review */
+.RM-hasReview{
+    color:#1999E3;
+    font-size:18px;
+    margin-left: 1%;
+}
+
+.RM-hasReviewbtn{
+    color: #67c1f5;
+    background: rgb(103, 193, 245, 0.2);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 2px;
+    margin-left: 1%;
+    cursor: pointer;
+    margin-top: 1%;
+}
+
+.RM-hasReviewbtn:hover{
+    color:white;
+    background: linear-gradient(to right, #1999E3 5%, rgb(103, 193, 245, 0.2));
+
+}
+
+.RM-hasReview-text{
+    color: #adafb1;
+    font-size: 14px;
+    margin-left: 1%;
+    margin-top: 1%;
+}
+

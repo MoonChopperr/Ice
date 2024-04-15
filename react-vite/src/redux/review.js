@@ -59,13 +59,13 @@ const decrementHelpful = reviewId => ({
 export const thunkAllGameReviews = (gameId) => async (dispatch) => {
     const response = await fetch(`/api/review/game/${gameId}`)
     const data = await response.json()
-    dispatch(getGameReviews(data.reviews))
+    dispatch(getGameReviews(data))
 }
 
 export const thunkAllUserReviews = (userId) => async (dispatch) => {
     const response = await fetch(`/api/review/user/${userId}`)
     const data = await response.json()
-    dispatch(getUserReviews(data.reviews))
+    dispatch(getUserReviews(data))
 }
 
 export const thunkCreateReview = newReview => async (dispatch) => {

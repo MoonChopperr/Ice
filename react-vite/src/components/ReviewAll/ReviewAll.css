@@ -1,0 +1,126 @@
+.reviews-title {
+    color: white;
+    font-size: 19px;
+    font-weight: 200;
+}
+
+
+/* .review-top-container{
+
+} */
+
+.review-username{
+    color: #C1DBF4;
+    font-weight: 500;
+}
+
+.review-card {
+    background-color: #16202D;
+    border-top: 1px solid;
+    border-image: linear-gradient(to right, #5085b1, transparent) 1;
+    margin-bottom: 20px;
+    padding: 1% 0;
+}
+
+.review-posted{
+    color:#8091a2;;
+    font-size: 12px;
+    font-weight: 300;
+    margin-top: 3%;
+    margin-left: 2%;
+}
+
+.review-reco-text{
+    display: flex;
+    align-items: center;
+    color:#d6d7d8;
+    background-color:#121A24;
+}
+
+.review-thumbsup{
+    transform: scaleX(-1);
+    color: #1999E3;
+    background: linear-gradient(to top, #0b496d, #041824);
+    font-size: 30px;
+    padding: 5px;
+    margin-right: 3%;
+}
+
+.review-thumbsdown{
+    transform: scaleX(-1);
+    color: #E06263;
+    background: linear-gradient(to top, #682323, #b43e3e);
+    font-size: 30px;
+    padding: 5px;
+    margin-right: 3%;
+
+}
+
+.review-description{
+    margin-left: 2%;
+    margin-right: 2%;
+    color: #c6d4df;
+    font-size: 13px;
+    font-weight: 300;
+    margin-top: 2%;
+}
+
+.review-helpful-text{
+    color:#8091a2;
+    font-size: 12px;
+    font-weight: 300;
+    margin-left: 2%;
+}
+
+.review-helpful-hr{
+    width: 95%;
+    height: 1px;
+    border: 0;
+    background-color: #8091a241;
+    margin-bottom: 10px;
+}
+
+.review-stats{
+    color:#9db3c9;
+    font-size: 12px;
+    font-weight: 300;
+    margin-left: 2%;
+}
+
+.review-helpful-thumbs{
+    transform: scaleX(-1);
+    margin-right: 3px;
+
+}
+
+.review-helpful-subtext{
+    color: #1999E3;
+    background-color:#212c3d;
+    border: none;
+    padding: .5% 1%;
+    border-radius: 2px;
+    margin-right: 1%;
+    cursor: pointer;
+}
+
+.review-helpful-subtext:hover{
+    color:white;
+    background-color: #1999E3;
+}
+
+.review-actions{
+    margin-left: 2%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.review-smily-thumbs{
+    margin-right: 3px;
+}
+
+.review-noreviews{
+    margin-top: 2%;
+    color:#9db3c9;
+    font-size: 15px;
+    margin-bottom: 5%;
+}

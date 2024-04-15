@@ -23,3 +23,11 @@ def user(id):
     """
     user = User.query.get(id)
     return user.to_dict()
+
+
+# @user_routes.route('/allusername')
+# def allUsers():
+#     """Returns all usernames"""
+#     users = User.query.all()
+#     usernames = [{"id": user.id, "username": user.username} for user in users]
+#     return jsonify({"usernames": usernames})

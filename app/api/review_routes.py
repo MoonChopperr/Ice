@@ -1,21 +1,27 @@
 from flask import Blueprint, request, jsonify
 from flask_login import login_required, current_user
-from app.models import Review, Game, db
+from app.models import Review, User, Game, db
 from app.forms import ReviewForm
 
 review_routes = Blueprint("review", __name__)
 
 @review_routes.route('/game/<int:game_id>')
 def game_reviews(game_id):
-    """Returns all reviews for specific game"""
+    """Returns all reviews for a specific game, including the username of each reviewer"""
     reviews = Review.query.filter_by(game_id=game_id).all()
 
     if not reviews:
         return jsonify({'message': 'No reviews'})
 
-    if reviews:
-        return jsonify([review.to_dict() for review in reviews]), 200
+    reviews_with_username = []
+    for review in reviews:
+        user = User.query.get(review.user_id)
+        if user:
+            review_dict = review.to_dict()
+            review_dict['username'] = user.username
+            reviews_with_username.append(review_dict)
 
+    return jsonify(reviews_with_username), 200
 
 @review_routes.route('/user/<int:user_id>')
 def user_reviews(user_id):
