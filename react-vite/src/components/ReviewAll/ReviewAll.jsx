@@ -48,6 +48,14 @@ const AllReviewsModule = () => {
 
     }
 
+    const isHighlighted = (reviewId, isYesButton) => {
+        return highlightedReviewId === reviewId && isYesButton;
+    };
+
+    const isDisabled = (reviewId, isYesButton) => {
+        return highlightedReviewId !== reviewId && isYesButton;
+    };
+
     return (
         <>
         <div className="reviews-title">REVIEWS</div>
@@ -57,7 +65,7 @@ const AllReviewsModule = () => {
                     <div key={review.id} className="review-card">
                         <div className="review-top-container">
                             <div className="review-top">
-                                {review.rating === 1 ? (
+                                {review?.rating === 1 ? (
                                     <div className="review-reco-text">
                                         <FaThumbsUp className="review-thumbsup" /> Recommended by&nbsp;<span className="review-username">{review.username}</span>
                                     </div>

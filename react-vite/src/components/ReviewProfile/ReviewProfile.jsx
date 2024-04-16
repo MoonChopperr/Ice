@@ -20,7 +20,7 @@ function ReviewProfile() {
     const [isLiked, setIsLiked] = useState(false);
     const [isDisliked, setIsDisliked] = useState(false);
     const [editedReview, setEditedReview] = useState('')
-
+    const [forceRerender, setForceRerender] = useState(false)
     const getGameTitle = (review) => {
         const game = games?.find(game => game.id === review.game_id)
         return game ? game.title : "Game Title Not Found"
@@ -43,22 +43,26 @@ function ReviewProfile() {
         setIsDisliked(false)
     }
 
-    const handleDelete = (reviewId) => [
+    const handleDelete = (reviewId) => {
         dispatch(thunkDeleteReview(reviewId))
-    ]
+        setForceRerender(!forceRerender)
+    }
 
 
     const handleSaveChanges = (reviewId, newText, game_id) => {
         const newRating = isLiked ? 1 : isDisliked ? -1 : 0;
         dispatch(thunkUpdateReview(reviewId, { review: newText, rating: newRating, game_id:game_id }))
         setEditingReview(null)
+        setForceRerender(!forceRerender)
+
     }
 
 
     useEffect(() => {
         dispatch(thunkAllUserReviews(currUser.id))
         dispatch(thunkAllGames())
-    }, [dispatch, currUser.id])
+        setForceRerender(false)
+    }, [dispatch, currUser.id, forceRerender])
 
 
     return (
