@@ -75,13 +75,13 @@ def update_review(review_id):
     """Edit a review"""
     form = ReviewForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
+    print('FORM!!!!=>',vars(form))
 
 
     if form.validate_on_submit():
         review = Review.query.get(review_id)
         review.review = form.review.data
         review.rating = form.rating.data
-
         if not review:
             return{"error": "Review could not be found"}, 404
 
@@ -125,7 +125,7 @@ def increment_helpful(id):
     review.helpful +=1
     db.session.commit()
 
-    return jsonify({'helpful': review.helpful}),200
+    return jsonify(review.to_dict()),200
 
 @review_routes.route('/<int:id>/helpful', methods=["DELETE"])
 @login_required
@@ -143,7 +143,7 @@ def decrement_helpful(id):
         review.helpful -= 1
         db.session.commit()
 
-    return jsonify({'helpful': review.helpful}),200
+    return jsonify(review.to_dict()),200
 
 @review_routes.route('/<int:id>/funny', methods=['POST'])
 @login_required

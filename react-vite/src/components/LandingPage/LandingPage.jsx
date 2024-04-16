@@ -35,6 +35,7 @@ function LandingPage() {
 
                 </div>
 
+ 
                 <div className="game-list">
                     {games?.map((game) => (
                         <div className="game-card" key={game?.id}>

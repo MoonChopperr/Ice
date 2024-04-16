@@ -11,9 +11,8 @@ import './ReviewAll.css'
 const AllReviewsModule = () => {
     const { gameId } = useParams()
     const dispatch = useDispatch()
-    const reviews = useSelector(state => state?.review?.gameReviews)
-    console.log('reviews', reviews)
-
+    const currreviews = useSelector(state => state?.review)
+    const reviews = Object.values(currreviews)
 
     useEffect(() => {
         dispatch(thunkAllGameReviews(gameId))
@@ -26,28 +25,35 @@ const AllReviewsModule = () => {
         return `Posted: ${month} ${day}`
     }
 
-    const handleIncrementFunny = (reviewId) => {
-        dispatch(thunkIncrementFunny(reviewId))
+    const handleIncrementFunny = async(reviewId) => {
+        await dispatch(thunkIncrementFunny(reviewId))
+        dispatch(thunkAllGameReviews(gameId))
     }
 
-    const handleDecrementFunny = (reviewId) => {
-        dispatch(thunkDecrementFunny(reviewId))
+    const handleDecrementFunny = async (reviewId) => {
+        await dispatch(thunkDecrementFunny(reviewId))
+        dispatch(thunkAllGameReviews(gameId))
+
     }
 
-    const handleIncrementHelpful = (reviewId) => {
-        dispatch(thunkIncrementHelpful(reviewId))
+    const handleIncrementHelpful = async(reviewId) => {
+        await dispatch(thunkIncrementHelpful(reviewId))
+        dispatch(thunkAllGameReviews(gameId))
+
     }
 
-    const handleDecrementHelpful = (reviewId) => {
-        dispatch(thunkDecrementHelpful(reviewId))
+    const handleDecrementHelpful = async(reviewId) => {
+        await dispatch(thunkDecrementHelpful(reviewId))
+        dispatch(thunkAllGameReviews(gameId))
+
     }
 
     return (
         <>
         <div className="reviews-title">REVIEWS</div>
-        {reviews && reviews.length > 0 ? (
+        {reviews && reviews?.length > 0 ? (
             <div className="reviews-container">
-                {reviews.map(review => (
+                {reviews?.map(review => (
                     <div key={review.id} className="review-card">
                         <div className="review-top-container">
                             <div className="review-top">

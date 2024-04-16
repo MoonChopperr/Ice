@@ -65,7 +65,6 @@ function CartPage() {
 
     const handleCheckout = async () =>{
         const result = await dispatch(thunkAddLibrary(userCart))
-        console.log("checkout", result)
         if (!result.errors) {
             dispatch(thunkClearCart());
         }

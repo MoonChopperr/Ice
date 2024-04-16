@@ -47,17 +47,21 @@
     padding-top: 20px;
     /* margin-right: 35%; */
     z-index: 2;
-    /* border: 1px solid red; */
 
 }
 
 .game-list {
-    padding-top: 100px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    padding-top: 5%;
+    /* display: grid;
+    grid-template-columns: repeat(3, 1fr); */
     gap: 10px;
-    padding: 50px 300px;
+    padding: 4% 10%;
+    margin-left:1%;
+    display: flex;
+    flex-wrap: wrap;
+    /* border: 1px solid red; */
 }
+
 
 
 /* LETS NOT RESIZE  */

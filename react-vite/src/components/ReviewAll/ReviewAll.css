@@ -63,6 +63,8 @@
     font-size: 13px;
     font-weight: 300;
     margin-top: 2%;
+    max-width: 550px;
+    overflow-wrap: break-word;
 }
 
 .review-helpful-text{

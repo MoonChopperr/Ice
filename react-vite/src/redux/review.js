@@ -86,14 +86,21 @@ export const thunkCreateReview = newReview => async (dispatch) => {
 }
 
 export const thunkUpdateReview = (reviewId, updatedReview) => async (dispatch) => {
+    // console.log("Updating review with ID:", reviewId);
+    // console.log("Updated review data:", updatedReview);
+
+
     const response = await fetch(`/api/review/${reviewId}`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+            'Content-Type': 'application/json'
+        },
         body: JSON.stringify(updatedReview)
     })
 
     if (!response.ok) {
         const data = await response.json()
+        // console.log('errdata=>', data)
         return { errors: data }
     }
 
@@ -115,14 +122,13 @@ export const thunkDeleteReview = (reviewId) => async (dispatch) => {
     await dispatch(deleteReview(reviewId))
 }
 
-export const thunkIncrementFunny = (reviewId) => async (dispatch) =>{
+export const thunkIncrementFunny = (reviewId) => async (dispatch) => {
     const response = await fetch(`/api/review/${reviewId}/funny`, {
         method: 'POST'
     })
-
-    if(!response.ok){
+    if (!response.ok) {
         const data = await response.json()
-        return { errors: data}
+        return { errors: data }
     }
 
     const data = await response.json()
@@ -130,14 +136,14 @@ export const thunkIncrementFunny = (reviewId) => async (dispatch) =>{
     return data
 }
 
-export const thunkDecrementFunny = (reviewId) => async (dispatch) =>{
+export const thunkDecrementFunny = (reviewId) => async (dispatch) => {
     const response = await fetch(`/api/review/${reviewId}/funny`, {
         method: 'DELETE'
     })
 
-    if(!response.ok){
+    if (!response.ok) {
         const data = await response.json()
-        return { errors: data}
+        return { errors: data }
     }
 
     const data = await response.json()
@@ -145,14 +151,14 @@ export const thunkDecrementFunny = (reviewId) => async (dispatch) =>{
     return data
 }
 
-export const thunkIncrementHelpful = (reviewId) => async (dispatch) =>{
+export const thunkIncrementHelpful = (reviewId) => async (dispatch) => {
     const response = await fetch(`/api/review/${reviewId}/helpful`, {
         method: 'POST'
     })
 
-    if(!response.ok){
+    if (!response.ok) {
         const data = await response.json()
-        return { errors: data}
+        return { errors: data }
     }
 
     const data = await response.json()
@@ -160,14 +166,14 @@ export const thunkIncrementHelpful = (reviewId) => async (dispatch) =>{
     return data
 }
 
-export const thunkDecrementHelpful = (reviewId) => async (dispatch) =>{
+export const thunkDecrementHelpful = (reviewId) => async (dispatch) => {
     const response = await fetch(`/api/review/${reviewId}/helpful`, {
         method: 'DELETE'
     })
 
-    if(!response.ok){
+    if (!response.ok) {
         const data = await response.json()
-        return { errors: data}
+        return { errors: data }
     }
 
     const data = await response.json()
@@ -178,32 +184,36 @@ export const thunkDecrementHelpful = (reviewId) => async (dispatch) =>{
 //Reducer
 function reviewReducer(state = {}, action) {
     switch (action.type) {
-        case GET_GAME_REVIEWS:{
-            return { ...state, gameReviews: action.reviews }
+        case GET_GAME_REVIEWS: {
+            const reviewsState = {}
+            action.reviews.forEach(review => {
+                reviewsState[review.id] = review
+            });
+            return reviewsState
         }
-        case GET_USER_REVIEWS:{
+        case GET_USER_REVIEWS: {
             return { ...state, userReviews: action.reviews }
         }
-        case CREATE_REVIEW:{
+        case CREATE_REVIEW: {
             return { ...state, createdReview: action.review }
         }
-        case UPDATE_REVIEW:{
+        case UPDATE_REVIEW: {
             return { ...state, updatedReview: action.review }
         }
-        case DELETE_REVIEW:{
+        case DELETE_REVIEW: {
             return { ...state, deletedReviewId: action.reviewId }
         }
-        case INCREMENT_HELPFUL:{
-            return { ...state, helpful: { ...state.helpful, [action.reviewId]: (state.helpful[action.reviewId] || 0) + 1 } }
+        case INCREMENT_HELPFUL: {
+            return { ...state, [action.reviewId.id]: action.reviewId }
         }
-        case DECREMENT_HELPFUL:{
-            return { ...state, helpful: { ...state.helpful, [action.reviewId]: Math.max((state.helpful[action.reviewId] || 0) - 1, 0) } }
+        case DECREMENT_HELPFUL: {
+            return { ...state, [action.reviewId.id]: action.reviewId }
         }
-        case INCREMENT_FUNNY:{
-            return { ...state, funny: { ...state.funny, [action.reviewId]: (state.funny[action.reviewId] || 0) + 1 } }
+        case INCREMENT_FUNNY: {
+            return { ...state, [action.reviewId.id]: action.reviewId }
         }
-        case DECREMENT_FUNNY:{
-            return { ...state, funny: { ...state.funny, [action.reviewId]: Math.max((state.funny[action.reviewId] || 0) - 1, 0) } }
+        case DECREMENT_FUNNY: {
+            return { ...state, [action.reviewId.id]: action.reviewId }
         }
         default:
             return state

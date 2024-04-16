@@ -17,7 +17,6 @@ function WishlistPage() {
     const allGames = useSelector(state => state.game.games)
     const userCart = userOrders?.cart?.currentCart
     const wishlist = userWishlist?.currentWishlist
-    console.log('wishlist', wishlist)
     const [forceRerender, setForceRerender] = useState(false)
     const [cartNum, setCartNum] = useState(false)
 
@@ -56,8 +55,8 @@ function WishlistPage() {
         return updatedRanks?.filter(game => game)
     }
 
-    const games = getGames()
-    console.log('games', games)
+    // const games = getGames()
+    // console.log('games', games)
 
     function formatDate(date) {
         if (!date) {
@@ -116,7 +115,7 @@ function WishlistPage() {
 
         // filter any 0 rank items
         const zeroRankItems = wishlist.filter(item => item.rank === 0)
-        console.log('zeroRankItems:', zeroRankItems)
+        // console.log('zeroRankItems:', zeroRankItems)
 
         if (zeroRankItems.length > 0) {
             const highestRank = Math.max(...wishlist.map((item) => item.rank))
@@ -126,7 +125,7 @@ function WishlistPage() {
                 const updatedZeroRankItem = {
                     rank: highestRank + i + 1,
                 }
-                console.log('Updated rank:', updatedZeroRankItem.rank)
+                // console.log('Updated rank:', updatedZeroRankItem.rank)
 
                 await dispatch(thunkUpdateWishlist(zeroRankItem.id, updatedZeroRankItem))
             }

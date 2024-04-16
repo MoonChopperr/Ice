@@ -187,7 +187,7 @@ def seed_games():
 
     EldenRing = Game(
         owner_id=6,
-        title="ELDEN RIING",
+        title="ELDEN RING",
         about="THE NEW FANTASY ACTION RPG. Rise, Tarnished, and be guided by grace to brandish the power of the Elden Ring and become an Elden Lord in the Lands Between.",
         price=59.99,
         release_date=datetime(2022, 2, 24),

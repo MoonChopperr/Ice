@@ -19,10 +19,9 @@ const ReviewModule = ({ game }) => {
     const [rating, setRating] = useState(null)
     const [isLiked, setIsLiked] = useState(false);
     const [isDisliked, setIsDisliked] = useState(false);
-    const reviews = useSelector(state => state?.review?.gameReviews)
-    console.log('reviews==>', reviews)
+    const currreviews = useSelector(state => state?.review)
+    const reviews = Object.values(currreviews)
     const currUser = useSelector(state => state?.session?.user)
-    console.log(currUser.id)
     const [shouldReload, setShouldReload] = useState(false);
 
 

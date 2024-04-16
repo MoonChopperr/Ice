@@ -21,7 +21,7 @@ function Navigation() {
             <li className="nl"><a className="nla-store" onClick={() => nav('/')}>STORE</a></li>
             <li className="nl"><a className="nla" onClick={() => nav('/library')}>LIBRARY</a></li>
             <li className="nl">
-              <a className="nla" onClick={() => alert('Feature coming soon')}>
+              <a className="nla" onClick={() => nav('/profile')}>
                 {currUser ? currUser.username.toUpperCase() : "ABOUT"}
               </a>
             </li>
