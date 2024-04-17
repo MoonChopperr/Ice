@@ -170,7 +170,7 @@ function GameDetails() {
 
     useEffect(() => {
         if (userCart) {
-            const currCart = userCart.map(item => item.game_id)
+            const currCart = userCart?.map(item => item.game_id)
             setCartNum(currCart.includes(gameId))
         }
     }, [userCart, gameId])

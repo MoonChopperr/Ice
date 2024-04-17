@@ -46,7 +46,7 @@ def seed_users():
 
 
     db.session.add_all([
-        demo, marnie, bobbie, PapaCapcom, GodFatherSony, Fromsoftware, Konami, ATLUS, MONKEYCRAFT, Albert, Honk, Lisan
+        demo, marnie, Albert, Honk, Lisan, bobbie, PapaCapcom, GodFatherSony, Fromsoftware, Konami, ATLUS, MONKEYCRAFT
     ])
     db.session.commit()
 
