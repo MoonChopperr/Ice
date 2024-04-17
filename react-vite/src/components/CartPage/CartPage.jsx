@@ -6,6 +6,9 @@ import { thunkAllGames } from '../../redux/game'
 import { thunkDeleteItem } from '../../redux/cart'
 import { thunkClearCart } from '../../redux/cart'
 import { thunkAddLibrary } from '../../redux/library'
+import { useModal } from "../../context/Modal"
+import CartCheckOutModal from '../CartCheckOutModal/CartCheckOutModal'
+
 
 import NavBar2 from '../NavBar2/NavBar2'
 import './CartPage.css'
@@ -24,6 +27,7 @@ function CartPage() {
     const [forceRerender, setForceRerender] = useState(false)
     // const [rmAllRerender, setRmALLRerender] = useState(false)
     // console.log(userCart.length)
+    const { setModalContent, showModal } = useModal()
 
     //LOGOUT REDIRECT NAV
     if (!currUser){
@@ -66,9 +70,12 @@ function CartPage() {
     const handleCheckout = async () =>{
         const result = await dispatch(thunkAddLibrary(userCart))
         if (!result.errors) {
-            dispatch(thunkClearCart());
+            dispatch(thunkClearCart())
+            setModalContent(<CartCheckOutModal />)
         }
     }
+
+
 
     useEffect(() => {
         dispatch(thunkGetCart())
@@ -114,7 +121,7 @@ function CartPage() {
                                 <button onClick={() => nav('/login')}>Sign in to purchase</button>
                             )}
                             {currUser && (
-                                <button className='cart-checkout-btn' onClick={handleCheckout}>Continue to payment</button>
+                                <button className='cart-checkout-btn' onClick={handleCheckout}>Checkout</button>
                             )}
                         </div>
 

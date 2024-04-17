@@ -120,3 +120,8 @@ margin-bottom: 3px;
     border: #313C48;
     text-align: center;
 }
+
+.WL-no-items{
+    color: #adafb1;
+    font-size: 12px;
+}

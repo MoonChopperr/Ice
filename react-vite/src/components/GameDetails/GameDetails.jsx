@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import { thunkOneGame } from "../../redux/game";
 import { useParams } from "react-router-dom";
@@ -8,11 +8,19 @@ import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import NavBar2 from "../NavBar2/NavBar2";
 import ReviewModule from "../ReviewModule/ReviewModule";
 import AllReviewsModule from "../ReviewAll/ReviewAll";
+import CartAddToModal from "../CartAddToModal/CartAddToModal";
+import { useModal } from "../../context/Modal"
+import NavigationModal from "../NavigationModal/NavigationModal";
+import CartInModal from "../CartInCartModal/CartInModal";
+import WishlistModal from "../WishlistModal/WishlistModal";
+import WishlistRmModal from "../WishlistRmModal/WishlistModalRm";
 
 import './GameDetails.css'
 import { thunkAddCart, thunkGetCart } from "../../redux/cart";
 import { thunkAddWishlist, thunkDeleteWishlistItem, thunkGetWishlist } from "../../redux/wishlist";
 import { thunkGetLibrary } from "../../redux/library";
+import { thunkAllGameReviews, clearGameReviews } from "../../redux/review";
+
 
 function GameDetails() {
     const { gameId } = useParams()
@@ -20,62 +28,76 @@ function GameDetails() {
     const game = useSelector(state => state.game[gameId])
     const nav = useNavigate()
 
+    //reviews
+    const currreviews = useSelector(state => state?.review)
+    const reviews = Object.values(currreviews)
+    // console.log('reviews=>', reviews)
+
     // console.log('game==>', game)
     // const actualGame = Object.values(game)
     // console.log('actualgame', actualGame)
     const currUser = useSelector(state => state.session)
+    //library
     const library = useSelector(state => state.library)
     const currLibrary = library?.currentLibrary?.library
     const isGameInLibrary = currLibrary?.some(item => item.id === parseInt(gameId));
-
+    //cart
     const userOrders = useSelector(state => state.cart)
     const userCart = userOrders?.cart?.currentCart
 
     const [cartNum, setCartNum] = useState(false)
     const [wishlistNum, setWishlistNum] = useState(false)
-
+    //wishlist
     const userWishlist = useSelector(state => state.wishlist.currentWishlist)
     const wishlist = userWishlist?.currentWishlist
 
-    const addToCart = (gameId) => {
-
-        const currCart = userCart?.map(item => item.game_id)
-
-        if (currCart?.includes(gameId)) {
-            alert("This item is in your cart already, please change the quantity in your cart page")
+    const totalReviews = reviews.length
+    const positiveReviews = reviews.filter(review => review.rating === 1).length
+    const reviewRatio = positiveReviews / totalReviews
+    // console.log('ratio', reviewRatio)
+    const { setModalContent, showModal } = useModal()
+    const addToCart = async(gameId) => {
+        if (!currUser.user) {
+            setModalContent(<NavigationModal />)
         } else {
-            const newOrder = {
-                game_id: gameId
+            const currCart = userCart?.map(item => item.game_id)
+
+            if (currCart?.includes(gameId)) {
+                setModalContent(<CartInModal />)
+            } else {
+                const newOrder = {
+                    game_id: gameId
+                }
+
+                await dispatch(thunkAddCart(newOrder))
+                setModalContent(<CartAddToModal gameId={gameId} />);
+                setCartNum(prevState => !prevState)
+
             }
-
-            dispatch(thunkAddCart(newOrder))
-            alert('Game added to cart')
-
-            setCartNum(prevState => !prevState)
         }
 
     }
 
-    const addToWishlist = (gameId) => {
+    const addToWishlist = async(gameId) => {
         const currWishlist = wishlist?.map(item => item.game_id)
 
         if (currWishlist?.includes(gameId)) {
             const wishlistItem = wishlist.find(item => item.game_id === gameId)
-            dispatch(thunkDeleteWishlistItem(wishlistItem.id))
-            alert('Game removed from wishlist')
+            await dispatch(thunkDeleteWishlistItem(wishlistItem.id))
+            setModalContent(<WishlistRmModal />)
+            setWishlistNum(prevState => !prevState)
+
         } else {
             const newWishlistItem = {
                 game_id: gameId,
             }
 
-            dispatch(thunkAddWishlist(newWishlistItem))
-            alert('Game added to wishlist')
+            await dispatch(thunkAddWishlist(newWishlistItem))
+            setModalContent(<WishlistModal />)
+            setWishlistNum(prevState => !prevState)
         }
 
-        setWishlistNum(prevState => !prevState)
     }
-
-
     //check user if owner
     function isOwner(currUser) {
         if (currUser && game && game?.owner_id != null) {
@@ -133,14 +155,48 @@ function GameDetails() {
         }
     }
     // console.log('single genre', game?.genre)
-
     // console.log('franchise', game?.franchise)
     useEffect(() => {
         dispatch(thunkOneGame(gameId))
         dispatch(thunkGetWishlist())
         dispatch(thunkGetCart())
         dispatch(thunkGetLibrary())
+        dispatch(thunkAllGameReviews(gameId))
+        return () => {
+            dispatch(clearGameReviews());
+        }
     }, [gameId, dispatch, cartNum, wishlistNum])
+
+    useEffect(() => {
+        if (userCart) {
+            const currCart = userCart.map(item => item.game_id)
+            setCartNum(currCart.includes(gameId))
+        }
+    }, [userCart, gameId])
+
+    function reviewAlgo(reviewRatio) {
+        if (isNaN(reviewRatio)) {
+            return { text: "No reviews", color: "#adafb16b" }
+        }
+        if (reviewRatio >= 0.8) {
+            return { text: "Overwhelmingly Positive", color: '#1999E3' }
+        } else if (reviewRatio >= 0.7) {
+            return { text: "Very Positive", color: '#1999E3' }
+        } else if (reviewRatio >= 0.6) {
+            return { text: "Mostly Positive", color: '#1999E3' }
+        } else if (reviewRatio >= 0.4) {
+            return { text: "Mixed", color: "#B9A074" }
+        } else if (reviewRatio >= 0.2) {
+            return { text: "Mostly Negative", color: '#A34C25' }
+        } else if (reviewRatio >= 0.1) {
+            return { text: "Very Negative", color: '#A34C25' }
+        } else {
+            return { text: "Very Negative", color: '#A34C25' }
+        }
+    }
+
+    const reviewResult = reviewAlgo(reviewRatio);
+
 
 
 
@@ -208,6 +264,11 @@ function GameDetails() {
                             <p className="game-about">{game?.about}</p>
 
                             <div className="stats">
+                                <div>
+                                    <span className="GD-label">ALL REVIEWS: </span>
+                                    <span className="GD-review-rating" style={{ color: reviewResult.color }}> {reviewResult.text}</span>
+                                    <span className="GD-label">({reviews?.length})</span>
+                                </div>
                                 <div className="GD-date">
                                     <span className="GD-label">RELEASE DATE:</span>
                                     <span className="release-date-text">{formatDate(game?.release_date)}</span>
@@ -237,6 +298,7 @@ function GameDetails() {
                     </div>
 
                     <div className="gd-wishlist-container">
+
                         {isGameInLibrary ? (
                             <button className="gd-wishlist-btn" onClick={() => nav('/news')}>Follow</button>
                         ) : (

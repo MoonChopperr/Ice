@@ -4,11 +4,30 @@ import { useNavigate } from 'react-router-dom';
 import "./Navigation.css";
 import { useSelector } from 'react-redux';
 import DropDownProfile from "../DropDownProfile/DropDownProfile";
+import { useModal } from "../../context/Modal"
+import { useEffect, useState } from "react";
+import NavigationModal from "../NavigationModal/NavigationModal";
 
 function Navigation() {
   const nav = useNavigate()
   const currUser = useSelector(state => state.session.user)
-  // console.log('currUser!', currUser)
+  const { showModal, setModalContent } = useModal()
+
+  const handleLibraryClick = () => {
+    if (!currUser) {
+      setModalContent(<NavigationModal/>)
+    } else {
+      nav('/library')
+    }
+  }
+
+  const handleAboutClick = () => {
+    if (!currUser) {
+      setModalContent(<NavigationModal/>)
+    } else {
+      currUser ? nav('/profile') : nav('/support')
+    }
+  }
 
   return (
     <>
@@ -19,9 +38,9 @@ function Navigation() {
           </NavLink>
           <ul className="nav-links">
             <li className="nl"><a className="nla-store" onClick={() => nav('/')}>STORE</a></li>
-            <li className="nl"><a className="nla" onClick={() => nav('/library')}>LIBRARY</a></li>
+            <li className="nl"><a className="nla" onClick={handleLibraryClick}>LIBRARY</a></li>
             <li className="nl">
-              <a className="nla" onClick={() => nav('/profile')}>
+              <a className="nla" onClick={handleAboutClick}>
                 {currUser ? currUser.username.toUpperCase() : "ABOUT"}
               </a>
             </li>

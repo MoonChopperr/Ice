@@ -2,12 +2,19 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { thunkGetLibrary } from "../../redux/library";
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 import './Library.css'
 
 function Library() {
     const dispatch = useDispatch()
     const library = useSelector(state => state.library.currentLibrary)
-    console.log('library', library)
+    const nav = useNavigate()
+    const currUser = useSelector(state => state.session.user)
+
+    if (!currUser) {
+        nav('/')
+    }
 
     function formatDate(date) {
         if (!date) {
@@ -26,11 +33,11 @@ function Library() {
 
         const difference = currentDate - createdAtDate
         //random doesnt take args,
-        const random = Math.floor(Math.random() * 4) + 1
+        const random = Math.floor(Math.random() * 5) + 1
         // console.log('difference', difference)
 
         //change first value to smaller for bigger hours
-        let hours = difference / (100 * 60 * 60) / random
+        let hours = difference / (1000 * 60 * 60) / random
         // console.log('hours', hours)
 
         if (hours < 1) {

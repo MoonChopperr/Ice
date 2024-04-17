@@ -21,6 +21,11 @@ function ReviewProfile() {
     const [isDisliked, setIsDisliked] = useState(false);
     const [editedReview, setEditedReview] = useState('')
     const [forceRerender, setForceRerender] = useState(false)
+
+    if (!currUser) {
+        nav('/')
+    }
+
     const getGameTitle = (review) => {
         const game = games?.find(game => game.id === review.game_id)
         return game ? game.title : "Game Title Not Found"
@@ -105,6 +110,7 @@ function ReviewProfile() {
                             <div className="UR-review-container">
                                 {editingReview === review.id ? (
                                     <textarea
+                                        className="UR-review-textarea"
                                         defaultValue={review.review}
                                         readOnly={editingReview !== review.id}
                                         onClick={(e) => e.stopPropagation()}
@@ -124,7 +130,7 @@ function ReviewProfile() {
                                         {isDisliked ? <ImCheckmark className="RM-thumb" /> : <FaThumbsDown className="RM-thumbs" />}
                                         No
                                     </button>
-                                    <button className="UR-rating-btns" onClick={() => handleSaveChanges(review.id, editedReview, review.game_id)}>
+                                    <button className="UR-rating-btns2" onClick={() => handleSaveChanges(review.id, editedReview, review.game_id)}>
                                         Save Changes
                                     </button>
                                 </div>

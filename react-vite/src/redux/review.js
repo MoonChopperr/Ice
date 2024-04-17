@@ -8,6 +8,11 @@ export const INCREMENT_HELPFUL = '/reviews/INCREMENT_HELPFUL'
 export const DECREMENT_HELPFUL = '/reviews/DECREMENT_HELPFUL'
 export const INCREMENT_FUNNY = '/reviews/INCREMENT_FUNNY'
 export const DECREMENT_FUNNY = '/reviews/DECREMENT_FUNNY'
+export const CLEAR_GAME_REVIEWS = '/reviews/CLEAR_GAME_REVIEWS'
+
+export const clearGameReviews = () => ({
+    type: CLEAR_GAME_REVIEWS
+})
 
 const getGameReviews = reviews => ({
     type: GET_GAME_REVIEWS,
@@ -186,11 +191,17 @@ function reviewReducer(state = {}, action) {
     switch (action.type) {
         case GET_GAME_REVIEWS: {
             const reviewsState = {}
-            action.reviews.forEach(review => {
-                reviewsState[review.id] = review
-            });
+            if (Array.isArray(action.reviews)) {
+                action.reviews.forEach(review => {
+                    reviewsState[review.id] = review
+                });
+            }
             return reviewsState
         }
+        case CLEAR_GAME_REVIEWS: {
+            return {}
+        }
+
         case GET_USER_REVIEWS: {
             return { ...state, userReviews: action.reviews }
         }

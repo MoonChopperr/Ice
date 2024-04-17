@@ -26,7 +26,7 @@ function WishlistPage() {
         setForceRerender(false)
     }, [dispatch, forceRerender])
 
-    if (!currUser){
+    if (!currUser) {
         nav('/')
     }
 
@@ -177,44 +177,48 @@ function WishlistPage() {
 
                 <div className="WL-username">{currUser?.username.toUpperCase()}&apos;s WISHLIST</div>
                 <hr className="WL-hr" />
-                {getGames()?.map(game => (
-                    <div key={game.id} className="WL-game-card">
-                        <div className="WL-left">
-                            <img className="WL-game-img" src={game?.images}></img>
-                        </div>
+                {getGames()?.length > 0 ? (
+                    getGames()?.map(game => (
+                        <div key={game.id} className="WL-game-card">
+                            <div className="WL-left">
+                                <img className="WL-game-img" src={game?.images}></img>
+                            </div>
 
-                        <div className="WL-right">
-                            <div className="WL-title">{game?.title}</div>
+                            <div className="WL-right">
+                                <div className="WL-title">{game?.title}</div>
 
-                            <div className="WL-mid">
-                                <div className="WL-mid-container">
-                                    <div className="WL-subtitle">OVERALL REVIEWS:&nbsp;<span className="WL-sub-title">{ }</span></div>
-                                    <div className="WL-subtitle">RELEASE DATE:&nbsp;<span className="WL-sub-date">{formatDate(game?.release_date)}</span></div>
+                                <div className="WL-mid">
+                                    <div className="WL-mid-container">
+                                        <div className="WL-subtitle">OVERALL REVIEWS:&nbsp;<span className="WL-sub-title">{ }</span></div>
+                                        <div className="WL-subtitle">RELEASE DATE:&nbsp;<span className="WL-sub-date">{formatDate(game?.release_date)}</span></div>
+                                    </div>
+
+                                    <div className="WL-addto-container">
+                                        <span className="WL-price">${game?.price}</span>
+                                        {game.inCart ? (
+                                            <button className="WL-cart-btn" onClick={() => addToCart(game.id)}>In Cart</button>
+                                        ) : (
+                                            <button className="WL-cart-btn" onClick={() => addToCart(game.id)}>Add to Cart</button>
+                                        )}
+                                    </div>
                                 </div>
 
-                                <div className="WL-addto-container">
-                                    <span className="WL-price">${game?.price}</span>
-                                    {game.inCart ? (
-                                        <button className="WL-cart-btn"onClick={() => addToCart(game.id)}>In Cart</button>
-                                    ) : (
-                                        <button className="WL-cart-btn" onClick={() => addToCart(game.id)}>Add to Cart</button>
-                                    )}
+                                <div className="WL-text">
+                                    Rank: <input className="WL-rank" type="text" pattern="\d*" inputMode="numeric" value={game.rank !== null && game.rank !== '' ? game.rank : 0} onClick={handleInputClick} onChange={(e) => handleEdit((wishlist.find(item => item.game_id === game.id)).id, e.target.value)} />
+                                </div>
+
+                                <div className="WL-btm">
+                                    <span className="WL-text"> Added on {formatDateAddedOn(game.WLcreatedAt)}</span>
+                                    <span className="WL-text">&nbsp;( </span>
+                                    <span className="WL-remove" onClick={() => handleRemove((wishlist.find(item => item.game_id === game.id)).id)}>remove</span>
+                                    <span className="WL-text"> ) </span>
                                 </div>
                             </div>
-
-                            <div className="WL-text">
-                                Rank: <input className="WL-rank" type="text" pattern="\d*" inputMode="numeric" value={game.rank !== null && game.rank !== '' ? game.rank : 0} onClick={handleInputClick} onChange={(e) => handleEdit((wishlist.find(item => item.game_id === game.id)).id, e.target.value)} />
-                            </div>
-
-                            <div className="WL-btm">
-                                <span className="WL-text"> Added on {formatDateAddedOn(game.WLcreatedAt)}</span>
-                                <span className="WL-text">&nbsp;( </span>
-                                <span className="WL-remove" onClick={() => handleRemove((wishlist.find(item => item.game_id === game.id)).id)}>remove</span>
-                                <span className="WL-text"> ) </span>
-                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))
+                ) : (
+                    <div className="WL-no-items">No items in wishlist</div>
+                )}
             </div>
         </>
     )
