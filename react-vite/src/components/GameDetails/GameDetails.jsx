@@ -52,7 +52,7 @@ function GameDetails() {
     const wishlist = userWishlist?.currentWishlist
 
     const totalReviews = reviews.length
-    const positiveReviews = reviews.filter(review => review.rating === 1).length
+    const positiveReviews = reviews?.filter(review => review?.rating === 1).length
     const reviewRatio = positiveReviews / totalReviews
     // console.log('ratio', reviewRatio)
     const { setModalContent, showModal } = useModal()
@@ -160,8 +160,10 @@ function GameDetails() {
     useEffect(() => {
         dispatch(thunkOneGame(gameId))
         dispatch(thunkGetWishlist())
+        if(currUser){
         dispatch(thunkGetCart())
         dispatch(thunkGetLibrary())
+        }
         dispatch(thunkAllGameReviews(gameId))
         return () => {
             dispatch(clearGameReviews());

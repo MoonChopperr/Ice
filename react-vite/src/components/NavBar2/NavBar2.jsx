@@ -14,27 +14,22 @@ function NavBar2() {
     const userWishlist = useSelector(state => state.wishlist.currentWishlist)
     const userOrders = useSelector(state => state.cart)
     // console.log('userOrders', userOrders)
-
-    // function cartSize(cart) {
-    //     return cart?.length()
-    // }
-
-
-
     const userCart = userOrders?.cart?.currentCart
     // console.log('@CART@', userCart)
 
     useEffect(() => {
-        dispatch(thunkGetCart())
-        dispatch(thunkGetWishlist())
+        if (currUser) {
+            dispatch(thunkGetCart())
+            dispatch(thunkGetWishlist())
+        }
     }, [dispatch])
     return (
         <>
             <div className='NavBar2-container'>
                 {currUser && (
                     <div className='above-bar'>
-                        <button className="NB-wishlist" onClick={() => nav('/wishlist')}>Wishlist {userWishlist?.currentWishlist?.length > 0 ? `(${userWishlist?.currentWishlist?.length})`: ''}</button>
-                        <button className="NB-user-cart" onClick={() => nav('/game/cart')}>Cart {userCart?.length > 0 ? `(${userCart?.length})`: ''}</button>
+                        <button className="NB-wishlist" onClick={() => nav('/wishlist')}>Wishlist {userWishlist?.currentWishlist?.length > 0 ? `(${userWishlist?.currentWishlist?.length})` : ''}</button>
+                        <button className="NB-user-cart" onClick={() => nav('/game/cart')}>Cart {userCart?.length > 0 ? `(${userCart?.length})` : ''}</button>
                     </div>
                 )}
                 <div className="rectangle-bar">
