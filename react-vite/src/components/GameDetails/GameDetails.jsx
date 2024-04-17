@@ -56,6 +56,7 @@ function GameDetails() {
     const reviewRatio = positiveReviews / totalReviews
     // console.log('ratio', reviewRatio)
     const { setModalContent, showModal } = useModal()
+    console.log(showModal)
     const addToCart = async(gameId) => {
         if (!currUser.user) {
             setModalContent(<NavigationModal />)

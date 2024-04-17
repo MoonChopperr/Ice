@@ -28,7 +28,7 @@ function CartPage() {
     // const [rmAllRerender, setRmALLRerender] = useState(false)
     // console.log(userCart.length)
     const { setModalContent, showModal } = useModal()
-
+    console.log(showModal)
     //LOGOUT REDIRECT NAV
     if (!currUser){
         nav('/')
