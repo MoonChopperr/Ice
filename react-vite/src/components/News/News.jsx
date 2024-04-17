@@ -6,7 +6,7 @@ function News(){
         <>
             <div className="News-container">
                 <div className="News-Card">
-                    card
+                    In Development
                 </div>
 
             </div>
