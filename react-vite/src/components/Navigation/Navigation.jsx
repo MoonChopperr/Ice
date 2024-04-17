@@ -5,14 +5,13 @@ import "./Navigation.css";
 import { useSelector } from 'react-redux';
 import DropDownProfile from "../DropDownProfile/DropDownProfile";
 import { useModal } from "../../context/Modal"
-import { useEffect, useState } from "react";
 import NavigationModal from "../NavigationModal/NavigationModal";
 
 function Navigation() {
   const nav = useNavigate()
   const currUser = useSelector(state => state.session.user)
   const { showModal, setModalContent } = useModal()
-
+  console.log(showModal)
   const handleLibraryClick = () => {
     if (!currUser) {
       setModalContent(<NavigationModal/>)

@@ -23,7 +23,7 @@ const ReviewModule = ({ game }) => {
     const reviews = Object.values(currreviews)
     const currUser = useSelector(state => state?.session?.user)
     const [shouldReload, setShouldReload] = useState(false);
-
+    console.log(rating)
 
     const hasReview = Array.isArray(reviews) && reviews.some(review => review?.user_id === currUser?.id)
 
