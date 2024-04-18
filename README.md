@@ -1,4 +1,4 @@
-# a-A-capstone
+# ICE
 My capstone project for mod 7 during my time at a/A
 
 # API Documentation
@@ -843,4 +843,384 @@ Current user can delete a game from their Wishlist
 
 ## Reviews
 
-### 
+### Get all reviews for a single game
+Returns all reviews on a game's details page
+* Require Authentication: False
+
+* Require Authorization: False
+
+* Request
+    * Method: GET
+    * URL: api/review/game/<int:game_id>
+    * Body: None
+* Successful Response
+    * Status Code: 200
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+        [
+    {
+        "createdAt": "Wed, 17 Apr 2024 23:43:44 GMT",
+        "funny": 0,
+        "game_id": 1,
+        "helpful": 0,
+        "id": 1,
+        "rating": -1,
+        "review": "The graphics are stunning, but the movement is so slow and boring.",
+        "updatedAt": "Wed, 17 Apr 2024 23:43:44 GMT",
+        "user_id": 2,
+        "username": "Kaizer"
+    },
+        ]
+    }
+    ```
+* Successful Response: No reviews
+    * Status Code: 200
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+       "message": "No reviews"
+    }
+    ```
+
+### Get all reviews from specific user
+Returns all reviews from user
+* Require Authentication: True
+
+* Require Authorization: True
+
+* Request
+    * Method: GET
+    * URL: api/review/user/<int:user_id>
+    * Body: None
+* Successful Response
+    * Status Code: 200
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+       "reviews": [
+        {
+            "createdAt": "Wed, 17 Apr 2024 23:43:44 GMT",
+            "funny": 0,
+            "game_id": 1,
+            "helpful": 0,
+            "id": 1,
+            "rating": -1,
+            "review": "The graphics are stunning, but the movement is so slow and boring.",
+            "updatedAt": "Wed, 17 Apr 2024 23:43:44 GMT",
+            "user_id": 2
+        }
+       ]
+    }
+    ```
+* Successful Response: No reviews
+    * Status Code: 200
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+       "message": "No reviews"
+    }
+    ```
+
+### Create a review
+A logged in user can create a review on a game they own
+* Require Authentication: True
+
+* Request
+    * Method: POST
+    * URL: api/review/create
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+    "game_id": 1,
+    "review": "test",
+    "rating": 1
+    }
+    ```
+* Error Response: Cannot review if you are the owner of the game
+    * Status Code: 403
+    * Headers:
+        * Content-Type: application/json
+* Error Response: Game not found
+    * Status Code: 404
+    * Headers:
+        * Content-Type: application/json
+* Error Response: Already reviews a game once
+    * Status Code: 403
+    * Headers:
+        * Content-Type: application/json
+
+### Update a review
+A user can update their existing review's description and rating
+* Require Authentication: true
+
+* Require Authorization: true
+* Request
+    * Method: UPDATE
+    * URL: api/review/<int:review_id>
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+    "game_id": 1,
+    "review": "edited",
+    "rating": -1
+    }
+    ```
+* Error Response: Review could not be found
+    * Status Code: 404
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+        "message": "Review could not be found"
+    }
+    ```
+
+### Delete a review
+A user can delete their own review
+* Require Authentication: True
+
+* Require Authorization: True
+* Request
+    * Method: UPDATE
+    * URL: api/review/<int:review_id>
+    * Body: None
+* Successful Response
+    * Status Code: 200
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+    "message": "Successfully deleted review"
+    }
+    ```
+* Error Response: Review could not be found
+    * Status Code: 404
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+    "message": "Review could not be found"
+    }
+    ```
+## Funny & Helpful on Reviews
+
+### Increment helpful attribute
+Upvote the helpful value on a review
+* Require Authentication: True
+* Request
+    * Method: POST
+    * URL: api/review/<int:id>/helpful
+    * Body: None
+* Successful Response
+    * Status Code: 200
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+    "createdAt": "Wed, 17 Apr 2024 23:43:44 GMT",
+    "funny": 1,
+    "game_id": 3,
+    "helpful": 4,
+    "id": 14,
+    "rating": -1,
+    "review": "This game is a disappointment. I expected more from it.",
+    "updatedAt": "Thu, 18 Apr 2024 22:57:02 GMT",
+    "user_id": 5
+    }
+    ```
+* Error Response: Review could not be found
+    * Status Code: 404
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+    "error": "Review could not be found"
+    }
+    ```
+* Error Response: Cannot rate own review
+    * Status Code: 403
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+    "error": "You cannot rate your own review"
+    }
+    ```
+
+### Decrement helpful attribute
+Downvote the helpful value on a review
+* Require Authentication: True
+* Request
+    * Method: DELETE
+    * URL: api/review/<int:id>/helpful
+    * Body: None
+* Successful Response
+    * Status Code: 200
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+    "createdAt": "Wed, 17 Apr 2024 23:43:44 GMT",
+    "funny": 1,
+    "game_id": 3,
+    "helpful": 3,
+    "id": 14,
+    "rating": -1,
+    "review": "This game is a disappointment. I expected more from it.",
+    "updatedAt": "Thu, 18 Apr 2024 22:57:02 GMT",
+    "user_id": 5
+    }
+    ```
+* Error Response: Review could not be found
+    * Status Code: 404
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+    "error": "Review could not be found"
+    }
+    ```
+* Error Response: Cannot rate own review
+    * Status Code: 403
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+    "error": "You cannot rate your own review"
+    }
+    ```
+
+### Increment funny attribute
+Upvote the funny value on a review
+* Require Authentication: True
+* Request
+    * Method: POST
+    * URL: api/review/<int:id>/funny
+    * Body: None
+* Successful Response
+    * Status Code: 200
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+    "funny": 2
+    }
+    ```
+* Error Response: Review could not be found
+    * Status Code: 404
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+    "error": "Review could not be found"
+    }
+    ```
+* Error Response: Cannot rate own review
+    * Status Code: 403
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+    "error": "You cannot rate your own review"
+    }
+    ```
+
+### Decrement funny attribute
+Downvote the funny value on a review
+* Require Authentication: True
+* Request
+    * Method: DELETE
+    * URL: api/review/<int:id>/funny
+    * Body: None
+* Successful Response
+    * Status Code: 200
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+    "funny": 1
+    }
+    ```
+* Error Response: Review could not be found
+    * Status Code: 404
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+    "error": "Review could not be found"
+    }
+    ```
+* Error Response: Cannot rate own review
+    * Status Code: 403
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+    "error": "You cannot rate your own review"
+    }
+    ```
+## Library
+### Get library
+Returns all games user purchased
+* Require Authentication: True
+
+* Request
+    * Method: GET
+    * URL: api/library/
+    * Body: None
+* Successful Response
+    * Status Code: 200
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+      "library": []
+    }
+    ```
+### Checkout cart
+When a user checksout game(s) will be added to library
+* Require Authentication: True
+
+* Request
+    * Method: POST
+    * URL: api/library/checkout
+    * Body: None
+* Successful Response
+    * Status Code: 200
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+    "message": "Cart checked out successfully"
+    }
+    ```
