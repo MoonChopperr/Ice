@@ -1,5 +1,7 @@
 # a-A-capstone
-My capstone project for mod 7 during my time at a/A
+For my capstone project during my time at app academy I decided on making a steam clone.
+You'll be able to purchase games from a library, wishlist wanted games and leave reviews. 
+I put a lot of effort into the styling for it to look similar to Steam however there is still much more left to do (as per usual)
 
 # API Documentation
 
