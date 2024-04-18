@@ -1,7 +1,83 @@
-# a-A-capstone
+# ICE
 For my capstone project during my time at app academy I decided on making a steam clone.
-You'll be able to purchase games from a library, wishlist wanted games and leave reviews.
 I put a lot of effort into the styling for it to look similar to Steam however there is still much more left to do (as per usual)
+
+# Features
+* Games
+* Cart (Checkout)
+* Wishlist
+* Reviews
+* Library
+* Upvoting funny/helpful attributes on a review
+
+# Hosted On
+![Render](https://img.shields.io/badge/Render-333333?style=for-the-badge&logo=render&logoColor=white)
+
+# Tech Stack
+![JavaScript](https://img.shields.io/badge/JavaScript-%23323330.svg?logo=javascript&logoColor=%23F7DF1E)
+![Python](https://img.shields.io/badge/Python-3670A0?logo=python&logoColor=ffdd54)
+![HTML5](https://img.shields.io/badge/HTML5-%23E34F26.svg?logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-%231572B6.svg?logo=css3&logoColor=white)
+![npm](https://img.shields.io/badge/npm-CB3837.svg?logo=npm&logoColor=white)
+![Markdown](https://img.shields.io/badge/Markdown-000000?logo=markdown&logoColor=white)
+![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=white)
+![Redux](https://img.shields.io/badge/Redux-764ABC?logo=redux&logoColor=white)
+![React Router](https://img.shields.io/badge/React_Router-CA4245?logo=react-router&logoColor=white)
+![React Hook Form](https://img.shields.io/badge/React_Hook_Form-160078?logo=react&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)
+![ESLint](https://img.shields.io/badge/ESLint-4B32C3?logo=eslint&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-000000?logo=flask&logoColor=white)
+![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?logo=ubuntu&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-FCC624?logo=linux&logoColor=black)
+![AWS](https://img.shields.io/badge/AWS-%23232F3E.svg?logo=amazon-aws&logoColor=white)
+![Amazon S3](https://img.shields.io/badge/Amazon_S3-569A31?logo=amazon-s3&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-003B57?logo=sqlite&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?logo=postgresql&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
+![Postman](https://img.shields.io/badge/Postman-FF6C37?logo=postman&logoColor=white)
+![Render](https://img.shields.io/badge/Render-333333?style=for-the-badge&logo=render&logoColor=white)
+![Visual Studio Code](https://img.shields.io/badge/Visual_Studio_Code-007ACC?logo=visual-studio-code&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?logo=git&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white)
+![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-282C34?logo=sqlalchemy&logoColor=white)
+![Adobe Photoshop](https://img.shields.io/badge/Adobe%20Photoshop-31A8FF?logo=adobe-photoshop&logoColor=white)
+
+# Installation guide
+## Clone the repo
+## Install necessary dependencies
+- run `pipenv install -r requirements.txt` in the root project folder
+- run `npm install` in react-vite folder
+## Other dependencies
+- `npm i react-responsive-carousel`
+- `npm i date-fns`
+- `pip i email-validator`
+- `pipenv install boto3`
+## Create and populate .env file
+- SECRET_KEY
+- DATABASE_URL
+- SCHEMA
+- S3_BUCKET
+- S3_KEY
+- S3_SECRET
+## Database
+- run `pipenv flask db init`
+## Migration
+- run `pipenv run flask db upgrade`
+## Seeders
+- run `pipenv run flask seed all`
+## Start up server
+- run `pipenv run flask run` in root project folder
+- run `npm run dev` in `react-vite` folder
+
+# DEMO
+## Login
+## Games
+## Wishlist
+## Checkout
+## Library
+## Reviews
+## Review rating
 
 # API Documentation
 
