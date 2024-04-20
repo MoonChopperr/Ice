@@ -19,14 +19,10 @@ I put a lot of effort into the styling for it to look similar to Steam however t
   </video>
 
 * Wishlist
-  <video width="320" height="240" controls>
-    <source src="https://github.com/MoonChopperr/Ice/assets/146145323/50a196b4-01b2-4404-bc12-f0fa737abf88" type="video/mp4">
-  </video>
+![wishlist]https://cdn.discordapp.com/attachments/474309820087009291/1231372887127101460/wishlist.gif?ex=6636b85e&is=6624435e&hm=cb9a2bc4f836a948b2ddde404928f042cd3454d79e1b92c5e60a8334db8e5696&
 
 * Reviews
-  <video width="320" height="240" controls>
-    <source src="https://github.com/MoonChopperr/Ice/assets/146145323/353cca86-544a-4966-957f-b57e0553bf10" type="video/mp4">
-  </video>
+
 * Upvoting funny/helpful attributes on a review
 ![smallfeature](https://github.com/MoonChopperr/Ice/assets/146145323/99d9b98a-d5b1-48f5-84e9-22e336af655d)
 
