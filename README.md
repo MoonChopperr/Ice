@@ -4,15 +4,29 @@ I put a lot of effort into the styling for it to look similar to Steam however t
 
 # Features
 * Logging in
-https://github.com/MoonChopperr/Ice/assets/146145323/7b93e4fe-3ce3-4937-933b-a50914cce3ff
+  <video width="320" height="240" controls>
+    <source src="https://github.com/MoonChopperr/Ice/assets/146145323/7b93e4fe-3ce3-4937-933b-a50914cce3ff" type="video/mp4">
+  </video>
+
 * Games
-https://github.com/MoonChopperr/Ice/assets/146145323/c807c1a2-96ae-479d-ad18-73c937fb1f71
+  <video width="320" height="240" controls>
+    <source src="https://github.com/MoonChopperr/Ice/assets/146145323/c807c1a2-96ae-479d-ad18-73c937fb1f71" type="video/mp4">
+  </video>
+
 * Cart (Checkout)
-https://github.com/MoonChopperr/Ice/assets/146145323/0b8df7f4-75d9-4fef-a32f-66958e35079d
+  <video width="320" height="240" controls>
+    <source src="https://github.com/MoonChopperr/Ice/assets/146145323/0b8df7f4-75d9-4fef-a32f-66958e35079d" type="video/mp4">
+  </video>
+
 * Wishlist
-https://github.com/MoonChopperr/Ice/assets/146145323/50a196b4-01b2-4404-bc12-f0fa737abf88
+  <video width="320" height="240" controls>
+    <source src="https://github.com/MoonChopperr/Ice/assets/146145323/50a196b4-01b2-4404-bc12-f0fa737abf88" type="video/mp4">
+  </video>
+
 * Reviews
-https://github.com/MoonChopperr/Ice/assets/146145323/353cca86-544a-4966-957f-b57e0553bf10
+  <video width="320" height="240" controls>
+    <source src="https://github.com/MoonChopperr/Ice/assets/146145323/353cca86-544a-4966-957f-b57e0553bf10" type="video/mp4">
+  </video>
 * Upvoting funny/helpful attributes on a review
 ![smallfeature](https://github.com/MoonChopperr/Ice/assets/146145323/99d9b98a-d5b1-48f5-84e9-22e336af655d)
 
