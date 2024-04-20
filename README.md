@@ -19,7 +19,7 @@ I put a lot of effort into the styling for it to look similar to Steam however t
   </video>
 
 * Wishlist
-![wishlist]https://cdn.discordapp.com/attachments/474309820087009291/1231372887127101460/wishlist.gif?ex=6636b85e&is=6624435e&hm=cb9a2bc4f836a948b2ddde404928f042cd3454d79e1b92c5e60a8334db8e5696&
+![wishlist](https://cdn.discordapp.com/attachments/474309820087009291/1231372887127101460/wishlist.gif?ex=6636b85e&is=6624435e&hm=cb9a2bc4f836a948b2ddde404928f042cd3454d79e1b92c5e60a8334db8e5696&)
 
 * Reviews
 
