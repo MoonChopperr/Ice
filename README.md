@@ -3,28 +3,20 @@ For my capstone project during my time at app academy I decided on making a stea
 I put a lot of effort into the styling for it to look similar to Steam however there is still much more left to do (as per usual)
 
 # Features
-* Logging in
-  <video width="320" height="240" controls>
-    <source src="https://github.com/MoonChopperr/Ice/assets/146145323/7b93e4fe-3ce3-4937-933b-a50914cce3ff" type="video/mp4">
-  </video>
-
-* Games
-  <video width="320" height="240" controls>
-    <source src="https://github.com/MoonChopperr/Ice/assets/146145323/c807c1a2-96ae-479d-ad18-73c937fb1f71" type="video/mp4">
-  </video>
-
-* Cart (Checkout)
-  <video width="320" height="240" controls>
-    <source src="https://github.com/MoonChopperr/Ice/assets/146145323/0b8df7f4-75d9-4fef-a32f-66958e35079d" type="video/mp4">
-  </video>
-
-* Wishlist
-![wishlist](https://cdn.discordapp.com/attachments/474309820087009291/1231372887127101460/wishlist.gif?ex=6636b85e&is=6624435e&hm=cb9a2bc4f836a948b2ddde404928f042cd3454d79e1b92c5e60a8334db8e5696&)
-
-* Reviews
-
-* Upvoting funny/helpful attributes on a review
-![smallfeature](https://github.com/MoonChopperr/Ice/assets/146145323/99d9b98a-d5b1-48f5-84e9-22e336af655d)
+## Login
+![alt text](<demo/signin.gif>)
+## Games
+![alt text](<demo/game.gif>)
+## Wishlist
+![alt text](<demo/wishlist.gif>)
+## Checkout
+![alt text](<demo/Cart.gif>)
+## Library
+![alt text](<demo/library.gif>)
+## Reviews
+![alt text](<demo/review.gif>)
+## Review rating
+![alt text](<demo/smallfeature.gif>)
 
 # Hosted On
 ![Render](https://img.shields.io/badge/Render-333333?style=for-the-badge&logo=render&logoColor=white)
