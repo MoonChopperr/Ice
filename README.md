@@ -72,13 +72,19 @@ I put a lot of effort into the styling for it to look similar to Steam however t
 
 # DEMO
 ## Login
+![alt text](<demo/signin.gif>)
 ## Games
+![alt text](<demo/game.gif>)
 ## Wishlist
+![alt text](<demo/wishlist.gif>)
 ## Checkout
+![alt text](<demo/Cart.gif>)
 ## Library
+![alt text](<demo/library.gif>)
 ## Reviews
+![alt text](<demo/review.gif>)
 ## Review rating
-
+![alt text](<demo/smallfeature.gif>)
 # API Documentation
 
 ## All endpoints that require authentication
