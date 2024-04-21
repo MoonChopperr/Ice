@@ -4,19 +4,25 @@ I put a lot of effort into the styling for it to look similar to Steam however t
 
 # Features
 ## Login
-![alt text](<demo/signin.gif>)
+![Login](Demo/signin.gif)
+
 ## Games
-![alt text](<demo/game.gif>)
+![Games](Demo/game.gif)
+
 ## Wishlist
-![alt text](<demo/wishlist.gif>)
+![Wishlist](Demo/wishlist.gif)
+
 ## Checkout
-![alt text](<demo/Cart.gif>)
+![Checkout](Demo/Cart.gif)
+
 ## Library
-![alt text](<demo/library.gif>)
+![Library](Demo/library.gif)
+
 ## Reviews
-![alt text](<demo/review.gif>)
+![Reviews](Demo/review.gif)
+
 ## Review rating
-![alt text](<demo/smallfeature.gif>)
+![Review Rating](Demo/smallfeature.gif)
 
 # Hosted On
 ![Render](https://img.shields.io/badge/Render-333333?style=for-the-badge&logo=render&logoColor=white)
