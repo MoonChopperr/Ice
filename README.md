@@ -7,28 +7,25 @@ I put a lot of effort into the styling for it to look similar to Steam however t
 
 # Features
 ## Login
-![Login](Demo/signin.gif)
+![Login](app/Demo/signin.gif)
 
 ## Games
-![Games](Demo/game.gif)
+![Games](app/Demo/game.gif)
 
 ## Wishlist
-![Wishlist](Demo/wishlist.gif)
+![Wishlist](app/Demo/wishlist.gif)
 
 ## Checkout
-![Checkout](Demo/Cart.gif)
+![Checkout](app/Demo/Cart.gif)
 
 ## Library
-![Library](Demo/library.gif)
+![Library](app/Demo/library.gif)
 
 ## Reviews
-![Reviews](Demo/review.gif)
+![Reviews](app/Demo/review.gif)
 
 ## Review rating
-![Review Rating](Demo/smallfeature.gif)
-
-# Hosted On
-![Render](https://img.shields.io/badge/Render-333333?style=for-the-badge&logo=render&logoColor=white)
+![Review Rating](app/Demo/smallfeature.gif)
 
 # Tech Stack
 ![JavaScript](https://img.shields.io/badge/JavaScript-%23323330.svg?logo=javascript&logoColor=%23F7DF1E)
@@ -87,21 +84,6 @@ I put a lot of effort into the styling for it to look similar to Steam however t
 - run `pipenv run flask run` in root project folder
 - run `npm run dev` in `react-vite` folder
 
-# DEMO
-## Login
-![alt text](<demo/signin.gif>)
-## Games
-![alt text](<demo/game.gif>)
-## Wishlist
-![alt text](<demo/wishlist.gif>)
-## Checkout
-![alt text](<demo/Cart.gif>)
-## Library
-![alt text](<demo/library.gif>)
-## Reviews
-![alt text](<demo/review.gif>)
-## Review rating
-![alt text](<demo/smallfeature.gif>)
 # API Documentation
 
 ## All endpoints that require authentication
