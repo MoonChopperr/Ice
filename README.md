@@ -7,7 +7,7 @@ I put a lot of effort into the styling for it to look similar to Steam however t
 
 # Features
 ## Login
-![Login](app/Demo/signin.gif)
+![Login](app/Demo/login.gif)
 
 ## Games
 ![Games](app/Demo/game.gif)
