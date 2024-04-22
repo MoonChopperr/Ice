@@ -2,6 +2,9 @@
 For my capstone project during my time at app academy I decided on making a steam clone.
 I put a lot of effort into the styling for it to look similar to Steam however there is still much more left to do (as per usual)
 
+# Hosted on
+[![Render](https://img.shields.io/badge/Render-Deployed-blue?style=for-the-badge&logo=render)](https://a-a-capstone.onrender.com/)
+
 # Features
 ## Login
 ![Login](Demo/signin.gif)
