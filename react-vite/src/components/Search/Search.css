@@ -1,0 +1,22 @@
+.S-container {
+
+}
+
+.S-title {
+    font-size: 25px;
+    color: white;
+    font-weight: 600;
+}
+
+.S-navbar2 {
+    padding-top: 35px;
+}
+
+.S-Nav-container{
+    margin: 0px 25.5%;
+}
+
+.S-query-subtext{
+    color: #1999E3;
+    font-weight: 300;
+}

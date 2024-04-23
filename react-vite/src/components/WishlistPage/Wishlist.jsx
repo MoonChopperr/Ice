@@ -5,6 +5,10 @@ import { thunkDeleteWishlistItem } from "../../redux/wishlist";
 import { thunkGetWishlist, thunkUpdateWishlist } from "../../redux/wishlist";
 import { thunkAllGames } from "../../redux/game";
 import { thunkAddCart, thunkGetCart } from "../../redux/cart";
+import { useModal } from "../../context/Modal"
+import AlrWishlistModal from "../WishlistModal/AlrWishlistModal";
+import WishlistModal from "../WishlistModal/WishlistModal";
+import Footer from "../Footer/Footer";
 import './Wishlist.css'
 
 function WishlistPage() {
@@ -19,6 +23,8 @@ function WishlistPage() {
     const wishlist = userWishlist?.currentWishlist
     const [forceRerender, setForceRerender] = useState(false)
     const [cartNum, setCartNum] = useState(false)
+
+    const { setModalContent, showModal } = useModal()
 
     useEffect(() => {
         dispatch(thunkGetWishlist())
@@ -135,18 +141,17 @@ function WishlistPage() {
     //cart handling
 
     const addToCart = (gameId) => {
-
         const currCart = userCart?.map(item => item.game_id)
 
         if (currCart?.includes(gameId)) {
-            alert("This item is in your cart already")
+            setModalContent(<AlrWishlistModal />)
         } else {
             const newOrder = {
                 game_id: gameId
             }
 
             dispatch(thunkAddCart(newOrder))
-            alert('Game added to cart')
+            setModalContent(<WishlistModal />);
 
             setCartNum(prevState => !prevState)
         }
@@ -220,6 +225,7 @@ function WishlistPage() {
                     <div className="WL-no-items">No items in wishlist</div>
                 )}
             </div>
+
         </>
     )
 }

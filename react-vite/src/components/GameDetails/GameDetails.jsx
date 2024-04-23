@@ -14,6 +14,8 @@ import NavigationModal from "../NavigationModal/NavigationModal";
 import CartInModal from "../CartInCartModal/CartInModal";
 import WishlistModal from "../WishlistModal/WishlistModal";
 import WishlistRmModal from "../WishlistRmModal/WishlistModalRm";
+import Loading from "../Loading/Loading";
+import Footer from "../Footer/Footer"
 
 import './GameDetails.css'
 import { thunkAddCart, thunkGetCart } from "../../redux/cart";
@@ -55,8 +57,8 @@ function GameDetails() {
     const positiveReviews = reviews.filter(review => review.rating === 1).length
     const reviewRatio = positiveReviews / totalReviews
     // console.log('ratio', reviewRatio)
-    const { setModalContent, showModal } = useModal()
-    const addToCart = async(gameId) => {
+    const { setModalContent} = useModal()
+    const addToCart = async (gameId) => {
         if (!currUser.user) {
             setModalContent(<NavigationModal />)
         } else {
@@ -78,7 +80,7 @@ function GameDetails() {
 
     }
 
-    const addToWishlist = async(gameId) => {
+    const addToWishlist = async (gameId) => {
         const currWishlist = wishlist?.map(item => item.game_id)
 
         if (currWishlist?.includes(gameId)) {
@@ -206,158 +208,73 @@ function GameDetails() {
 
     return (
         <>
-            <div className="GF-BG">
-                <div className="GF-main-container">
-                    <div> <NavBar2 /> </div>
+            {game ? (
+                <div className="GF-BG">
+                    <div className="GF-main-container">
+                        <div> <NavBar2 /> </div>
 
-                    <div className='GD-above-title'>
-                        <div className="GF-filter">
-                            <span className="GF-Hover" onClick={() => alert('Feature coming soon')}>All Games</span>
-                            <span> &gt; </span>
-                            <span className="GF-Hover" onClick={() => alert('Feature coming soon')}>{singleGenre(game?.genre)}</span>
-                            <span> &gt; </span>
+                        <div className='GD-above-title'>
+                            <div className="GF-filter">
+                                <span className="GF-Hover" onClick={() => alert('Feature coming soon')}>All Games</span>
+                                <span> &gt; </span>
+                                <span className="GF-Hover" onClick={() => alert('Feature coming soon')}>{singleGenre(game?.genre)}</span>
+                                <span> &gt; </span>
 
-                            {game?.franchise == false && (
+                                {game?.franchise == false && (
+                                    <>
+                                        <span className="GF-Hover" onClick={() => alert('Feature coming soon')}>{game?.franchise} Franchise</span>
+                                        <span> &gt; </span>
+                                    </>
+                                )}
+                                <span className="GF-Hover" onClick={() => alert('Feature coming soon')}>{game?.title}</span>
+                            </div>
+                        </div>
+
+                        <div className="title-container">
+                            <h1 className="GD-title">{game?.title}</h1>
+                        </div>
+
+
+                        <div className="GD-ED-container">
+                            {isGameOwner && (
                                 <>
-                                    <span className="GF-Hover" onClick={() => alert('Feature coming soon')}>{game?.franchise} Franchise</span>
-                                    <span> &gt; </span>
+                                    <button className="GD-btn" onClick={handleEdit}> edit </button>
+                                    <OpenModalButton
+                                        style={{
+                                            backgroundColor: 'red',
+                                            color: 'white',
+                                            borderRadius: '3px',
+                                            padding: '10px 20px',
+                                            border: 'none',
+                                            cursor: 'pointer'
+                                        }}
+                                        className='Button'
+                                        buttonText='Delete'
+                                        modalComponent={<DeleteGame gameId={gameId} />}
+                                    />
                                 </>
                             )}
-                            <span className="GF-Hover" onClick={() => alert('Feature coming soon')}>{game?.title}</span>
                         </div>
-                    </div>
-
-                    <div className="title-container">
-                        <h1 className="GD-title">{game?.title}</h1>
-                    </div>
-
-
-                    <div className="GD-ED-container">
-                        {isGameOwner && (
-                            <>
-                                <button className="GD-btn" onClick={handleEdit}> edit </button>
-                                <OpenModalButton
-                                    style={{
-                                        backgroundColor: 'red',
-                                        color: 'white',
-                                        borderRadius: '3px',
-                                        padding: '10px 20px',
-                                        border: 'none',
-                                        cursor: 'pointer'
-                                    }}
-                                    className='Button'
-                                    buttonText='Delete'
-                                    modalComponent={<DeleteGame gameId={gameId} />}
-                                />
-                            </>
-                        )}
-                    </div>
 
 
 
-                    <div className='GD-splash-container'>
-                        <div className="splash-l"> </div>
+                        <div className='GD-splash-container'>
+                            <div className="splash-l"> </div>
 
 
-                        <div className="splash-r">
-                            <img className="GD-img" src={game?.images} alt='Game Image' />
-                            <p className="game-about">{game?.about}</p>
+                            <div className="splash-r">
+                                <img className="GD-img" src={game?.images} alt='Game Image' />
+                                <p className="game-about">{game?.about}</p>
 
-                            <div className="stats">
-                                <div>
-                                    <span className="GD-label">ALL REVIEWS: </span>
-                                    <span className="GD-review-rating" style={{ color: reviewResult.color }}> {reviewResult.text}</span>
-                                    <span className="GD-label">({reviews?.length})</span>
-                                </div>
-                                <div className="GD-date">
-                                    <span className="GD-label">RELEASE DATE:</span>
-                                    <span className="release-date-text">{formatDate(game?.release_date)}</span>
-                                </div>
-                                {/*
-                                <div className="">
-
-                                </div> */}
-                                <div>
-                                    <span className="GD-label">DEVELOPER:</span>
-                                    <span className="splash-text">{game?.developer}</span>
-                                </div>
-
-                                {game?.publisher && (
+                                <div className="stats">
                                     <div>
-                                        <span className="GD-label">PUBLISHER:</span>
-                                        <span className="splash-text">{game?.publisher}</span>
+                                        <span className="GD-label">ALL REVIEWS: </span>
+                                        <span className="GD-review-rating" style={{ color: reviewResult.color }}> {reviewResult.text}</span>
+                                        <span className="GD-label">({reviews?.length})</span>
                                     </div>
-                                )}
-
-                                <div className="GD-popular">
-                                    <span className="splash-label">Popular user-defined tags for this product:
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="gd-wishlist-container">
-
-                        {isGameInLibrary ? (
-                            <button className="gd-wishlist-btn" onClick={() => nav('/news')}>Follow</button>
-                        ) : (
-                            <>
-                                {wishlist?.some(item => item?.game_id === game?.id) ? (
-                                    <button className="gd-wishlist-btn" onClick={() => addToWishlist(game.id)}>Remove from wishlist</button>
-                                ) : (
-                                    <button className="gd-wishlist-btn" onClick={() => addToWishlist(game.id)}>Add to wishlist</button>
-                                )}
-                            </>
-                        )}
-                    </div>
-
-                    <div className="Rev-Module-container">
-                        {isGameInLibrary && <ReviewModule game={game} />}
-                    </div>
-
-
-
-                    <div className="below-splash">
-                        <div className="left-below">
-                            <div className="add-game-container">
-                                <div className="game-cart-cotnainer">
-                                    <p className="game-name">
-                                        Buy {game?.title}
-                                    </p>
-                                    <span className="add-to-cart-container">
-                                        ${formatPrice(game?.price)} <button onClick={() => addToCart(game.id)} > Add to Cart </button>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className='right-below'>
-
-                            <div className="GD-side-bar">
-                                {/* {game?.ESRB_RATING && ( */}
-                                <div className="ESRB-container">
-                                    {game?.ESRB_rating && (
-                                        <>
-                                            <div>
-                                                <img className="ESRB-img" src={renderESRB(game?.ESRB_rating)} alt={`ESRB Rating: ${game?.ESRB_rating}`} />
-                                            </div>
-                                            <div className="ESRB-text">Rating for: ESRB</div>
-                                        </>
-                                    )}
-
-                                </div>
-                                {/* )} */}
-
-                                <div className="stats-details">
-                                    <div>
-                                        <span className="GD-label">TITLE:</span>
-                                        <span className="splash-text-title">{game?.title}</span>
-                                    </div>
-
-                                    <div>
-                                        <span className="GD-label">GENRE:</span>
-                                        <span className="splash-text">{addSpaceAfterComma(game?.genre)}</span>
+                                    <div className="GD-date">
+                                        <span className="GD-label">RELEASE DATE:</span>
+                                        <span className="release-date-text">{formatDate(game?.release_date)}</span>
                                     </div>
 
                                     <div>
@@ -365,43 +282,128 @@ function GameDetails() {
                                         <span className="splash-text">{game?.developer}</span>
                                     </div>
 
-                                    <div>
-                                        <span className="GD-label">PUBLISHER:</span>
-                                        <span className="splash-text">{game?.publisher}</span>
-                                    </div>
-
-                                    <div>
-                                        <div>{game?.franchise && (
-                                            <div>
-                                                <span className="GD-label">FRANCHISE:</span>
-                                                <span className="splash-text">{game?.franchise}</span>
-                                            </div>
-                                        )}
+                                    {game?.publisher && (
+                                        <div>
+                                            <span className="GD-label">PUBLISHER:</span>
+                                            <span className="splash-text">{game?.publisher}</span>
                                         </div>
-                                    </div>
+                                    )}
 
-                                    <div>
-                                        <span className="GD-label">RELEASE DATE:</span>
-                                        <span className="release-date-text">{formatDate(game?.release_date)}</span>
+                                    <div className="GD-popular">
+                                        <span className="splash-label">Popular user-defined tags for this product:
+                                        </span>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
+                        <div className="gd-wishlist-container">
 
-                        <div>
-                            <div><AllReviewsModule /></div>
+                            {isGameInLibrary ? (
+                                <button className="gd-wishlist-btn" onClick={() => nav('/news')}>Follow</button>
+                            ) : (
+                                <>
+                                    {wishlist?.some(item => item?.game_id === game?.id) ? (
+                                        <button className="gd-wishlist-btn" onClick={() => addToWishlist(game.id)}>Remove from wishlist</button>
+                                    ) : (
+                                        <button className="gd-wishlist-btn" onClick={() => addToWishlist(game.id)}>Add to wishlist</button>
+                                    )}
+                                </>
+                            )}
+                        </div>
+
+                        <div className="Rev-Module-container">
+                            {isGameInLibrary && <ReviewModule game={game} />}
+                        </div>
+
+
+
+                        <div className="below-splash">
+                            <div className="left-below">
+                                <div className="add-game-container">
+                                    <div className="game-cart-cotnainer">
+                                        <p className="game-name">
+                                            Buy {game?.title}
+                                        </p>
+                                        <span className="add-to-cart-container">
+                                            ${formatPrice(game?.price)} <button onClick={() => addToCart(game.id)} > Add to Cart </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className='right-below'>
+
+                                <div className="GD-side-bar">
+                                    <div className="ESRB-container">
+                                        {game?.ESRB_rating && (
+                                            <>
+                                                <div>
+                                                    <img className="ESRB-img" src={renderESRB(game?.ESRB_rating)} alt={`ESRB Rating: ${game?.ESRB_rating}`} />
+                                                </div>
+                                                <div className="ESRB-text">Rating for: ESRB</div>
+                                            </>
+                                        )}
+
+                                    </div>
+                                    {/* )} */}
+
+                                    <div className="stats-details">
+                                        <div>
+                                            <span className="GD-label">TITLE:</span>
+                                            <span className="splash-text-title">{game?.title}</span>
+                                        </div>
+
+                                        <div>
+                                            <span className="GD-label">GENRE:</span>
+                                            <span className="splash-text">{addSpaceAfterComma(game?.genre)}</span>
+                                        </div>
+
+                                        <div>
+                                            <span className="GD-label">DEVELOPER:</span>
+                                            <span className="splash-text">{game?.developer}</span>
+                                        </div>
+
+                                        <div>
+                                            <span className="GD-label">PUBLISHER:</span>
+                                            <span className="splash-text">{game?.publisher}</span>
+                                        </div>
+
+                                        <div>
+                                            <div>{game?.franchise && (
+                                                <div>
+                                                    <span className="GD-label">FRANCHISE:</span>
+                                                    <span className="splash-text">{game?.franchise}</span>
+                                                </div>
+                                            )}
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <span className="GD-label">RELEASE DATE:</span>
+                                            <span className="release-date-text">{formatDate(game?.release_date)}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div>
+                                <div><AllReviewsModule /></div>
+                            </div>
+
                         </div>
 
                     </div>
 
                 </div>
 
-            </div>
 
 
-
-
+            ) : (
+                <Loading />
+            )}
+            <Footer />
         </>
     )
 }

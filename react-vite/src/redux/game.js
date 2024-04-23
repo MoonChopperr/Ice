@@ -6,6 +6,10 @@ export const CREATE_GAME = '/game/CREATE_GAME'
 export const UPDATE_GAME = '/game/UPDATE_GAME'
 export const DELETE_GAME = '/game/DELETE_GAME'
 
+export const SEARCH_GAMES_REQUEST = 'SEARCH_GAMES_REQUEST';
+export const SEARCH_GAMES_SUCCESS = 'SEARCH_GAMES_SUCCESS';
+export const SEARCH_GAMES_FAILURE = 'SEARCH_GAMES_FAILURE';
+
 const getGames = games => ({
     type: GET_GAMES,
     games
@@ -31,9 +35,35 @@ const deleteGame = game => ({
     game
 })
 
+const searchGamesRequest = () => ({
+    type: types.SEARCH_GAMES_REQUEST,
+})
+
+const searchGamesSuccess = (games) => ({
+    type: types.SEARCH_GAMES_SUCCESS,
+    payload: games,
+})
+
+const searchGamesFailure = (error) => ({
+    type: types.SEARCH_GAMES_FAILURE,
+    payload: error,
+})
 
 //thunks
+export const thunkSearchGames = (query) => async (dispatch) => {
+    dispatch(searchGamesRequest());
 
+    try {
+        const response = await fetch(`/api/games/search?q=${query}`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch data');
+        }
+        const data = await response.json();
+        dispatch(searchGamesSuccess(data));
+    } catch (error) {
+        dispatch(searchGamesFailure(error.message));
+    }
+}
 
 export const thunkAllGames = () => async (dispatch) => {
     const response = await fetch(`/api/games`)
@@ -130,6 +160,17 @@ function gameReducer(state = {}, action) {
             const deleteState = { ...state }
             delete deleteState[action.game]
             return deleteState
+        }
+        case SEARCH_GAMES_REQUEST: {
+            return { ...state, loading: true, error: null }
+        }
+
+        case SEARCH_GAMES_SUCCESS: {
+            return { ...state, games: action.payload, loading: false, error: null, }
+        }
+
+        case SEARCH_GAMES_FAILURE: {
+            return { ...state, games: [], loading: false, error: action.payload, }
         }
         default:
             return state

@@ -8,7 +8,7 @@ import { thunkClearCart } from '../../redux/cart'
 import { thunkAddLibrary } from '../../redux/library'
 import { useModal } from "../../context/Modal"
 import CartCheckOutModal from '../CartCheckOutModal/CartCheckOutModal'
-
+import Footer from '../Footer/Footer'
 
 import NavBar2 from '../NavBar2/NavBar2'
 import './CartPage.css'
