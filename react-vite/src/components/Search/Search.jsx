@@ -17,7 +17,16 @@ function Search() {
             dispatch(thunkSearchGames(query))
         }
     }, [dispatch, query])
+    function formatDate(date) {
+        if (!date) {
+            return ''
+        }
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        const [year, month, day] = date.split('-')
 
+        const monthName = months[parseInt(month, 10) - 1] //converts month into integer, 10 is specify conversion base to decimal | need to subtract 1 because array index 0
+        return `${monthName} ${parseInt(day, 10)}, ${year}`
+    }
     const filteredGames = query ? games.filter(game => game?.title.toLowerCase().includes(query.toLowerCase())) : []
 
     return (
@@ -36,9 +45,13 @@ function Search() {
                                 <p className="S-query-subtext">Games found containing &quot;{query}&quot;</p>
                                 {filteredGames.map(game => (
                                     <div key={game.id}>
-                                        <div key={game.id} className="LB-item">
-                                            <div className="LB-item-title">{game.title}</div>
-                                            <Link to={`/game/${game.id}`}><img className='LB-item-img' src={game.images} alt={game.title}></img></Link>
+                                        <div className="S-img-container">
+                                            <Link to={`/game/${game.id}`}><img className="S-img" src={game.images} alt={game.title}></img></Link>
+                                        </div>
+                                        <div className="S-text-container">
+                                            <div className="S-game-title" >{game.title}</div>
+                                            <div className="S-game-price">${game.price}</div>
+                                            <div className="S-game-date">{formatDate(game.release_date)}</div>
                                         </div>
                                     </div>
                                 ))}
@@ -46,7 +59,7 @@ function Search() {
                         )
                     ) : null}
                 </div>
-            </div>
+            </div >
         </>
     );
 }

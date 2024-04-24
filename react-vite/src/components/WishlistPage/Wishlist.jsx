@@ -8,7 +8,7 @@ import { thunkAddCart, thunkGetCart } from "../../redux/cart";
 import { useModal } from "../../context/Modal"
 import AlrWishlistModal from "../WishlistModal/AlrWishlistModal";
 import WishlistModal from "../WishlistModal/WishlistModal";
-import Footer from "../Footer/Footer";
+// import Footer from "../Footer/Footer";
 import './Wishlist.css'
 
 function WishlistPage() {
@@ -24,7 +24,7 @@ function WishlistPage() {
     const [forceRerender, setForceRerender] = useState(false)
     const [cartNum, setCartNum] = useState(false)
 
-    const { setModalContent, showModal } = useModal()
+    const { setModalContent } = useModal()
 
     useEffect(() => {
         dispatch(thunkGetWishlist())

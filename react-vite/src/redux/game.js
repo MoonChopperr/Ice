@@ -36,16 +36,16 @@ const deleteGame = game => ({
 })
 
 const searchGamesRequest = () => ({
-    type: types.SEARCH_GAMES_REQUEST,
+    type: SEARCH_GAMES_REQUEST,
 })
 
 const searchGamesSuccess = (games) => ({
-    type: types.SEARCH_GAMES_SUCCESS,
+    type: SEARCH_GAMES_SUCCESS,
     payload: games,
 })
 
 const searchGamesFailure = (error) => ({
-    type: types.SEARCH_GAMES_FAILURE,
+    type: SEARCH_GAMES_FAILURE,
     payload: error,
 })
 
