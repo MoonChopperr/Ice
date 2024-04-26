@@ -20,7 +20,6 @@ function Support() {
                             <li className='SUP-early-description'>Adding friends on Steam</li>
                             <li className='SUP-early-description'>Changing Language</li>
                             <li className='SUP-early-description'>Changing account details after creation</li>
-                            <li className='SUP-early-description'>Utilizing Points Shop</li>
                             <li className='SUP-early-description'>Gifting Games</li>
                         </div>
                         <div className='SUP-early-description2'>
@@ -30,7 +29,8 @@ function Support() {
                             <li className='SUP-early-description'>Add and remove games to a <span className='SUP-library'>wishlist</span>; update a games rank by priority in the wishlist</li>
                             <li className='SUP-early-description'>View purchased games under <span className='SUP-library'>library</span></li>
                             <li className='SUP-early-description'>Create, read, update, and delete <span className='SUP-library'>reviews</span> on games that a user has purchased</li>
-                            <li className='SUP-early-description'>Vote on how helpful or funny a review is </li>
+                            <li className='SUP-early-description'><span className='SUP-library'>Vote</span> on how helpful or funny a review is </li>
+                            <li className='SUP-early-description'><span className='SUP-library'>Search</span> through the database of games using the search bar</li>
                         </div>
                     </div>
                 </div>

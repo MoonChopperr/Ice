@@ -11,7 +11,7 @@ function Search() {
     const { query } = useParams()
     const dispatch = useDispatch()
     const games = useSelector((state) => state?.game?.games) || [] // Initialize as empty array if undefined
-    console.log('gameQuery', games)
+    // console.log('gameQuery', games)
     useEffect(() => {
         if (query) { // Check if query is truthy (not undefined, null, or empty string)
             dispatch(thunkSearchGames(query))

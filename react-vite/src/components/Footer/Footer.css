@@ -29,6 +29,7 @@
 .footer-icon-links {
     text-decoration: none;
     color: white;
+    cursor: pointer;
 }
 
 .footer-icon-links-1 {

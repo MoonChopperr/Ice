@@ -58,6 +58,9 @@ function GameDetails() {
     const reviewRatio = positiveReviews / totalReviews
     // console.log('ratio', reviewRatio)
     const { setModalContent} = useModal()
+
+
+    // For adding multiple games to a cart/single game
     const addToCart = async (gameId) => {
         if (!currUser.user) {
             setModalContent(<NavigationModal />)
@@ -215,18 +218,18 @@ function GameDetails() {
 
                         <div className='GD-above-title'>
                             <div className="GF-filter">
-                                <span className="GF-Hover" onClick={() => alert('Feature coming soon')}>All Games</span>
+                                <span className="GF-Hover">All Games</span>
                                 <span> &gt; </span>
-                                <span className="GF-Hover" onClick={() => alert('Feature coming soon')}>{singleGenre(game?.genre)}</span>
+                                <span className="GF-Hover">{singleGenre(game?.genre)}</span>
                                 <span> &gt; </span>
 
                                 {game?.franchise == false && (
                                     <>
-                                        <span className="GF-Hover" onClick={() => alert('Feature coming soon')}>{game?.franchise} Franchise</span>
+                                        <span className="GF-Hover">{game?.franchise} Franchise</span>
                                         <span> &gt; </span>
                                     </>
                                 )}
-                                <span className="GF-Hover" onClick={() => alert('Feature coming soon')}>{game?.title}</span>
+                                <span className="GF-Hover">{game?.title}</span>
                             </div>
                         </div>
 

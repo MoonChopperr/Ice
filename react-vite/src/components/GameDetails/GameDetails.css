@@ -18,7 +18,7 @@ body {
 
 .GF-BG {
     background-color: #1A2A3D;
-    padding-top: 35px;
+    padding-top: .5rem;
 }
 
 .GD-title {
@@ -36,7 +36,7 @@ body {
 
 .GF-filter {
     color: #adafb1;
-    cursor: pointer;
+    /* cursor: pointer; */
     font-size: 12px;
     padding-top: 20px;
     display: flex;

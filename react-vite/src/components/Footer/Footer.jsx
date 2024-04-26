@@ -1,8 +1,11 @@
 import './Footer.css'
 // import { FaGithubSquare, FaLinkedin, FaFolderOpen } from "react-icons/fa";
 import footerlogo from '../../images/footerLogo.png'
+import { useNavigate } from 'react-router-dom'
 
 function Footer() {
+    const nav = useNavigate()
+
     return (
         <>
             <div className="footer">
@@ -25,7 +28,10 @@ function Footer() {
                                     <a className='footer-icon-links' href="https://www.linkedin.com/in/nishiyamaryou/">LinkedIn</a><span> | </span>
                                 </span>
                                 <span>
-                                    <a className='footer-icon-links' href="https://moonchopper.netlify.app/">Portfolio</a>
+                                    <a className='footer-icon-links' href="https://moonchopper.netlify.app/">Portfolio</a><span> | </span>
+                                </span>
+                                <span>
+                                    <a className='footer-icon-links' onClick={() => nav('/support')}>FAQ</a>
                                 </span>
                             </div>
                         </div>
