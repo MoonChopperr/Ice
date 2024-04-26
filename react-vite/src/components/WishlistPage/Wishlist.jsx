@@ -61,9 +61,6 @@ function WishlistPage() {
         return updatedRanks?.filter(game => game)
     }
 
-    // const games = getGames()
-    // console.log('games', games)
-
     function formatDate(date) {
         if (!date) {
             return ''
@@ -194,7 +191,7 @@ function WishlistPage() {
 
                                 <div className="WL-mid">
                                     <div className="WL-mid-container">
-                                        <div className="WL-subtitle">OVERALL REVIEWS:&nbsp;<span className="WL-sub-title">{ }</span></div>
+                                        {/* <div className="WL-subtitle">OVERALL REVIEWS:&nbsp;<span className="WL-sub-title">{}</span></div> */}
                                         <div className="WL-subtitle">RELEASE DATE:&nbsp;<span className="WL-sub-date">{formatDate(game?.release_date)}</span></div>
                                     </div>
 

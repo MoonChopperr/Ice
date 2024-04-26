@@ -1,8 +1,11 @@
 .Wishlist-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     padding-top: .5rem;
     /* border: 1px solid red; */
     margin: 0px 25.5%;
-
+    width: 930px;
 }
 
 .WL-username{
