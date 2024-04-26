@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { thunkGetLibrary } from "../../redux/library";
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-
+// import Footer from "../Footer/Footer";
 import './Library.css'
 
 function Library() {
@@ -70,7 +70,8 @@ function Library() {
     return (
         <>
             <div className="LB-container">
-                <h1 className="LB-title">Your Library</h1>
+
+                <div className="LB-title">Your Library</div>
                 <div className="LB-items-container">
                     {library && library?.library.slice()
                         .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) // Sort by createdAt in descending order
@@ -91,6 +92,7 @@ function Library() {
                     ))} */}
                 </div>
             </div>
+            {/* <Footer/> */}
         </>
     )
 }

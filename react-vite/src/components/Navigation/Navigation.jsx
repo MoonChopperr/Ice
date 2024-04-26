@@ -14,7 +14,7 @@ function Navigation() {
   console.log(showModal)
   const handleLibraryClick = () => {
     if (!currUser) {
-      setModalContent(<NavigationModal/>)
+      setModalContent(<NavigationModal />)
     } else {
       nav('/library')
     }
@@ -22,7 +22,7 @@ function Navigation() {
 
   const handleAboutClick = () => {
     if (!currUser) {
-      setModalContent(<NavigationModal/>)
+      setModalContent(<NavigationModal />)
     } else {
       currUser ? nav('/profile') : nav('/support')
     }
@@ -38,7 +38,7 @@ function Navigation() {
           <ul className="nav-links">
             <li className="nl"><a className="nla-store" onClick={() => nav('/')}>STORE</a></li>
             <li className="nl"><a className="nla" onClick={handleLibraryClick}>LIBRARY</a></li>
-            <li className="nl">
+            <li className="nla-user">
               <a className="nla" onClick={handleAboutClick}>
                 {currUser ? currUser.username.toUpperCase() : "ABOUT"}
               </a>
@@ -51,26 +51,26 @@ function Navigation() {
             </li>
           </ul>
 
-          <div className="user-account">
-            <div className="user-div">
-
-              {!currUser && (
-                <>
-                  <NavLink className='user-details' to="/login">login</NavLink>
-                  <span className="pipe"> | </span>
-                  <a className='user-details' onClick={() => alert('Feature coming soon')}>language</a>
-                </>
-              )}
-              {currUser && (
-                <>
-                  <DropDownProfile username={currUser.username} />
-                </>
-              )}
-            </div>
-          </div>
         </div>
       </div>
 
+      <div className="user-account">
+        <div className="user-div">
+
+          {!currUser && (
+            <>
+              <NavLink className='user-details' to="/login">login</NavLink>
+              <span className="pipe"> | </span>
+              <a className='user-details' onClick={() => alert('Feature coming soon')}>language</a>
+            </>
+          )}
+          {currUser && (
+            <>
+              <DropDownProfile username={currUser.username} />
+            </>
+          )}
+        </div>
+      </div>
 
       {/* <ul>
         <li>

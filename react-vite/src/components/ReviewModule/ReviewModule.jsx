@@ -63,7 +63,7 @@ const ReviewModule = ({ game }) => {
 
                 <div className="RM-main-container">
                     <div className="RM-top-container">
-                        <button className="RM-btn">Install Steam</button> <button className="RM-btn">Play Now</button>
+                        <button className="RM-btn">Install Ice</button> <button className="RM-btn">Play Now</button>
                     </div>
                     <hr className="RM-hr" />
 

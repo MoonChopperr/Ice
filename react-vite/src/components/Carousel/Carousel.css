@@ -4,8 +4,10 @@
 
 }
 
-/* .C-border{
-} */
+.C{
+    text-decoration: none;
+    color: white;
+}
 
 .C-info {
     background-color: rgba(0, 0, 0, 0.5);

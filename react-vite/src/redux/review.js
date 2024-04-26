@@ -212,7 +212,10 @@ function reviewReducer(state = {}, action) {
             return { ...state, updatedReview: action.review }
         }
         case DELETE_REVIEW: {
-            return { ...state, deletedReviewId: action.reviewId }
+            const deleteState = { ...state }
+            delete deleteState[action.reviewId]
+            return deleteState
+            // return { ...state, deletedReviewId: action.reviewId }
         }
         case INCREMENT_HELPFUL: {
             return { ...state, [action.reviewId.id]: action.reviewId }

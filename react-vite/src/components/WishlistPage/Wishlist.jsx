@@ -5,6 +5,12 @@ import { thunkDeleteWishlistItem } from "../../redux/wishlist";
 import { thunkGetWishlist, thunkUpdateWishlist } from "../../redux/wishlist";
 import { thunkAllGames } from "../../redux/game";
 import { thunkAddCart, thunkGetCart } from "../../redux/cart";
+import { useModal } from "../../context/Modal"
+import AlrWishlistModal from "../WishlistModal/AlrWishlistModal";
+// import WishlistModal from "../WishlistModal/WishlistModal";
+import WishlistModalAddCart from "../WishlistModal/WishlistModalAddCart";
+import { Link } from "react-router-dom";
+// import Footer from "../Footer/Footer";
 import './Wishlist.css'
 
 function WishlistPage() {
@@ -19,6 +25,8 @@ function WishlistPage() {
     const wishlist = userWishlist?.currentWishlist
     const [forceRerender, setForceRerender] = useState(false)
     const [cartNum, setCartNum] = useState(false)
+
+    const { setModalContent } = useModal()
 
     useEffect(() => {
         dispatch(thunkGetWishlist())
@@ -54,9 +62,6 @@ function WishlistPage() {
         })
         return updatedRanks?.filter(game => game)
     }
-
-    // const games = getGames()
-    // console.log('games', games)
 
     function formatDate(date) {
         if (!date) {
@@ -135,18 +140,17 @@ function WishlistPage() {
     //cart handling
 
     const addToCart = (gameId) => {
-
         const currCart = userCart?.map(item => item.game_id)
 
         if (currCart?.includes(gameId)) {
-            alert("This item is in your cart already")
+            setModalContent(<AlrWishlistModal />)
         } else {
             const newOrder = {
                 game_id: gameId
             }
 
             dispatch(thunkAddCart(newOrder))
-            alert('Game added to cart')
+            setModalContent(<WishlistModalAddCart />);
 
             setCartNum(prevState => !prevState)
         }
@@ -181,7 +185,7 @@ function WishlistPage() {
                     getGames()?.map(game => (
                         <div key={game.id} className="WL-game-card">
                             <div className="WL-left">
-                                <img className="WL-game-img" src={game?.images}></img>
+                            <Link to={`/game/${game.id}`}><img className="WL-game-img" src={game?.images}></img></Link>
                             </div>
 
                             <div className="WL-right">
@@ -189,7 +193,7 @@ function WishlistPage() {
 
                                 <div className="WL-mid">
                                     <div className="WL-mid-container">
-                                        <div className="WL-subtitle">OVERALL REVIEWS:&nbsp;<span className="WL-sub-title">{ }</span></div>
+                                        {/* <div className="WL-subtitle">OVERALL REVIEWS:&nbsp;<span className="WL-sub-title">{}</span></div> */}
                                         <div className="WL-subtitle">RELEASE DATE:&nbsp;<span className="WL-sub-date">{formatDate(game?.release_date)}</span></div>
                                     </div>
 
@@ -220,6 +224,7 @@ function WishlistPage() {
                     <div className="WL-no-items">No items in wishlist</div>
                 )}
             </div>
+
         </>
     )
 }

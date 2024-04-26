@@ -1,12 +1,35 @@
 .News-container {
-    padding-top: 10%;
-    margin: 0 5%;
+    margin-left: 10%;
+
 }
 
-.News-Card {
+.News-title{
+    font-size: 25px;
     color: white;
-    background-image: linear-gradient(to right, #3A404A, #32353E);
+    font-weight: 600;
+    margin-top: .5rem;
+    font-size: 25px;
+    color: white;
+    font-weight: 600;
+    border-bottom: 1px solid;
+    border-image: linear-gradient(to right, #5085b1, transparent) 1;
+    margin-bottom: 1%;
 }
 
-.News-Card:hover {
-    background-image: linear-gradient(to right, #4B515E, #4B515E);}
+.News-Card-container {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap:10px
+}
+
+.News-card{
+    width: 100%;
+    display: flex;
+    font-weight: 300;
+}
+
+.News-link{
+    text-decoration: none;
+    color: #1999E3;
+}

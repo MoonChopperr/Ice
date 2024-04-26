@@ -13,6 +13,17 @@ def games():
     games = Game.query.all()
     return {'games':[game.to_dict() for game in games]},200
 
+@game_routes.route('/search')
+def search_games():
+    """Returns a list of games based on search query"""
+    query = request.args.get('q')
+
+    filtered_games = Game.query.filter(Game.title.ilike(f'%{query}%')).all()
+
+    serialized_games = [game.to_dict() for game in filtered_games]
+
+    return jsonify(serialized_games), 200
+
 
 @game_routes.route('/<int:id>')
 def game(id):

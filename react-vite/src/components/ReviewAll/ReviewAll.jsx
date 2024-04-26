@@ -80,7 +80,7 @@ const AllReviewsModule = () => {
                             <hr className="review-helpful-hr" />
                             <div className="review-helpful-text">Was this review helpful?</div>
                             <div className="review-actions">
-                                {currUser?.id !== review?.user_id && (
+                                {currUser?.id !== review.user_id && (
                                     <>
                                         <button className="review-helpful-subtext" onClick={() => handleIncrementHelpful(review.id)}><FaThumbsUp className="review-helpful-thumbs" />Yes</button>
                                         <button className="review-helpful-subtext" onClick={() => handleDecrementHelpful(review.id)}><FaThumbsDown className="review-helpful-thumbs" />No</button>

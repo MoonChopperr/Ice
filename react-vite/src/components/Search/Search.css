@@ -1,0 +1,50 @@
+.S-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.S-result{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    background-color:rgba(0, 0, 0, 0.247) ;
+}
+
+.S-img{
+    height: 100px;
+}
+.S-title {
+    font-size: 25px;
+    color: white;
+    font-weight: 600;
+}
+
+.S-text-container{
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+    gap: 5px;
+}
+
+.S-game-title{
+    color: #c7d5e0;
+}
+
+.S-game-price{
+    color: #888888;
+    font-weight: 300;
+}
+
+.S-game-date{
+    color: #4c6c8c;
+}
+
+.S-Nav-container{
+    margin: 0px 25.5%;
+}
+
+.S-query-subtext{
+    color: #1999E3;
+    font-weight: 300;
+}

@@ -1,3 +1,4 @@
+import Footer from "../Footer/Footer"
 import GameForm from "../GameForm/GameForm"
 
 const CreateGame = () => {
@@ -8,6 +9,7 @@ const CreateGame = () => {
             <div>
                 <GameForm buttonName={buttonName} />
             </div>
+            <Footer/>
         </>
     )
 }

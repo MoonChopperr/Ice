@@ -71,7 +71,7 @@ const GameForm = ({ game }) => {
                 errors.about = "Add a short description of your game"
             }
             if (about.length > 193) {
-                errors.about = "Description of your game is too long, it must be less than 193 characters"
+                errors.about = "Description of your game is too long, must be less than 193 characters"
             }
             if (price < 0) {
                 errors.price = "Price cannot be less than $0.00"
@@ -123,7 +123,7 @@ const GameForm = ({ game }) => {
             isValidated = false
         }
 
-        if(!isValidated){
+        if (!isValidated) {
             return
         }
 
@@ -167,178 +167,205 @@ const GameForm = ({ game }) => {
         <>
             <div className='form-bg'>
                 {/* <p className='Game-info-title'>Publish your Game</p> */}
-                <form
-                    className='form-container'
-                    onSubmit={handleSubmit}
-                    encType="multipart/form-data"
-                >
-                    <div className='form-left'>
-                        <div className='form-label-container'>
-                            <label className='form-label'>Title*</label>
-                            <div className='form-spacer'></div>
-                            <input
-                                type="text"
-                                // placeholder="Title"
-                                value={title}
-                                onChange={(e) => setTitle(e.target.value)}
-                                className='form-input'
-                            />
-                        </div>
-                            {validations.title && <span className="error-message">{validations.title}</span>}
-
-                        <div className='form-label-container'>
-                            <label className='form-label'> About* </label>
-                            <div className='form-spacer'></div>
-
-                            <textarea
-                                // placeholder="About"
-                                value={about}
-                                onChange={(e) => setAbout(e.target.value)}
-                                className='form-input-about'
-                            />
-                        </div>
-                            {validations.about && <span className="error-message">{validations.about}</span>}
-
-                        <div className='form-label-container'>
-                            <label className='form-label'> Price* </label>
-                            <div className='form-spacer'></div>
-
-                            <input
-                                type="text"
-                                // placeholder="Price"
-                                value={price}
-                                onChange={(e) => setPrice(e.target.value)}
-                                className='form-input'
-                            />
-                        </div>
-                            {validations.price && <span className="error-message">{validations.price}</span>}
-
-                        <div className='form-label-container'>
-                            <label className='form-label'> Release Date* </label>
-                            <div className='form-spacer'></div>
-
-                            <input
-                                type="date"
-                                // placeholder="Release Date"
-                                value={releaseDate}
-                                onChange={(e) => setReleaseDate(e.target.value)}
-                                className='form-input'
-                            />
-
-                        </div>
-                            {validations.releaseDate && <span className="error-message">{validations.releaseDate}</span>}
-
-                        <div className='form-label-container'>
-                            <label className='form-label'> Developer* </label>
-                            <div className='form-spacer'></div>
-
-                            <input
-                                type="text"
-                                // placeholder="Developer"
-                                value={developer}
-                                onChange={(e) => setDeveloper(e.target.value)}
-                                className='form-input'
-                            />
-
-                        </div>
-                            {validations.developer && <span className="error-message">{validations.developer}</span>}
-
-                        <div className='form-label-container'>
-                            <label className='form-label'> Publisher* </label>
-                            <div className='form-spacer'></div>
-
-                            <input
-                                type="text"
-                                // placeholder="Publisher"
-                                value={publisher}
-                                onChange={(e) => setPublisher(e.target.value)}
-                                className='form-input'
-                            />
-
-                        </div>
-                            {validations.publisher && <span className="error-message">{validations.publisher}</span>}
-
-                        <div className='form-label-container'>
-                            <label className='form-label'> Franchise</label>
-                            <div className='form-spacer'></div>
-
-                            <input
-                                type="text"
-                                // placeholder="Franchise"
-                                value={franchise}
-                                onChange={(e) => setFranchise(e.target.value)}
-                                className='form-input'
-                            />
-
-                        </div>
-                            {validations.franchise && <span className="error-message">{validations.franchise}</span>}
-
-                    </div>
+                <div className='form-main-container'>
 
 
-                    {/* break */}
+                    <form
+                        className='form-container'
+                        onSubmit={handleSubmit}
+                        encType="multipart/form-data"
+                    >
+                        <div className='form-inner-container'>
+                            <div className='genre-title'> Game Info</div>
+                            <div className='form-upper-blurb'> Fill out your game&apos;s information</div>
 
-                    <div className='form-right'>
-
-                        <span className='genre-title'> Select a Genre(s)* </span>
-                            {validations.genre && <span className="error-message">{validations.genre}</span>}
-                        <div className='genre-container'>
-                            {GENRES?.sort().map((genreOption) => (
-                                <div key={genreOption} className='genre-option'>
-                                    <input
-                                        type="checkbox"
-                                        id={genreOption}
-                                        value={genreOption}
-                                        onChange={(e) => handleGenreChange(e, genreOption)}
-                                        checked={genre.includes(genreOption)}
+                            <div className='form-1-layer'>
+                                <span>
+                                    <label className='form-label'>Title*</label>
+                                    <div>
+                                        <input
+                                            type="text"
+                                            // placeholder="Title"
+                                            value={title}
+                                            onChange={(e) => setTitle(e.target.value)}
+                                            className='form-input-title'
                                         />
-                                    <label className='genre-text' htmlFor={genreOption}>{genreOption}</label>
+                                        {validations.title && <div className="error-message">{validations.title}</div>}
+                                    </div>
+                                </span>
+                                <span>
+                                    <label className='form-label'> Price* </label>
+                                    <div>
+                                        <input
+                                            type="text"
+                                            // placeholder="Price"
+                                            value={price}
+                                            onChange={(e) => setPrice(e.target.value)}
+                                            className='form-input-price'
+                                        />
+                                        {validations.price && <div className="error-message">{validations.price}</div>}
+                                    </div>
+                                </span>
+                            </div>
+
+
+                            <div className='form-2-layer'>
+                                <label className='form-label'> About* </label>
+                                <div className='form-textarea-container'>
+                                    <textarea
+                                        // placeholder="About"
+                                        value={about}
+                                        onChange={(e) => setAbout(e.target.value)}
+                                        className='form-input-about'
+                                    />
                                 </div>
-                            ))}
+                                {validations.about && <div className="error-message">{validations.about}</div>}
+                            </div>
+
+                            <div className='form-4-layer'>
+                                <span>
+                                    <label className='form-label'> Developer* </label>
+                                    <div>
+                                        <input
+                                            type="text"
+                                            // placeholder="Developer"
+                                            value={developer}
+                                            onChange={(e) => setDeveloper(e.target.value)}
+                                            className='form-input-developer'
+                                        />
+                                    </div>
+
+                                    {validations.developer && <span className="error-message">{validations.developer}</span>}
+                                </span>
+                                <span>
+                                    <label className='form-label'> Publisher* </label>
+                                    <div>
+                                        <input
+                                            type="text"
+                                            // placeholder="Publisher"
+                                            value={publisher}
+                                            onChange={(e) => setPublisher(e.target.value)}
+                                            className='form-input-publisher'
+                                        />
+                                    </div>
+                                    {validations.publisher && <span className="error-message">{validations.publisher}</span>}
+                                </span>
+                            </div>
+
+
+                            <div className='form-3-layer'>
+                                <span>
+                                    <label className='form-label'> Release Date* </label>
+                                    <div>
+                                        <input
+                                            type="date"
+                                            // placeholder="Release Date"
+                                            value={releaseDate}
+                                            onChange={(e) => setReleaseDate(e.target.value)}
+                                            className='form-input-release-date'
+                                        />
+                                    </div>
+                                    {validations.releaseDate && <div className="error-message">{validations.releaseDate}</div>}
+                                </span>
+                                <span>
+                                    <div className='form-label'>
+                                        ESRB Rating
+                                        <div>
+                                            <select
+                                                className='form-input-ESRB'
+                                                value={ESRB_Rating}
+
+                                                onChange={(e) => setESRB_Rating(e.target.value)}
+                                            >
+                                                <option value="">Select ESRB Rating</option>
+                                                <option value="E">Everyone</option>
+                                                <option value="E10+">Everyone 10+</option>
+                                                <option value="T">Teen</option>
+                                                <option value="M">Mature</option>
+                                                <option value="AO">Adults Only</option>
+                                            </select>
+                                            <div>
+                                                {validations.ESRB_Rating && <span>{validations.ESRB_Rating}</span>}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </span>
+
+
+                                <span>
+                                    <label className='form-label'> Franchise</label>
+                                    <div className='form-spacer'></div>
+
+                                    <input
+                                        type="text"
+                                        // placeholder="Franchise"
+                                        value={franchise}
+                                        onChange={(e) => setFranchise(e.target.value)}
+                                        className='form-input-franchise'
+                                    />
+                                    {validations.franchise && <span className="error-message">{validations.franchise}</span>}
+                                </span>
+
+                            </div>
+
+
+
+                            <hr className='game-hr' />
+
+
+                            <div className='form-genre'>
+
+                                <span className='genre-title'> Genre(s)* </span>
+                                <div className='form-upper-blurb'>Select from the following genre(s)</div>
+
+                                <div className='genre-container'>
+                                    {GENRES?.sort().map((genreOption) => (
+                                        <div key={genreOption} className='genre-option'>
+                                            <input
+                                                type="checkbox"
+                                                id={genreOption}
+                                                value={genreOption}
+                                                onChange={(e) => handleGenreChange(e, genreOption)}
+                                                checked={genre.includes(genreOption)}
+                                            />
+                                            <label className='genre-text' htmlFor={genreOption}>{genreOption}</label>
+                                        </div>
+                                    ))}
+                                </div>
+                                {validations.genre && <span className="error-message">{validations.genre}</span>}
+                            </div>
+
+                            <hr className='game-hr' />
+
+                            <div className='file-container'>
+                                <div className='genre-title'> Upload an Image* </div>
+                                <div className='form-upper-blurb'>This image will be used to display your game</div>
+
+                                <div className='file-bg'>
+                                    <input
+                                        type='file'
+                                        accept='image/*'
+                                        onChange={(e) => setImage(e.target.files[0])}
+                                    />
+                                </div>
+                                <div>
+                                    {validations.image && <div className="error-message">{validations.image}</div>}
+                                </div>
+                            </div>
+
+                            <hr className='game-hr' />
+
+                            <div className='form-submit-btn-container'>
+                                <button className='form-submit-btn' type='submit'>Submit</button>
+                            </div>
+
+
+
+
                         </div>
+                    </form>
+                </div>
 
-                        <h1 className='file-title'> Upload an Image* </h1>
-
-                        <div className='file-container'>
-                            <input
-                                type='file'
-                                accept='image/*'
-                                onChange={(e) => setImage(e.target.files[0])}
-                            />
-                        </div>
-                        {validations.image && <span className="error-message">{validations.image}</span>}
-
-
-                        <div className='form-label'>
-                            ESRB Rating
-                            <div></div>
-                            {/* <input
-                        type="text"
-                        placeholder="ESRB Rating"
-                        value={ESRB_Rating}
-                        onChange={(e) => setESRB_Rating(e.target.value)}
-                    /> */}
-                            <select
-                                className='esrb-select'
-                                value={ESRB_Rating}
-
-                                onChange={(e) => setESRB_Rating(e.target.value)}
-                            >
-                                <option value="">Select ESRB Rating</option>
-                                <option value="E">Everyone</option>
-                                <option value="E10+">Everyone 10+</option>
-                                <option value="T">Teen</option>
-                                <option value="M">Mature</option>
-                                <option value="AO">Adults Only</option>
-                            </select>
-
-                            {validations.ESRB_Rating && <span>{validations.ESRB_Rating}</span>}
-                        </div>
-
-                            <button className='form-submit-btn' type='submit'>Submit</button>
-                    </div>
-
-                </form>
             </div>
 
         </>

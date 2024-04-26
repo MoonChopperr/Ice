@@ -1,20 +1,32 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-image: radial-gradient(circle at center, #232c4b, transparent), linear-gradient(to right, #181A21, #181A21);
+    /* max-width: 1900px; */
+    margin: auto;
+}
+
 .Landing-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     margin-top: 90px;
-    /* display: flex; */
     margin: 0px 25.5%;
-    /* flex-direction: column; */
+    width: 930px;
 }
 
 .N-Bar2{
-    /* padding-right: px; */
-    padding-top: 35px;
-    /* border: 1px solid red; */
-
+    padding-top: .5rem;
 }
 
 .L-background {
     background-color: #1A2B40;
     animation: gradientAnimation 5s infinite;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     /* margin-left: -30px;
     margin-right: -8px; */
 }
@@ -59,6 +71,7 @@
     margin-left:1%;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     /* border: 1px solid red; */
 }
 
@@ -90,4 +103,40 @@
 .game-img-card{
     height: 230px;
     width: 460px;
+}
+
+
+/* 1440:919 */
+
+@media screen and (max-width: 1271px){
+    .game-list{
+        margin-top: 3rem;
+        padding: 0;
+    }
+
+}
+
+@media screen and (max-width: 944px){
+
+    .L-box{
+        display: none;
+    }
+    .f-r{
+        display: flex;
+        justify-content: center;
+    }
+    .NavBar2-container{
+        display: flex;
+        flex-direction: column;
+    }
+    .above-bar{
+        display: flex;
+        margin: 0 13%;
+    }
+
+}
+
+/* not sure what is happening */
+@media screen and (max-width: 930px){
+
 }

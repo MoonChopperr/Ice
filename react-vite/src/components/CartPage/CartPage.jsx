@@ -8,7 +8,8 @@ import { thunkClearCart } from '../../redux/cart'
 import { thunkAddLibrary } from '../../redux/library'
 import { useModal } from "../../context/Modal"
 import CartCheckOutModal from '../CartCheckOutModal/CartCheckOutModal'
-
+// import Footer from '../Footer/Footer'
+import { Link } from 'react-router-dom'
 
 import NavBar2 from '../NavBar2/NavBar2'
 import './CartPage.css'
@@ -27,10 +28,10 @@ function CartPage() {
     const [forceRerender, setForceRerender] = useState(false)
     // const [rmAllRerender, setRmALLRerender] = useState(false)
     // console.log(userCart.length)
-    const { setModalContent, showModal } = useModal()
-    console.log(showModal)
+    const { setModalContent} = useModal()
+
     //LOGOUT REDIRECT NAV
-    if (!currUser){
+    if (!currUser) {
         nav('/')
     }
     // console.log('userOrdersBEFORE', userOrders)
@@ -56,18 +57,18 @@ function CartPage() {
         return total.toFixed(2)
     }
 
-    const handleUpdate = (cartId) => {
-        nav(`/cart/update/${cartId}`)
-    }
+    // const handleUpdate = (cartId) => {
+    //     nav(`/cart/update/${cartId}`)
+    // }
 
-    const handleRemove = (userCartId) => {
-        dispatch(thunkDeleteItem(userCartId))
+    const handleRemove = async (userCartId) => {
+        await dispatch(thunkDeleteItem(userCartId))
         // dispatch(thunkGetCart())
         getGames()
         setForceRerender(!forceRerender)
     }
 
-    const handleCheckout = async () =>{
+    const handleCheckout = async () => {
         const result = await dispatch(thunkAddLibrary(userCart))
         if (!result.errors) {
             dispatch(thunkClearCart())
@@ -75,7 +76,7 @@ function CartPage() {
         }
     }
 
-
+    // const handleAdd =
 
     useEffect(() => {
         dispatch(thunkGetCart())
@@ -84,60 +85,69 @@ function CartPage() {
 
     return (
         <>
-            <div className='cart-outer-container'>
-                <div className='cart-navbar2'>
-                    <div > <NavBar2 /> </div>
-                </div>
+            <div className='cart-page-container'>
+                <div className='cart-outer-container'>
+                        <NavBar2 />
+                    <div className='cart-below-navbar2-container'>
+                        <span className='cart-home-text' onClick={() => nav('/')} >Home</span><span style={{ color: '#adafb1', fontSize: '14px', fontWeight: '200' }}> &gt; Your Shopping Cart</span>
+                        <div className='cart-yourshoppingcart'> Your Shopping Cart</div>
+                    </div>
+                    {userCart?.length > 0 ? (
+                        <div className='cart-game-container'>
+                            <div className='cart-games'>
+                                {getGames()?.map(game => (
+                                    <div key={game.id} className='cart-game'>
+                                        <div className='cart-img-container'>
+                                        <Link to={`/game/${game.id}`}><img className='cart-img' src={game?.images}></img></Link>
+                                            <div className='cart-game-info-container'>
+                                                <div className='cart-title'>{game?.title}</div>
+                                                <div className='cart-price'>${game?.price * getQuant(userCart, game.id).quantity}</div>
+                                                <div className='cart-crud-container'>
+                                                    {/* <span className='cart-quan'> <span className='Quantity'>Quantity:</span> {getQuant(userCart, game.id).quantity}&nbsp;</span> */}
+                                                    {/* <span className='cart-crud' onClick={()=> handleAdd((userCart.find(order => order.quantity)))}>Add</span> */}
+                                                    {/* <span className='cart-crud' onClick={() => handleUpdate((game?.id))}>Update</span> */}
+                                                    {/* <span className='cart-crud-placeholder'>Add</span> */}
+                                                    {/* <span className='cart-pole'>&nbsp;|&nbsp;</span> */}
+                                                    {/* { forceRerender ? <p>YES</p> : <p>NO</p>} */}
+                                                    <span className='cart-crud' onClick={() => handleRemove((userCart.find(order => order.game_id === game.id)).id)}>Remove</span>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                <div className='cart-below-navbar2-container'>
-                    <span className='cart-home-text' onClick={() => nav('/')} >Home</span><span style={{ color: '#adafb1', fontSize: '14px', fontWeight: '200' }}> &gt; Your Shopping Cart</span>
-                    <div className='cart-yourshoppingcart'> Your Shopping Cart</div>
-                </div>
+                                    </div>
+                                ))}
 
-                {userCart?.length > 0 ? (
-                    <div className='cart-game-container'>
-                        {getGames()?.map(game => (
-                            <div key={game.id} className='cart-game'>
-                                <img className='cart-img' src={game?.images}></img>
-                                <div className='cart-title'>{game?.title}</div>
-                                <div className='cart-price'>${game?.price * getQuant(userCart, game.id).quantity}</div>
-                                <div className='cart-crud-container'>
-                                    <span className='cart-quan'> <span className='Quantity'>Quantity:</span> {getQuant(userCart, game.id).quantity} </span>
-                                    {/* <span className='cart-crud' onClick={()=> handleAdd((userCart.find(order => order.quantity)))}>Add</span> */}
-                                    <span className='cart-crud' onClick={() => handleUpdate((game?.id))}>Update</span>
-                                    <span className='cart-pole'> | </span>
-                                    {/* { forceRerender ? <p>YES</p> : <p>NO</p>} */}
-                                    <span className='cart-crud' onClick={() => handleRemove((userCart.find(order => order.game_id === game.id)).id)}>Remove</span>
+                                <div className='below-cart-game-container'>
+                                    <button className='cart-continue-shopping' onClick={() => nav('/')}>Continue Shopping</button>
+                                    <div className='cart-rm-all' onClick={() => dispatch(thunkClearCart())}>Remove all items</div>
                                 </div>
                             </div>
-                        ))}
 
-                        <div className='cart-sidebar'>
-                            <div className='cart-est-container'>
-                                <span className='cart-est'>Estimated total</span> <span className='cart-total-price'>${totalPrice(getGames())}</span>
+                            <div className='cart-sidebar-container'>
+                                <div className='cart-sidebar'>
+                                    <div className='cart-est-container'>
+                                        <span className='cart-est'>Estimated total</span> <span className='cart-total-price'>${totalPrice(getGames())}</span>
+                                    </div>
+                                    <div className='cart-blurb'> Sales tax will be calculated during checkout where applicable</div>
+                                    {!currUser && (
+                                        <button onClick={() => nav('/login')}>Sign in to purchase</button>
+                                    )}
+                                    {currUser && (
+                                        <button className='cart-checkout-btn' onClick={handleCheckout}>Checkout</button>
+                                    )}
+                                </div>
                             </div>
-                            <div className='cart-blurb'> Sales tax will be calculated during checkout where applicable</div>
-                            {!currUser && (
-                                <button onClick={() => nav('/login')}>Sign in to purchase</button>
-                            )}
-                            {currUser && (
-                                <button className='cart-checkout-btn' onClick={handleCheckout}>Checkout</button>
-                            )}
                         </div>
+                    ) : (
+                        <div className='cart-empty'>Your cart is empty.</div>
+                    )}
 
-                    </div>
-                ) : (
-                    <div className='cart-empty'>Your cart is empty.</div>
-                )}
 
-                <div className='below-cart-game-container'>
-                    <button className='cart-continue-shopping' onClick={() => nav('/')}>Continue Shopping</button>
-                    <div className='cart-rm-all' onClick={()=>dispatch(thunkClearCart())}>Remove all items</div>
+
+
                 </div>
-
-
-
             </div>
+            {/* <Footer/> */}
         </>
     )
 }
