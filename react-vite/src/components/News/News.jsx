@@ -1,5 +1,5 @@
 import './News.css'
-import Footer from '../Footer/Footer'
+// import Footer from '../Footer/Footer'
 
 function News() {
     return (

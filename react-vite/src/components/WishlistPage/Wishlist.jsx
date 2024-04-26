@@ -7,7 +7,9 @@ import { thunkAllGames } from "../../redux/game";
 import { thunkAddCart, thunkGetCart } from "../../redux/cart";
 import { useModal } from "../../context/Modal"
 import AlrWishlistModal from "../WishlistModal/AlrWishlistModal";
-import WishlistModal from "../WishlistModal/WishlistModal";
+// import WishlistModal from "../WishlistModal/WishlistModal";
+import WishlistModalAddCart from "../WishlistModal/WishlistModalAddCart";
+import { Link } from "react-router-dom";
 // import Footer from "../Footer/Footer";
 import './Wishlist.css'
 
@@ -148,7 +150,7 @@ function WishlistPage() {
             }
 
             dispatch(thunkAddCart(newOrder))
-            setModalContent(<WishlistModal />);
+            setModalContent(<WishlistModalAddCart />);
 
             setCartNum(prevState => !prevState)
         }
@@ -183,7 +185,7 @@ function WishlistPage() {
                     getGames()?.map(game => (
                         <div key={game.id} className="WL-game-card">
                             <div className="WL-left">
-                                <img className="WL-game-img" src={game?.images}></img>
+                            <Link to={`/game/${game.id}`}><img className="WL-game-img" src={game?.images}></img></Link>
                             </div>
 
                             <div className="WL-right">

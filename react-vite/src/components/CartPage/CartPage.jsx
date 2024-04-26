@@ -8,7 +8,7 @@ import { thunkClearCart } from '../../redux/cart'
 import { thunkAddLibrary } from '../../redux/library'
 import { useModal } from "../../context/Modal"
 import CartCheckOutModal from '../CartCheckOutModal/CartCheckOutModal'
-import Footer from '../Footer/Footer'
+// import Footer from '../Footer/Footer'
 import { Link } from 'react-router-dom'
 
 import NavBar2 from '../NavBar2/NavBar2'
@@ -28,7 +28,7 @@ function CartPage() {
     const [forceRerender, setForceRerender] = useState(false)
     // const [rmAllRerender, setRmALLRerender] = useState(false)
     // console.log(userCart.length)
-    const { setModalContent, showModal } = useModal()
+    const { setModalContent} = useModal()
 
     //LOGOUT REDIRECT NAV
     if (!currUser) {
@@ -61,8 +61,8 @@ function CartPage() {
     //     nav(`/cart/update/${cartId}`)
     // }
 
-    const handleRemove = (userCartId) => {
-        dispatch(thunkDeleteItem(userCartId))
+    const handleRemove = async (userCartId) => {
+        await dispatch(thunkDeleteItem(userCartId))
         // dispatch(thunkGetCart())
         getGames()
         setForceRerender(!forceRerender)

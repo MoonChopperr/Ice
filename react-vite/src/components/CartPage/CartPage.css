@@ -41,7 +41,7 @@
 .cart-game-container {
     display: flex;
     justify-content: space-between;
-    gap: 10px;
+    /* gap: 10px; */
 }
 
 .cart-games {
@@ -54,7 +54,9 @@
     position: relative;
     padding: 15px;
     margin-bottom: 20px;
-    width: 108%;
+    /* padding-right: 40px; */
+    width: 560px;
+    /* max-width: 110%; */
 }
 
 .cart-img-container {
@@ -139,6 +141,7 @@
 .cart-sidebar-container {
     display: flex;
     flex-direction: column;
+
 }
 
 .cart-sidebar {
