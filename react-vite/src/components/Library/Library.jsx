@@ -30,25 +30,39 @@ function Library() {
     function hoursPlayed(createdAt) {
         const createdAtDate = new Date(createdAt)
         const currentDate = new Date()
+        // const currentDate = currentDatee.toUTCString()
+        console.log('currentDate', currentDate)
+        console.log('createdAt', createdAtDate)
 
-        const difference = currentDate - createdAtDate
+        const utcOffsetMs = currentDate.getTimezoneOffset() * 60 * 1000;
+
+        // Convert the createdAt date to the user's timezone
+        const createdAtDateLocal = new Date(createdAtDate.getTime() - utcOffsetMs);
+
+        // const difference = currentDate - createdAtDate
         //random doesnt take args,
         const random = Math.floor(Math.random() * 5) + 1
-        // console.log('difference', difference)
 
         //change first value to smaller for bigger hours
-        let hours = difference / (1000 * 60 * 60) / random
+        // let hours = difference / (1000 * 60 * 60) / random
         // console.log('hours', hours)
 
+        let difference = currentDate - createdAtDateLocal;
+        console.log('difference', difference)
+
+        let hours = difference / (1000 * 60 * 60) / random;
         if (hours < 1) {
             hours = difference / (1000 * 60) / random
             return Math.round(hours) + ' minutes'
         }
         return Math.round(hours) + ' hours'
+
     }
 
     useEffect(() => {
-        dispatch(thunkGetLibrary())
+        if (currUser) {
+            dispatch(thunkGetLibrary())
+        }
     }, [dispatch])
 
 

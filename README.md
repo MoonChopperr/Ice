@@ -1,5 +1,88 @@
-# a-A-capstone
-My capstone project for mod 7 during my time at a/A
+# ICE
+For my capstone project during my time at app academy I decided on making a steam clone.
+I put a lot of effort into the styling for it to look similar to Steam however there is still much more left to do (as per usual)
+
+# Hosted on
+[![Render](https://img.shields.io/badge/Render-Deployed-blue?style=for-the-badge&logo=render)](https://a-a-capstone.onrender.com/)
+
+# Features
+## Login
+![Login](app/Demo/login.gif)
+
+## Games
+![Games](app/Demo/game.gif)
+
+## Wishlist
+![Wishlist](app/Demo/wishlist.gif)
+
+## Checkout
+![Checkout](app/Demo/Cart.gif)
+
+## Library
+![Library](app/Demo/library.gif)
+
+## Reviews
+![Reviews](app/Demo/review.gif)
+
+## Review rating
+![Review Rating](app/Demo/smallfeature.gif)
+
+# Tech Stack
+![JavaScript](https://img.shields.io/badge/JavaScript-%23323330.svg?logo=javascript&logoColor=%23F7DF1E)
+![Python](https://img.shields.io/badge/Python-3670A0?logo=python&logoColor=ffdd54)
+![HTML5](https://img.shields.io/badge/HTML5-%23E34F26.svg?logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-%231572B6.svg?logo=css3&logoColor=white)
+![npm](https://img.shields.io/badge/npm-CB3837.svg?logo=npm&logoColor=white)
+![Markdown](https://img.shields.io/badge/Markdown-000000?logo=markdown&logoColor=white)
+![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=white)
+![Redux](https://img.shields.io/badge/Redux-764ABC?logo=redux&logoColor=white)
+![React Router](https://img.shields.io/badge/React_Router-CA4245?logo=react-router&logoColor=white)
+![React Hook Form](https://img.shields.io/badge/React_Hook_Form-160078?logo=react&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)
+![ESLint](https://img.shields.io/badge/ESLint-4B32C3?logo=eslint&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-000000?logo=flask&logoColor=white)
+![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?logo=ubuntu&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-FCC624?logo=linux&logoColor=black)
+![AWS](https://img.shields.io/badge/AWS-%23232F3E.svg?logo=amazon-aws&logoColor=white)
+![Amazon S3](https://img.shields.io/badge/Amazon_S3-569A31?logo=amazon-s3&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-003B57?logo=sqlite&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?logo=postgresql&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
+![Postman](https://img.shields.io/badge/Postman-FF6C37?logo=postman&logoColor=white)
+![Render](https://img.shields.io/badge/Render-333333?style=for-the-badge&logo=render&logoColor=white)
+![Visual Studio Code](https://img.shields.io/badge/Visual_Studio_Code-007ACC?logo=visual-studio-code&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?logo=git&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white)
+![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-282C34?logo=sqlalchemy&logoColor=white)
+![Adobe Photoshop](https://img.shields.io/badge/Adobe%20Photoshop-31A8FF?logo=adobe-photoshop&logoColor=white)
+
+# Installation guide
+## Clone the repo
+## Install necessary dependencies
+- run `pipenv install -r requirements.txt` in the root project folder
+- run `npm install` in react-vite folder
+## Other dependencies
+- `npm i react-responsive-carousel`
+- `npm i date-fns`
+- `pip i email-validator`
+- `pipenv install boto3`
+## Create and populate .env file
+- SECRET_KEY
+- DATABASE_URL
+- SCHEMA
+- S3_BUCKET
+- S3_KEY
+- S3_SECRET
+## Database
+- run `pipenv flask db init`
+## Migration
+- run `pipenv run flask db upgrade`
+## Seeders
+- run `pipenv run flask seed all`
+## Start up server
+- run `pipenv run flask run` in root project folder
+- run `npm run dev` in `react-vite` folder
 
 # API Documentation
 
@@ -843,4 +926,384 @@ Current user can delete a game from their Wishlist
 
 ## Reviews
 
-### 
+### Get all reviews for a single game
+Returns all reviews on a game's details page
+* Require Authentication: False
+
+* Require Authorization: False
+
+* Request
+    * Method: GET
+    * URL: api/review/game/<int:game_id>
+    * Body: None
+* Successful Response
+    * Status Code: 200
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+        [
+    {
+        "createdAt": "Wed, 17 Apr 2024 23:43:44 GMT",
+        "funny": 0,
+        "game_id": 1,
+        "helpful": 0,
+        "id": 1,
+        "rating": -1,
+        "review": "The graphics are stunning, but the movement is so slow and boring.",
+        "updatedAt": "Wed, 17 Apr 2024 23:43:44 GMT",
+        "user_id": 2,
+        "username": "Kaizer"
+    },
+        ]
+    }
+    ```
+* Successful Response: No reviews
+    * Status Code: 200
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+       "message": "No reviews"
+    }
+    ```
+
+### Get all reviews from specific user
+Returns all reviews from user
+* Require Authentication: True
+
+* Require Authorization: True
+
+* Request
+    * Method: GET
+    * URL: api/review/user/<int:user_id>
+    * Body: None
+* Successful Response
+    * Status Code: 200
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+       "reviews": [
+        {
+            "createdAt": "Wed, 17 Apr 2024 23:43:44 GMT",
+            "funny": 0,
+            "game_id": 1,
+            "helpful": 0,
+            "id": 1,
+            "rating": -1,
+            "review": "The graphics are stunning, but the movement is so slow and boring.",
+            "updatedAt": "Wed, 17 Apr 2024 23:43:44 GMT",
+            "user_id": 2
+        }
+       ]
+    }
+    ```
+* Successful Response: No reviews
+    * Status Code: 200
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+       "message": "No reviews"
+    }
+    ```
+
+### Create a review
+A logged in user can create a review on a game they own
+* Require Authentication: True
+
+* Request
+    * Method: POST
+    * URL: api/review/create
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+    "game_id": 1,
+    "review": "test",
+    "rating": 1
+    }
+    ```
+* Error Response: Cannot review if you are the owner of the game
+    * Status Code: 403
+    * Headers:
+        * Content-Type: application/json
+* Error Response: Game not found
+    * Status Code: 404
+    * Headers:
+        * Content-Type: application/json
+* Error Response: Already reviews a game once
+    * Status Code: 403
+    * Headers:
+        * Content-Type: application/json
+
+### Update a review
+A user can update their existing review's description and rating
+* Require Authentication: true
+
+* Require Authorization: true
+* Request
+    * Method: UPDATE
+    * URL: api/review/<int:review_id>
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+    "game_id": 1,
+    "review": "edited",
+    "rating": -1
+    }
+    ```
+* Error Response: Review could not be found
+    * Status Code: 404
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+        "message": "Review could not be found"
+    }
+    ```
+
+### Delete a review
+A user can delete their own review
+* Require Authentication: True
+
+* Require Authorization: True
+* Request
+    * Method: UPDATE
+    * URL: api/review/<int:review_id>
+    * Body: None
+* Successful Response
+    * Status Code: 200
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+    "message": "Successfully deleted review"
+    }
+    ```
+* Error Response: Review could not be found
+    * Status Code: 404
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+    "message": "Review could not be found"
+    }
+    ```
+## Funny & Helpful on Reviews
+
+### Increment helpful attribute
+Upvote the helpful value on a review
+* Require Authentication: True
+* Request
+    * Method: POST
+    * URL: api/review/<int:id>/helpful
+    * Body: None
+* Successful Response
+    * Status Code: 200
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+    "createdAt": "Wed, 17 Apr 2024 23:43:44 GMT",
+    "funny": 1,
+    "game_id": 3,
+    "helpful": 4,
+    "id": 14,
+    "rating": -1,
+    "review": "This game is a disappointment. I expected more from it.",
+    "updatedAt": "Thu, 18 Apr 2024 22:57:02 GMT",
+    "user_id": 5
+    }
+    ```
+* Error Response: Review could not be found
+    * Status Code: 404
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+    "error": "Review could not be found"
+    }
+    ```
+* Error Response: Cannot rate own review
+    * Status Code: 403
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+    "error": "You cannot rate your own review"
+    }
+    ```
+
+### Decrement helpful attribute
+Downvote the helpful value on a review
+* Require Authentication: True
+* Request
+    * Method: DELETE
+    * URL: api/review/<int:id>/helpful
+    * Body: None
+* Successful Response
+    * Status Code: 200
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+    "createdAt": "Wed, 17 Apr 2024 23:43:44 GMT",
+    "funny": 1,
+    "game_id": 3,
+    "helpful": 3,
+    "id": 14,
+    "rating": -1,
+    "review": "This game is a disappointment. I expected more from it.",
+    "updatedAt": "Thu, 18 Apr 2024 22:57:02 GMT",
+    "user_id": 5
+    }
+    ```
+* Error Response: Review could not be found
+    * Status Code: 404
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+    "error": "Review could not be found"
+    }
+    ```
+* Error Response: Cannot rate own review
+    * Status Code: 403
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+    "error": "You cannot rate your own review"
+    }
+    ```
+
+### Increment funny attribute
+Upvote the funny value on a review
+* Require Authentication: True
+* Request
+    * Method: POST
+    * URL: api/review/<int:id>/funny
+    * Body: None
+* Successful Response
+    * Status Code: 200
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+    "funny": 2
+    }
+    ```
+* Error Response: Review could not be found
+    * Status Code: 404
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+    "error": "Review could not be found"
+    }
+    ```
+* Error Response: Cannot rate own review
+    * Status Code: 403
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+    "error": "You cannot rate your own review"
+    }
+    ```
+
+### Decrement funny attribute
+Downvote the funny value on a review
+* Require Authentication: True
+* Request
+    * Method: DELETE
+    * URL: api/review/<int:id>/funny
+    * Body: None
+* Successful Response
+    * Status Code: 200
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+    "funny": 1
+    }
+    ```
+* Error Response: Review could not be found
+    * Status Code: 404
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+    "error": "Review could not be found"
+    }
+    ```
+* Error Response: Cannot rate own review
+    * Status Code: 403
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+    "error": "You cannot rate your own review"
+    }
+    ```
+## Library
+### Get library
+Returns all games user purchased
+* Require Authentication: True
+
+* Request
+    * Method: GET
+    * URL: api/library/
+    * Body: None
+* Successful Response
+    * Status Code: 200
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+      "library": []
+    }
+    ```
+### Checkout cart
+When a user checksout game(s) will be added to library
+* Require Authentication: True
+
+* Request
+    * Method: POST
+    * URL: api/library/checkout
+    * Body: None
+* Successful Response
+    * Status Code: 200
+    * Headers:
+        * Content-Type: application/json
+    * Body:
+    ```json
+    {
+    "message": "Cart checked out successfully"
+    }
+    ```
