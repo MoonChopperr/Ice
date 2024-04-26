@@ -44,14 +44,15 @@ function Search() {
                             <>
                                 <p className="S-query-subtext">Games found containing &quot;{query}&quot;</p>
                                 {filteredGames.map(game => (
-                                    <div key={game.id}>
+                                    <div className="S-result" key={game.id}>
+
                                         <div className="S-img-container">
                                             <Link to={`/game/${game.id}`}><img className="S-img" src={game.images} alt={game.title}></img></Link>
                                         </div>
                                         <div className="S-text-container">
                                             <div className="S-game-title" >{game.title}</div>
-                                            <div className="S-game-price">${game.price}</div>
                                             <div className="S-game-date">{formatDate(game.release_date)}</div>
+                                            <div className="S-game-price">${game.price}</div>
                                         </div>
                                     </div>
                                 ))}
