@@ -214,7 +214,7 @@ function GameDetails() {
             {game ? (
                 <div className="GF-BG">
                     <div className="GF-main-container">
-                        <div> <NavBar2 /> </div>
+                        <NavBar2 />
 
                         <div className='GD-above-title'>
                             <div className="GF-filter">
@@ -292,10 +292,10 @@ function GameDetails() {
                                         </div>
                                     )}
 
-                                    <div className="GD-popular">
+                                    {/* <div className="GD-popular">
                                         <span className="splash-label">Popular user-defined tags for this product:
                                         </span>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                         </div>

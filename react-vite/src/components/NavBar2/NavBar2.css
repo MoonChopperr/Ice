@@ -6,6 +6,7 @@
 
 .rectangle-bar {
     display: flex;
+    /* justify-content: center; */
     align-items: center;
     background-image: linear-gradient(to right, #37628E, #0F226F);
     /* padding: 1px 3px; */
@@ -27,6 +28,20 @@
 .rectangle-bar a:hover {
     background-image: linear-gradient(to right, #06BFFF, transparent);
     cursor: pointer;
+}
+
+.points-shop{
+    color: #333;
+    text-decoration: none;
+    margin-right: 10px;
+    padding: 12px 11px;
+    color: #c7d5e0;
+    font-size: 15px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.points-shop:hover{
+    background-image: linear-gradient(to right, #06BFFF, transparent);
 }
 
 .search-bar {

@@ -35,3 +35,4 @@ requests==2.31.0
 rsa==4.9
 urllib3==1.26.16
 psycopg2==2.9.9
+email_validator==2.2.1

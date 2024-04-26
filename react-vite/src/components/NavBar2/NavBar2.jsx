@@ -40,10 +40,10 @@ function NavBar2() {
             <div className="rectangle-bar">
                 <a onClick={() => nav('/')}>Home</a>
                 <a onClick={() => nav('/news')}>News</a>
-                <a onClick={() => alert('Feature coming soon')}>Categories</a>
                 <a href="https://github.com/MoonChopperr/Ice">Github</a>
                 <a href="https://www.linkedin.com/in/nishiyamaryou/">LinkedIn</a>
                 <a href="https://moonchopper.netlify.app/">Portfolio</a>
+                <div className='points-shop'>Points Shop</div>
                 <div className="search-bar">
                     <input type="text" placeholder="Search" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} onKeyPress={handleKeyPress} />
                     <button onClick={handleSearch}><IoMdSearch /></button>

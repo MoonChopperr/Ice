@@ -43,9 +43,9 @@ function DropDownProfile({ username }) {
                 {isOpen && (
                     <div className='dropdown-item-container'>
                         <a className='dropdown-items' onClick={() => nav('/profile')}>View my reviews</a>
-                        {/* <a className='dropdown-items' onClick={() => alert('Feature coming soon')}>View my profile</a> */}
-                        <a className='dropdown-items' onClick={() => alert('Feature coming soon')}>Account details: <span className='dropdown-user'>{username}</span></a>
-                        <a className='dropdown-items' onClick={() => alert('Feature coming soon')}>Change language</a>
+                        <a className='dropdown-items-na'>View my profile</a>
+                        <a className='dropdown-items-na' >Account details: <span className='dropdown-user'>{username}</span></a>
+                        <a className='dropdown-items-na' >Change language</a>
                         <a className='dropdown-items' onClick={logout}>Sign out of account</a>
                     </div>
                 )}

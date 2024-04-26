@@ -1,3 +1,12 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-image: radial-gradient(circle at center, #232c4b, transparent), linear-gradient(to right, #181A21, #181A21);
+    max-width: 1900px;
+    margin: auto;
+}
+
 .Landing-container {
     display: flex;
     flex-direction: column;
@@ -127,6 +136,7 @@
 
 }
 
+/* not sure what is happening */
 @media screen and (max-width: 930px){
 
 }

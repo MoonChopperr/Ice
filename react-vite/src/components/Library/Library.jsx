@@ -56,7 +56,7 @@ function Library() {
     return (
         <>
             <div className="LB-container">
-                <h1 className="LB-title">Your Library</h1>
+                <div className="LB-title">Your Library</div>
                 <div className="LB-items-container">
                     {library && library?.library.slice()
                         .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) // Sort by createdAt in descending order

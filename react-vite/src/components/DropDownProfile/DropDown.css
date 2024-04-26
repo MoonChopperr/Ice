@@ -32,8 +32,22 @@
     cursor: pointer;
 }
 
+.dropdown-items-na{
+    color: #DCDEDF;
+    padding: 12px 10px;
+    font-size: 13px;
+    max-width: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dropdown-items-na:hover{
+    color: #3D4450;
+    background-color: #DCDEDF;
+}
+
 .dropdown-user {
-    color: #1999E3
+    color: #1999E3;
 }
 
 .dropdown-main-container{
