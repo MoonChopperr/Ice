@@ -25,8 +25,8 @@ function Support() {
                         <div className='SUP-early-description2'>
                             Accounts will have acccess to the following features:
                             <li className='SUP-early-description'>Create, read, update, and delete <span className='SUP-library'>games</span> that they create</li>
-                            <li className='SUP-early-description'>Add games to a <span className='SUP-library'>cart</span>, update the quantity <span className='SUP-smalltext'>why would you do this..</span> remove and checkout Games</li>
-                            <li className='SUP-early-description'>Add and remove games to a <span className='SUP-library'>wishlist</span>; update a games rank by priority in the wishlist</li>
+                            <li className='SUP-early-description'>Add games to <span className='SUP-library'>cart</span>, remove and checkout Games</li>
+                            <li className='SUP-early-description'>Add and remove games to <span className='SUP-library'>wishlist</span>; update a games rank by priority in the wishlist</li>
                             <li className='SUP-early-description'>View purchased games under <span className='SUP-library'>library</span></li>
                             <li className='SUP-early-description'>Create, read, update, and delete <span className='SUP-library'>reviews</span> on games that a user has purchased</li>
                             <li className='SUP-early-description'><span className='SUP-library'>Vote</span> on how helpful or funny a review is </li>

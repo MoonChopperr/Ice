@@ -57,9 +57,9 @@ function CartPage() {
         return total.toFixed(2)
     }
 
-    const handleUpdate = (cartId) => {
-        nav(`/cart/update/${cartId}`)
-    }
+    // const handleUpdate = (cartId) => {
+    //     nav(`/cart/update/${cartId}`)
+    // }
 
     const handleRemove = (userCartId) => {
         dispatch(thunkDeleteItem(userCartId))
@@ -76,7 +76,7 @@ function CartPage() {
         }
     }
 
-
+    // const handleAdd =
 
     useEffect(() => {
         dispatch(thunkGetCart())
@@ -103,10 +103,11 @@ function CartPage() {
                                                 <div className='cart-title'>{game?.title}</div>
                                                 <div className='cart-price'>${game?.price * getQuant(userCart, game.id).quantity}</div>
                                                 <div className='cart-crud-container'>
-                                                    <span className='cart-quan'> <span className='Quantity'>Quantity:</span> {getQuant(userCart, game.id).quantity}&nbsp;</span>
+                                                    {/* <span className='cart-quan'> <span className='Quantity'>Quantity:</span> {getQuant(userCart, game.id).quantity}&nbsp;</span> */}
                                                     {/* <span className='cart-crud' onClick={()=> handleAdd((userCart.find(order => order.quantity)))}>Add</span> */}
-                                                    <span className='cart-crud' onClick={() => handleUpdate((game?.id))}>Update</span>
-                                                    <span className='cart-pole'>&nbsp;|&nbsp;</span>
+                                                    {/* <span className='cart-crud' onClick={() => handleUpdate((game?.id))}>Update</span> */}
+                                                    {/* <span className='cart-crud-placeholder'>Add</span> */}
+                                                    {/* <span className='cart-pole'>&nbsp;|&nbsp;</span> */}
                                                     {/* { forceRerender ? <p>YES</p> : <p>NO</p>} */}
                                                     <span className='cart-crud' onClick={() => handleRemove((userCart.find(order => order.game_id === game.id)).id)}>Remove</span>
                                                 </div>
@@ -146,7 +147,7 @@ function CartPage() {
 
                 </div>
             </div>
-            <Footer/>
+            {/* <Footer/> */}
         </>
     )
 }

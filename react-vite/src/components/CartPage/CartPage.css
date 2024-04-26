@@ -106,6 +106,13 @@
     text-decoration: underline;
 }
 
+.cart-crud-placeholder{
+    color: #adafb1;
+    font-size: 12px;
+    font-weight: 300;
+    text-decoration: underline;
+}
+
 .cart-crud:hover {
     color: white;
     cursor: pointer;

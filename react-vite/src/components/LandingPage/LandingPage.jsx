@@ -7,6 +7,7 @@ import ImageCarousel from "../Carousel/Carousel"
 import Footer from "../Footer/Footer"
 import './LandingPage.css'
 import Loading from "../Loading/Loading"
+// import './reset.css'
 function LandingPage() {
     const dispatch = useDispatch()
     const games = useSelector((state) => state?.game?.games)

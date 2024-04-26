@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { thunkGetLibrary } from "../../redux/library";
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-
+// import Footer from "../Footer/Footer";
 import './Library.css'
 
 function Library() {
@@ -56,6 +56,7 @@ function Library() {
     return (
         <>
             <div className="LB-container">
+
                 <div className="LB-title">Your Library</div>
                 <div className="LB-items-container">
                     {library && library?.library.slice()
@@ -77,6 +78,7 @@ function Library() {
                     ))} */}
                 </div>
             </div>
+            {/* <Footer/> */}
         </>
     )
 }

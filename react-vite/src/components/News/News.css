@@ -20,5 +20,16 @@
     color: white;
     display: flex;
     flex-direction: column;
-    background-color: rgba(0, 0, 0, 0.247);
+    gap:10px
+}
+
+.News-card{
+    width: 100%;
+    display: flex;
+    font-weight: 300;
+}
+
+.News-link{
+    text-decoration: none;
+    color: #1999E3;
 }

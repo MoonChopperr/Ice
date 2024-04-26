@@ -3,7 +3,7 @@ body {
     margin: 0;
     padding: 0;
     background-image: radial-gradient(circle at center, #232c4b, transparent), linear-gradient(to right, #181A21, #181A21);
-    max-width: 1900px;
+    /* max-width: 1900px; */
     margin: auto;
 }
 
