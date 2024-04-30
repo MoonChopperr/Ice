@@ -18,9 +18,11 @@ function Support() {
                         <div className='SUP-early-description'>
                             Accounts are limited from using most of Ice&apos;s features. You&apos;ll have access to all of Ice&apos;s features when Ryou Nishiyama implements it. Some of the features that you won&apos;t be able to access are:
                             <li className='SUP-early-description'>Adding friends on Steam</li>
+                            <li className='SUP-early-description'>Points shop</li>
                             <li className='SUP-early-description'>Changing Language</li>
                             <li className='SUP-early-description'>Changing account details after creation</li>
                             <li className='SUP-early-description'>Gifting Games</li>
+
                         </div>
                         <div className='SUP-early-description2'>
                             Accounts will have acccess to the following features:
